@@ -1,0 +1,28 @@
+{
+  "name": "raulseixas",
+  "version": "1.0.0",
+  "description": "Um site de homenagem ao Raul Seixas, sendo possivel obter informações sobre ele e tocar suas musicas.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon --exec node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBrunno/raulseixas.git"
+  },
+  "author": "theBrunno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBrunno/raulseixas/issues"
+  },
+  "homepage": "https://github.com/TheBrunno/raulseixas#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
+    "path": "^0.12.7"
+  }
+}
