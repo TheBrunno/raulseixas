@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/imgs/home-background-disc.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(2px) brightness(0.8);
+    padding: 1rem 5rem;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+    border-bottom: #D8AB46 2px solid;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #D8AB46;
+}
+
+nav h1{
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.5rem;
+    color: #D8AB46;
+}
