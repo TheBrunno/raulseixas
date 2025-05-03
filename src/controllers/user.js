@@ -5,7 +5,7 @@ const register = async (req, res) => {
 
     const existUser = await userModel.existUser(email);
     if(existUser.length >= 1){
-        return res.status(403).send("Usuário já existe!");
+        return res.status(403).json("Usuário já existe!");
     }
 
     userModel.register(name, email, password)
@@ -26,7 +26,7 @@ const login = async (req, res) => {
             if(result.length == 1){
                 res.json({ nome: result[0].nome, email: result[0].email });
             }else{
-                res.status(403).send("Usuário ou senha incorreta!");
+                res.status(403).json("Usuário ou senha incorreta!");
             }
         }).catch((error) => {
             res.status(500).json(error.sqlMessage);

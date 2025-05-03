@@ -1,4 +1,6 @@
 const songModel = require('../models/song');
+const albumModel = require('../models/album');
+
 const path = require('path');
 const fs = require('fs');
 
@@ -45,8 +47,30 @@ const assingSong = async (req, res, next) => {
         }).catch((err) => {
             res.status(500).json(err.sqlMessage);
     });
-}; 
+};
+
+const create = async (req, res) => {
+    const { nome, fkAlbum } = req.body;
+
+    const albumExists = await albumModel.albumExists(fkAlbum);
+
+    if(albumExists.length == 0){
+        res.status(400).json("Álbum não existe")
+    }else{
+        const lastIdResult = await songModel.getLastSongId(fkAlbum);
+        const newId = (lastIdResult[0].maxId || 0) + 1;
+        console.log(newId)
+    
+        songModel.create(newId, fkAlbum, nome)
+            .then((result) => {
+                res.status(200).json({ id: newId, nome, fkAlbum })
+            }).catch((err) => {
+                res.status(500).json(err.sqlMessage);
+            });
+    }
+}
 
 module.exports = {
-    assingSong
+    assingSong,
+    create
 }

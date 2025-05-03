@@ -14,7 +14,23 @@ const assingSong = (id, fkAlbum, local, duration) => {
     return database.execute(sqlStatment);
 }
 
+const getLastSongId = (fkAlbum) => {
+    const sqlStatment = `select max(id) as maxId from musica 
+                            where fkAlbum = ${fkAlbum}`;
+
+    return database.execute(sqlStatment);
+}
+
+const create = (id, fkAlbum, nome) => {
+    const sqlStatment = `insert into musica (id, fkAlbum, nome) 
+                        values (${id}, ${fkAlbum}, '${nome}')`;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     songExists,
-    assingSong
+    assingSong,
+    getLastSongId,
+    create
 }
