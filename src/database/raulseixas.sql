@@ -41,7 +41,10 @@ create table comentario (
   primary key(id, fkUsuario)
 );
 
+alter table usuario add column loginsCount int default 0;
+
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
+flush privileges;
 
 select * from usuario;

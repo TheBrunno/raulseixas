@@ -18,6 +18,22 @@ const register = async (req, res) => {
         );
 }
 
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    userModel.login(email, password)
+        .then((result) => {
+            if(result.length == 1){
+                res.json({ nome: result[0].nome, email: result[0].email });
+            }else{
+                res.status(403).send("Usuário ou senha incorreta!");
+            }
+        }).catch((error) => {
+            res.status(500).json(error.sqlMessage);
+        });
+}
+
 module.exports = {
-    register
+    register,
+    login
 }
