@@ -40,3 +40,8 @@ create table comentario (
   foreign key(fkUsuario) references usuario(id),
   primary key(id, fkUsuario)
 );
+
+create user 'raulseixas_user_api' identified by 'raulseixas';
+grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
+
+select * from usuario;
