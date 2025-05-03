@@ -7,8 +7,8 @@ const songExists = (id, fkAlbum) => {
     return database.execute(sqlStatment);
 }
 
-const assingSong = (id, fkAlbum, local) => {
-    const sqlStatment = `update musica set local = '${local}'
+const assingSong = (id, fkAlbum, local, duration) => {
+    const sqlStatment = `update musica set local = '${local}', duracao = '${duration}'
                             where id = ${id} and fkAlbum = ${fkAlbum}`;
 
     return database.execute(sqlStatment);

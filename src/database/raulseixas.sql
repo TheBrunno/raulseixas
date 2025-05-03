@@ -42,9 +42,22 @@ create table comentario (
 );
 
 alter table usuario add column loginsCount int default 0;
+alter table musica modify column duracao time null;
 
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
 flush privileges;
 
 select * from usuario;
+
+insert into album(nome)
+values ('TESTE');
+
+insert into musica(id, fkAlbum, nome, duracao)
+values (1, 1, 'aaaTeste', '00:04:21');
+insert into musica(id, fkAlbum, nome)
+values (2, 1, 'aaaTeste2');
+insert into musica(id, fkAlbum, nome)
+values (3, 1, 'aaaTeste2324');
+
+select * from musica;
