@@ -12,7 +12,7 @@ const { assingSong } = require('../controllers/song.js');
 const router = express.Router();
 
 router.post('/upload/song', songUpload.single('song'), verifyIfSongsExists, assingSong, (req, res) => {
-    return res.status(200).json({ file: req.file.filename });
+    return res.status(200).json({ file: req.file.originalname });
 });
 
 router.post('/upload/cover', coverUpload.single('cover'), (req, res) => {
