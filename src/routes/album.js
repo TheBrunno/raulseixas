@@ -7,5 +7,9 @@ router.post("/create", function (req, res) {
     albumController.create(req, res);
 });
 
+router.post("/edit/description", function (req, res) {
+    albumController.addDescription(req, res);
+});
+
 
 module.exports = router;

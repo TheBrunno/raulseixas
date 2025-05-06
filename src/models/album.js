@@ -21,8 +21,24 @@ const getByName = (name) => {
     return database.execute(sqlStatment);
 }
 
+const getById = (id) => {
+    const sqlStatment = `select * from album
+    where id = '${id}'`;
+
+    return database.execute(sqlStatment);
+}
+
+const addDescription = (id, description) => {
+    const sqlStatment = `update album set descricao = '${description}'
+                            where id = ${id}`;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     albumExists,
     create,
-    getByName
+    getByName,
+    getById,
+    addDescription
 }
