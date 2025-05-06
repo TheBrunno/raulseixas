@@ -60,4 +60,5 @@ values (2, 1, 'aaaTeste2');
 insert into musica(id, fkAlbum, nome)
 values (3, 1, 'aaaTeste2324');
 
+select * from album;
 select * from musica;

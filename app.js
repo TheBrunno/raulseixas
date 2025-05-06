@@ -17,6 +17,7 @@ const indexRouter = require("./src/routes/index");
 const uploadRouter = require("./src/routes/upload");
 const userRouter = require("./src/routes/user");
 const songRouter = require("./src/routes/song");
+const albumRouter = require("./src/routes/album");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use("/", indexRouter);
 app.use("/adm", uploadRouter);
 app.use("/user", userRouter);
 app.use("/song", songRouter);
+app.use("/album", albumRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
