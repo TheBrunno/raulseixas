@@ -35,10 +35,18 @@ const addDescription = (id, description) => {
     return database.execute(sqlStatment);
 }
 
+const assignAlbum = (id, local) => {
+    const sqlStatment = `update album set capa = '${local}'
+                            where id = ${id}`;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     albumExists,
     create,
     getByName,
     getById,
-    addDescription
+    addDescription,
+    assignAlbum
 }
