@@ -43,7 +43,7 @@ const assingSong = async (req, res, next) => {
 
     songModel.assingSong(id, fkAlbum, 'uploads/songs/'+uniqueName, duration)
         .then((result) => {
-            next();
+            return res.status(200).json({ "src": `uploads/songs/${uniqueName}` });
         }).catch((err) => {
             res.status(500).json(err.sqlMessage);
     });

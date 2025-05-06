@@ -56,7 +56,7 @@ const assignAlbum = (req, res, next) => {
 
     albumModel.assignAlbum(id, 'uploads/cover/' + uniqueName)
         .then((result) => {
-            next();
+            return res.status(200).json({ "src": `uploads/cover/${uniqueName}` });
         }).catch((err) => {
             res.status(500).json(err.sqlMessage);
         });
