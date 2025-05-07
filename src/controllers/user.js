@@ -1,39 +1,63 @@
 const userModel = require('../models/user');
 
-const register = async (req, res) => {
-    const { name, email, password } = req.body;
+async function cadastrar(req, res) {
+    var nome = req.body.name;
+    var email = req.body.email;
+    var senha = req.body.password;
 
-    const existUser = await userModel.existUser(email);
-    if(existUser.length >= 1){
-        return res.status(403).json("Usuário já existe!");
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        const existUser = await userModel.existUser(email);
+        if (existUser.length >= 1) {
+            return res.status(403).json("Usuário já existe!");
+        }
+
+        userModel.register(nome, email, senha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
-
-    userModel.register(name, email, password)
-        .then((result) => {
-                res.json(result);
-            }
-        ).catch((error) => {
-                res.status(500).json(error.sqlMessage);
-            }
-        );
 }
 
-const login = async (req, res) => {
-    const { email, password } = req.body;
+async function autenticar(req, res) {
+    var email = req.body.email;
+    var senha = req.body.password;
 
-    userModel.login(email, password)
-        .then((result) => {
-            if(result.length == 1){
-                res.json({ nome: result[0].nome, email: result[0].email });
-            }else{
-                res.status(403).json("Usuário ou senha incorreta!");
-            }
-        }).catch((error) => {
-            res.status(500).json(error.sqlMessage);
-        });
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+        userModel.login(email, senha)
+            .then((result) => {
+                if (result.length == 1) {
+                    res.json({ nome: result[0].nome, email: result[0].email });
+                } else {
+                    res.status(403).json("Usuário ou senha incorreta!");
+                }
+            }).catch((error) => {
+                res.status(500).json(error.sqlMessage);
+            });
+    }
 }
 
 module.exports = {
-    register,
-    login
+    cadastrar,
+    autenticar
 }
