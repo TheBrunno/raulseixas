@@ -42,11 +42,18 @@ const assignAlbum = (id, local) => {
     return database.execute(sqlStatment);
 }
 
+const getAllAlbuns = () => {
+    const sqlStatment = `select * from album`;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     albumExists,
     create,
     getByName,
     getById,
     addDescription,
-    assignAlbum
+    assignAlbum,
+    getAllAlbuns
 }

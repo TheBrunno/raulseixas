@@ -11,5 +11,9 @@ router.post("/edit/description", function (req, res) {
     albumController.addDescription(req, res);
 });
 
+router.get("/getAllAlbuns", function (req, res) {
+    albumController.getAllAlbuns(req, res)
+})
+
 
 module.exports = router;

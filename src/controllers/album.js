@@ -62,8 +62,15 @@ const assignAlbum = (req, res, next) => {
         });
 }
 
+const getAllAlbuns = async (req, res) => {
+    const result = await albumModel.getAllAlbuns();
+
+    res.status(200).json(result);
+}
+
 module.exports = {
     create,
     addDescription,
-    assignAlbum
+    assignAlbum,
+    getAllAlbuns
 }
