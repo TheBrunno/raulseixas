@@ -21,7 +21,9 @@ const albumRouter = require("./src/routes/album");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public/")));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
+
 
 app.use(cors());
 
