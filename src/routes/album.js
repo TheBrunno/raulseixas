@@ -15,5 +15,8 @@ router.get("/getAllAlbuns", function (req, res) {
     albumController.getAllAlbuns(req, res)
 })
 
+router.get("/getAlbumWithSongs", function (req, res) {
+    albumController.getAlbumByIdWithSongs(req, res);
+})
 
 module.exports = router;

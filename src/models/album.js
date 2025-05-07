@@ -48,6 +48,23 @@ const getAllAlbuns = () => {
     return database.execute(sqlStatment);
 }
 
+const getAlbumByIdWithSongs = (id) => {
+    const sqlStatment = `select alb.id id_album,
+                                alb.nome album, 
+                                alb.capa capa, 
+                                msc.id id_musica, 
+                                msc.nome musica, 
+                                msc.duracao duracao, 
+                                msc.local src_musica, 
+                                msc.views views  
+                                
+                                from album alb
+                        inner join musica msc on alb.id = msc.fkAlbum
+                        where alb.id = ${id}`;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     albumExists,
     create,
@@ -55,5 +72,6 @@ module.exports = {
     getById,
     addDescription,
     assignAlbum,
-    getAllAlbuns
+    getAllAlbuns,
+    getAlbumByIdWithSongs
 }

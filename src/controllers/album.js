@@ -68,9 +68,17 @@ const getAllAlbuns = async (req, res) => {
     res.status(200).json(result);
 }
 
+const getAlbumByIdWithSongs = async (req, res) => {
+    const { id } = req.body;
+    const result = await albumModel.getAlbumByIdWithSongs(id);
+
+    res.status(200).json(result);
+}
+
 module.exports = {
     create,
     addDescription,
     assignAlbum,
-    getAllAlbuns
+    getAllAlbuns,
+    getAlbumByIdWithSongs 
 }
