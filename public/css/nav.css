@@ -1,0 +1,16 @@
+nav{
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+}
+nav ul a{
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 30px;
+}
