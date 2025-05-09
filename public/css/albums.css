@@ -7,6 +7,7 @@
 body {
     color: #fff;
     background-color: #292929;
+    overflow-x: hidden;
 }
 
 .background_gradient {
@@ -199,13 +200,15 @@ span.eight {
     text-align: center;
     margin-bottom: 20px;
 }
-.songs_container{
+
+.songs_container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
     max-height: 55vh;
 }
+
 .songs_container .song {
     background-color: rgba(75, 75, 75, 0.7);
     display: flex;
@@ -213,15 +216,17 @@ span.eight {
     border-radius: 10px;
 }
 
-.songs_container .song.expanded{
+.songs_container .song.expanded {
     padding: 20px;
     height: 180px;
 }
-.songs_container .song:not(.expanded){
+
+.songs_container .song:not(.expanded) {
     padding: 10px 10px 10px 20px;
     height: 90px;
 }
-.songs_container .song{
+
+.songs_container .song {
     width: 100%;
     justify-content: space-between;
     position: relative;
@@ -231,33 +236,38 @@ span.eight {
     height: 100%;
     border-radius: 10px;
 }
-.songs_container .song:not(.expanded) .song_photo{
+
+.songs_container .song:not(.expanded) .song_photo {
     order: 2;
 }
+
 .songs_container .song:not(.expanded) .name_controlers input,
 .songs_container .song:not(.expanded) .name_controlers .times span:first-child,
 .songs_container .song:not(.expanded) .name_controlers .controls span:first-child,
-.songs_container .song:not(.expanded) .name_controlers .controls span:last-child{
+.songs_container .song:not(.expanded) .name_controlers .controls span:last-child {
     display: none;
 }
 
-.songs_container .song:not(.expanded) .name_controlers .name_song{
+.songs_container .song:not(.expanded) .name_controlers .name_song {
     order: 2;
     font-size: 24px;
     font-weight: 600;
     margin-left: 20px;
 }
 
-.songs_container .song:not(.expanded) .name_controlers .controls{
+.songs_container .song:not(.expanded) .name_controlers .controls {
     order: 1;
 }
-.songs_container .song:not(.expanded) .name_controlers .controls span:nth-child(2){
+
+.songs_container .song:not(.expanded) .name_controlers .controls span:nth-child(2) {
     font-size: 40px;
 }
-.songs_container .song:not(.expanded) .name_controlers .times{
+
+.songs_container .song:not(.expanded) .name_controlers .times {
     order: 3;
 }
-.songs_container .song:not(.expanded) .name_controlers .times span:nth-child(2){
+
+.songs_container .song:not(.expanded) .name_controlers .times span:nth-child(2) {
     position: absolute;
     right: 20%;
     top: 40%;
@@ -271,12 +281,14 @@ span.eight {
     width: 100%;
     gap: 10px;
 }
+
 .songs_container .song:not(.expanded) .name_controlers {
     display: flex;
     order: 1;
     align-items: center;
     width: 100%;
 }
+
 .songs_container .song.expanded .name_controlers .name_song {
     font-weight: 600;
     font-size: 22px;
@@ -318,4 +330,17 @@ span.eight {
     border-radius: 50%;
     margin-top: -3px;
     cursor: pointer;
+}
+
+.songs_container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.songs_container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.songs_container::-webkit-scrollbar-thumb {
+    background-color: #F9B631;
+    border-radius: 20px;
 }
