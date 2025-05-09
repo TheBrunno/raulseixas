@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="js/audio.js"></script>
 </head>
 <body>
     <div class="background_gradient"></div>
@@ -89,7 +90,7 @@
         <div class="main_songs">
             <h2>Principais faixas</h2>
             <div class="songs_container">
-                <div class="song expanded">
+                <div class="song">
                     <div class="song_photo">
                         <img src="assets/imgs/main_cover.png">
                     </div>
@@ -105,32 +106,7 @@
                             <span class="material-symbols-outlined">
                                 skip_previous
                             </span>
-                            <span class="material-symbols-outlined" id="play_button">
-                                resume
-                            </span>
-                            <span class="material-symbols-outlined">
-                                skip_next
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="song">
-                    <div class="song_photo">
-                        <img src="assets/imgs/main_cover.png">
-                    </div>
-                    <div class="name_controlers">
-                        <span class="name_song">Maluco beleza</span>
-                        <input type="range" id="progress" value="0">
-                        <div class="times">
-                            <span>00:00</span>
-                            <span>04:21</span>
-                        </div>
-                        <div class="controls">
-                            <span class="material-symbols-outlined">
-                                skip_previous
-                            </span>
-                            <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined" onclick="play(this)">
                                 resume
                             </span>
                             <span class="material-symbols-outlined">
@@ -145,16 +121,17 @@
                     </div>
                     <div class="name_controlers">
                         <span class="name_song">Maluco beleza</span>
+                        <audio id="audio" src="http://localhost:3333/uploads/songs/song-1746227872858-753190902.mp3"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
-                            <span>00:00</span>
-                            <span>04:21</span>
+                            <span id="current_time">00:00</span>
+                            <span id="duration">04:21</span>
                         </div>
                         <div class="controls">
                             <span class="material-symbols-outlined">
                                 skip_previous
                             </span>
-                            <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined" onclick="play(this)">
                                 resume
                             </span>
                             <span class="material-symbols-outlined">
@@ -169,16 +146,67 @@
                     </div>
                     <div class="name_controlers">
                         <span class="name_song">Maluco beleza</span>
+                        <audio id="audio" src="http://localhost:3333/uploads/songs/song-1746227872858-753190902.mp3"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
-                            <span>00:00</span>
-                            <span>04:21</span>
+                            <span id="current_time">00:00</span>
+                            <span id="duration">04:21</span>
                         </div>
                         <div class="controls">
                             <span class="material-symbols-outlined">
                                 skip_previous
                             </span>
+                            <span class="material-symbols-outlined" onclick="play(this)">
+                                resume
+                            </span>
                             <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <audio id="audio" src="http://localhost:3333/uploads/songs/song-1746227872858-753190902.mp3"></audio>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span id="current_time">00:00</span>
+                            <span id="duration">04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined" onclick="play(this)">
+                                resume
+                            </span>
+                            <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <audio id="audio" src="http://localhost:3333/uploads/songs/song-1746227872858-753190902.mp3"></audio>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span id="current_time">00:00</span>
+                            <span id="duration">04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined" onclick="play(this)">
                                 resume
                             </span>
                             <span class="material-symbols-outlined">
@@ -192,4 +220,3 @@
     </section>
 </body>
 </html>
-<script type="module" src="js/audio.js"></script>

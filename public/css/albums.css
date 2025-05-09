@@ -203,6 +203,8 @@ span.eight {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: scroll;
+    max-height: 55vh;
 }
 .songs_container .song {
     background-color: rgba(75, 75, 75, 0.7);
