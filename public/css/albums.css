@@ -344,3 +344,60 @@ span.eight {
     background-color: #F9B631;
     border-radius: 20px;
 }
+
+.curiosities{
+    border-radius: 20px;
+    background-color: #4B4B4B;
+    width: 90vw;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.curiosities .curiosities_container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.curiosities .curiosities_container .curiosities_card{
+    flex: 1;
+    position: relative;
+}
+.curiosities .curiosities_container .curiosities_card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.curiosities .curiosities_container .curiosities_card p{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.curiosities .curiosities_container .curiosities_card:hover p{
+    opacity: 1;
+
+}
+.curiosities .curiosities_container .curiosities_card img{
+    transition: .20s;
+}
+.curiosities .curiosities_container .curiosities_card:hover img{
+    filter: brightness(30%);
+}
+.curiosities h2{
+    font-size: 50px;
+}
+.curiosities h4{
+    font-size: 12px;
+    opacity: 50%;
+    font-weight: 400;
+    margin: 0 0 10px 30px;
+}
