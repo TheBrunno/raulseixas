@@ -1,48 +1,55 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
 }
-body{
+
+body {
+    color: #fff;
     background-color: #292929;
 }
 
-.background_gradient{
+.background_gradient {
     height: 60vh;
     width: 100vw;
     position: absolute;
     background-image: linear-gradient(to bottom, rgba(242, 228, 27, 0.15), #73737300);
     z-index: -1;
 }
-.cover_container{
+
+.cover_container {
     display: flex;
     justify-content: space-between;
     padding: 0 5vw;
     gap: 160px;
 }
-.cover_container .covers{
+
+.cover_container .covers {
     height: 400px;
     position: relative;
     display: flex;
     flex: 1;
 }
-.cover_container .covers img{
+
+.cover_container .covers img {
     position: absolute;
     height: 400px;
     border-radius: 20px;
 }
-.cover_container .covers .main{
+
+.cover_container .covers .main {
     z-index: 2;
     left: 120px;
-    box-shadow: 
-    -120px 0 150px #292929,
-     120px 0 150px #292929;
+    box-shadow:
+        -120px 0 150px #292929,
+        120px 0 150px #292929;
 }
-.cover_container .covers .second{
+
+.cover_container .covers .second {
     left: 360px;
 }
 
-.cover_container .covers .material-symbols-outlined{
+.cover_container .covers .material-symbols-outlined {
     position: absolute;
     z-index: 5;
     color: #fff;
@@ -50,34 +57,39 @@ body{
     align-self: center;
 }
 
-#icon_forward{
+#icon_forward {
     left: 540px;
 }
-#icon_back{
+
+#icon_back {
     left: 77px;
 }
 
-.titles{
+.titles {
     margin-left: 10vw;
     width: 40vw;
     color: #fff;
     margin-top: 20px;
     margin-bottom: 50px;
 }
-.titles h1{
+
+.titles h1 {
     text-transform: uppercase;
     font-size: 50px;
 }
-.titles h2{
+
+.titles h2 {
     font-size: 18px;
     color: #ffffffc4;
 }
-.about h2{
+
+.about h2 {
     font-size: 40px;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 10px;
 }
-.cover_container .about{
+
+.cover_container .about {
     flex: 1;
     text-align: center;
     color: #fff;
@@ -85,15 +97,18 @@ body{
     margin-top: -20px;
     width: 80%;
 }
-.cover_container .about > *{
+
+.cover_container .about>* {
     width: 89%;
     margin: 0 auto;
 }
-.cover_container .about p{
+
+.cover_container .about p {
     margin-bottom: 10px;
     color: #ffffffce;
 }
-.expand_text{
+
+.expand_text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,12 +119,201 @@ body{
     background-image: linear-gradient(to top, #2A2A2A, #2A2A2A00);
     height: 30vh;
 }
-.expand_text .material-symbols-outlined{
+
+.expand_text .material-symbols-outlined {
     font-size: 30px;
 }
-#text_expand{
+
+#text_expand {
     display: flex;
     align-items: center;
     position: absolute;
     bottom: 20px;
+}
+
+.second_section {
+    display: flex;
+    padding: 5vw;
+}
+
+.second_section .lyrics {
+    flex: 1;
+}
+
+.second_section .main_songs {
+    flex: 1;
+}
+
+.second_section h2 {
+    font-size: 50px;
+}
+
+.lyrics h3 {
+    opacity: 70%;
+}
+
+.lyrics .lyrics_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.lyrics .lyrics_container span {
+    font-weight: 900;
+}
+
+span.one,
+span.five {
+    font-size: 30px;
+    opacity: 50%;
+}
+
+span.two,
+span.four {
+    font-size: 35px;
+    opacity: 60%;
+}
+
+span.main {
+    font-size: 45px;
+    color: #F9B631;
+}
+
+span.six {
+    font-size: 25px;
+    opacity: 45%;
+}
+
+span.seven {
+    font-size: 20px;
+    opacity: 30%;
+}
+
+span.eight {
+    font-size: 15px;
+    opacity: 20%;
+}
+
+.main_songs h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.songs_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.songs_container .song {
+    background-color: rgba(75, 75, 75, 0.7);
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.songs_container .song.expanded{
+    padding: 20px;
+    height: 180px;
+}
+.songs_container .song:not(.expanded){
+    padding: 10px 10px 10px 20px;
+    height: 90px;
+}
+.songs_container .song{
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.songs_container .song .song_photo img {
+    height: 100%;
+    border-radius: 10px;
+}
+.songs_container .song:not(.expanded) .song_photo{
+    order: 2;
+}
+.songs_container .song:not(.expanded) .name_controlers input,
+.songs_container .song:not(.expanded) .name_controlers .times span:first-child,
+.songs_container .song:not(.expanded) .name_controlers .controls span:first-child,
+.songs_container .song:not(.expanded) .name_controlers .controls span:last-child{
+    display: none;
+}
+
+.songs_container .song:not(.expanded) .name_controlers .name_song{
+    order: 2;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.songs_container .song:not(.expanded) .name_controlers .controls{
+    order: 1;
+}
+.songs_container .song:not(.expanded) .name_controlers .controls span:nth-child(2){
+    font-size: 40px;
+}
+.songs_container .song:not(.expanded) .name_controlers .times{
+    order: 3;
+}
+.songs_container .song:not(.expanded) .name_controlers .times span:nth-child(2){
+    position: absolute;
+    right: 20%;
+    top: 40%;
+    opacity: 80%;
+}
+
+.songs_container .song.expanded .name_controlers {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.songs_container .song:not(.expanded) .name_controlers {
+    display: flex;
+    order: 1;
+    align-items: center;
+    width: 100%;
+}
+.songs_container .song.expanded .name_controlers .name_song {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.songs_container .song.expanded .name_controlers .times {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.songs_container .song.expanded .name_controlers .controls {
+    align-self: center;
+}
+
+.songs_container .song.expanded .name_controlers .controls span {
+    font-size: 50px;
+}
+
+#progress {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #F9B631 0%, white 0%);
+    outline: none;
+}
+
+#progress::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+}
+
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #F9B631;
+    border-radius: 50%;
+    margin-top: -3px;
+    cursor: pointer;
 }

@@ -37,7 +37,7 @@
             </ul>
         </div>
     </nav>
-    <section class="first">
+    <section class="first_section">
         <div class="titles">
             <h1>Novo Aeon</h1>
             <h2>Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.</h2>
@@ -71,5 +71,125 @@
             </div>
         </div>
     </section>
+    <section class="second_section">
+        <div class="lyrics">
+            <h2>Maluco Beleza</h2>
+            <h3>Letra</h3>
+            <div class="lyrics_container">
+                <span class="one">Maluco beleza</span>
+                <span class="two">Esse caminho que eu mesmo escolhi</span>
+                <span class="main three">É tão fácil seguir, por não ter onde ir</span>
+                <span class="four">Controlando a minha maluquez</span>
+                <span class="five">Misturada com a minha lucidez, eu</span>
+                <span class="six">Controlando a minha maluquez</span>
+                <span class="seven">Misturada com a minha lucidez</span>
+                <span class="eight">Vou ficar</span>
+            </div>
+        </div>
+        <div class="main_songs">
+            <h2>Principais faixas</h2>
+            <div class="songs_container">
+                <div class="song expanded">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <audio id="audio" src="http://localhost:3333/uploads/songs/song-1746227872858-753190902.mp3"></audio>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span id="current_time">00:00</span>
+                            <span id="duration">04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined" id="play_button">
+                                resume
+                            </span>
+                            <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="song">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span>00:00</span>
+                            <span>04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined">
+                                resume
+                            </span>
+                            <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span>00:00</span>
+                            <span>04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined">
+                                resume
+                            </span>
+                            <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song">
+                    <div class="song_photo">
+                        <img src="assets/imgs/main_cover.png">
+                    </div>
+                    <div class="name_controlers">
+                        <span class="name_song">Maluco beleza</span>
+                        <input type="range" id="progress" value="0">
+                        <div class="times">
+                            <span>00:00</span>
+                            <span>04:21</span>
+                        </div>
+                        <div class="controls">
+                            <span class="material-symbols-outlined">
+                                skip_previous
+                            </span>
+                            <span class="material-symbols-outlined">
+                                resume
+                            </span>
+                            <span class="material-symbols-outlined">
+                                skip_next
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
+<script type="module" src="js/audio.js"></script>
