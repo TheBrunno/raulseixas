@@ -457,3 +457,112 @@ span.destaque_text{
     font-weight: 600;
     margin-top: 5px;
 }
+.comments{
+    display: flex;
+}
+.comment_container{
+    flex: 1;
+    background-color: #4B4B4B;
+    margin-left: 100px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 100px;
+}
+.comment_container h2{
+    margin: 30px 0 30px 30px;
+    top: 0;
+}
+.comments_ad{
+    flex: 1;
+}
+.comment{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    display: flex;
+    margin: 0 30px;
+}
+.comment_info .profile{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.comment_info .profile span{
+    font-weight: 600;
+    font-size: 20px;
+}
+.comment_buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.comment_buttons span{
+    font-size: 30px;
+    cursor: pointer;
+}
+.comment_data{
+    padding: 20px 0 20px 10px;
+}
+.comments_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: scroll;
+    max-height: 65vh;
+}
+
+.comments_wrapper::-webkit-scrollbar {
+    width: 15px;
+}
+
+.comments_wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.comments_wrapper::-webkit-scrollbar-thumb {
+    background-color: #F9B631;
+    border-radius: 20px;
+}
+.comments_ad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.comments_ad p{
+    font-size: 24px;
+    font-weight: 600;
+    width: 60%;
+    text-align: center;
+}
+.comments_ad p .destaque_text{
+    font-weight: 900;
+}
+.comment_field{
+    background-color: rgba(158, 158, 158, 0.5);
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+}
+.comment_field input{
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    outline: none;
+    color: #fff;
+    width: 80%;
+}
+.comment_field span{
+    font-size: 50px;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+}
