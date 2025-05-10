@@ -15,13 +15,13 @@ const existUser = (email) => {
 }
 
 const login = async (email, password) => {
-    const sqlStatment = `select id, nome, email, loginsCount from usuario
+    const sqlStatment = `select id, nome, email, contadorLogins from usuario
                         where email = '${email}' and senha = '${password}'`
 
     const result = await database.execute(sqlStatment);
 
     if(result.length == 1){
-        let sqlStatment2 = `update usuario set loginsCount = ${result[0].loginsCount+1}
+        let sqlStatment2 = `update usuario set contadorLogins = ${result[0].contadorLogins+1}
                             where id = ${result[0].id}`;
         database.execute(sqlStatment2);
     }

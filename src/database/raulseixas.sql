@@ -7,22 +7,28 @@ create table usuario (
   email VARCHAR(100) not null,
   senha VARCHAR(50) not null,
   isADM boolean,
-  foto varchar(200)
+  foto varchar(200),
+  prestigio int default 0,
+  contadorLogins int default 0
 );
 
 create table album (
   id int primary key auto_increment,
   nome varchar(100) not null,
-  capa varchar(200),
-  descricao varchar(1000)
+  srcCapa varchar(200),
+  descricao varchar(1000),
+  subtitulo varchar(200),
+  avaliacao decimal(2, 1),
+  descricaoAvaliacao varchar(500)
 );
 
 create table musica (
   id int,
   fkAlbum int,
   nome varchar(100) not null,
-  duracao time not null,
-  local varchar(200),
+  duracao time,
+  srcMusica varchar(200),
+  srcLRC varchar(200),
   views int not null default 0,
   
   foreign key(fkAlbum) references album(id),
@@ -32,35 +38,38 @@ create table musica (
 create table comentario (
   id int,
   fkUsuario int,
+  fkAlbum int,
   comentario varchar(1000),
-  fkMusica INT NOT NULL,
-  fkAlbum INT NOT NULL,
+  upvotes int default 0,
+  downvotes int default 0,
   
-  foreign key(fkMusica, fkAlbum) references musica(id, fkAlbum),
   foreign key(fkUsuario) references usuario(id),
-  primary key(id, fkUsuario)
+  foreign key(fkAlbum) references album(id),
+  primary key(id, fkUsuario, fkAlbum)
 );
 
-alter table usuario add column loginsCount int default 0;
-alter table musica modify column duracao time null;
+create table cards(
+	id int primary key auto_increment,
+    srcFoto varchar(200),
+    descricao varchar(1000),
+    fkAlbum int,
+    
+    foreign key(fkAlbum) references album(id)
+);
+
+create table votes(
+	id int primary key auto_increment,
+    fkComentario int,
+    fkUsuarioComentario int,
+    fkAlbum int,
+    fkUsuarioVoto int,
+    
+    tipo varchar(4),
+	
+    foreign key(fkComentario, fkUsuarioComentario, fkAlbum) references comentario(id, fkUsuario, fkAlbum),
+    foreign key(fkUsuarioVoto) references usuario(id)
+);
 
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
 flush privileges;
-
-select * from usuario;
-
-insert into album(nome)
-values ('TESTE');
-
-insert into musica(id, fkAlbum, nome, duracao)
-values (1, 1, 'aaaTeste', '00:04:21');
-insert into musica(id, fkAlbum, nome)
-values (2, 1, 'aaaTeste2');
-insert into musica(id, fkAlbum, nome)
-values (3, 1, 'aaaTeste2324');
-
-alter table album add unique(nome);
-
-select * from album;
-select * from musica;

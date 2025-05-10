@@ -36,7 +36,7 @@ const addDescription = (id, description) => {
 }
 
 const assignAlbum = (id, local) => {
-    const sqlStatment = `update album set capa = '${local}'
+    const sqlStatment = `update album set srcCapa = '${local}'
                             where id = ${id}`;
 
     return database.execute(sqlStatment);
@@ -51,11 +51,11 @@ const getAllAlbuns = () => {
 const getAlbumByIdWithSongs = (id) => {
     const sqlStatment = `select alb.id id_album,
                                 alb.nome album, 
-                                alb.capa capa, 
+                                alb.srcCapa capa, 
                                 msc.id id_musica, 
                                 msc.nome musica, 
                                 msc.duracao duracao, 
-                                msc.local src_musica, 
+                                msc.srcMusica src_musica, 
                                 msc.views views  
                                 
                                 from album alb
