@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
+    <script src="js/cadastro.js"></script>
 </head>
 <body>
     <div class="register">
@@ -30,19 +30,27 @@
             </div>
             <p>Cadastre-se agora e descubra tudo sobre o Raul Seixas</p>
             <div class="fields">
-                <label for="username">Nome</label>
-                <input type="text" id="username" placeholder="Digite seu nome">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="Digite seu e-mail">
-                <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="Crie sua senha">
-                <label for="repeat_password">Repita sua senha</label>
-                <input type="password" id="repeat_password" placeholder="Repita a sua senha">
+                <div class="field">
+                    <label for="username">Nome</label>
+                    <input type="text" id="username" placeholder="Digite seu nome">
+                </div>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail">
+                </div>
+                <div class="field">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Crie sua senha">
+                </div>
+                <div class="field">
+                    <label for="repeat_password">Repita sua senha</label>
+                    <input type="password" id="repeat_password" placeholder="Repita a sua senha">
+                </div>
                 <div class="remind">
                     <input type="checkbox" id="remind_password">
                     <label for="remind_password">Lembrar senha</label>
                 </div>
-                <button>Cadastrar</button>
+                <button onclick="enviarDados()">Cadastrar</button>
             </div>
         </div>
     </div>
