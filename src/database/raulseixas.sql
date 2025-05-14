@@ -73,3 +73,24 @@ create table votes(
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
 flush privileges;
+
+desc album;
+
+insert into album(nome, descricao, subtitulo, avaliacao, descricaoAvaliacao)
+values ("Novo Aeon", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lobortis, augue non mollis dictum, metus sem euismod massa, nec elementum tortor velit in eros. Vestibulum vestibulum tortor vel magna sodales convallis. Ut blandit nec justo vitae interdum. Aenean porta tortor sed lorem porttitor pellentesque. Quisque vel est vitae libero dapibus vehicula. Nam maximus odio nec maximus imperdiet. Etiam id turpis turpis. Donec nisl metus, ultrices sit amet fermentum id, iaculis id arcu. Curabitur lectus sapien, viverra eget lacinia in, sodales et ante. Vestibulum ex justo, vestibulum sit amet justo eu, convallis tincidunt metus. Nunc nec elementum elit, in varius odio. Nunc nunc mi, euismod non bibendum quis, blandit sed risus. Etiam varius purus in maximus ultrices. Etiam at velit eget neque consectetur hendrerit sed id ante. Praesent pulvinar ornare mi a suscipit. Sed vestibulum pellentesque scelerisque. Aenean placerat orci vel luctus porta.", "Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.", 4.8, "Lançado em 1975, o álbum causou estranhamento no público por trazer letras densas e referências ao ocultismo e à filosofia. Diferente dos sucessos anteriores de Raul Seixas, esse trabalho foi pouco compreendido na época e teve baixa aceitação comercial. Com o passar dos anos, porém, Novo Aeon foi redescoberto e passou a ser considerado uma de suas obras mais ousadas, conquistando status cult entre fãs e críticos.");
+
+update album set descricaoAvaliacao = 'Lançado em 1975, o álbum causou <span class="destaque_text">estranhamento</span> no público por trazer letras densas e referências ao <span class="destaque_text">ocultismo</span> e à <span class="destaque_text">filosofia</span>. Diferente dos sucessos anteriores de Raul Seixas, esse trabalho foi <span class="destaque_text">pouco compreendido</span> na época e teve baixa aceitação comercial. Com o passar dos anos, porém, <span class="destaque_text">Novo Aeon</span> foi redescoberto e passou a ser considerado uma de suas obras mais <span class="destaque_text"><span class="destaque_text">ousadas</span></span>, conquistando status cult entre fãs e críticos.'
+where id = 1;
+
+select * from album;
+
+desc album;
+alter table album modify descricaoAvaliacao varchar(5000);
+
+desc musica;
+insert into musica(id, fkAlbum, nome) 
+values 
+(2, 1, "A maça"),
+(3, 1, "Caminhos");
+
+update album set nome = 'Novo Aeon' where id = 1;
