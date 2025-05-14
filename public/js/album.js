@@ -30,11 +30,11 @@ function obterAlbumInfo() {
                     <div class="name_controlers">
                         <span class="name_song">${res[i].musica}</span>
                         <audio id="audio"
-                            src="../../${res[0]}"></audio>
+                            src="../../${res[0].src_musica}"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
                             <span id="current_time">00:00</span>
-                            <span id="duration">${res[i].duracao}</span>
+                            <span id="duration">${res[i].duracao.replace("00:", "")}</span>
                         </div>
                         <div class="controls">
                             <span class="material-symbols-outlined">
