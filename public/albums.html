@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Álbuns | RaulSeixas</title>
     <link rel="stylesheet" href="css/albums.css">
     <link rel="stylesheet" href="css/nav.css">
 
@@ -15,9 +15,10 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="js/audio.js"></script>
+    <script src="js/album.js"></script>
 </head>
 
-<body>
+<body onload="obterAlbumInfo()">
     <div class="background_gradient"></div>
     <nav>
         <div class="logo">
@@ -44,9 +45,8 @@
     </nav>
     <section class="first_section">
         <div class="titles">
-            <h1>Novo Aeon</h1>
-            <h2>Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.
-            </h2>
+            <h1 id="nome_album"></h1>
+            <h2 id="subtitulo_album"></h2>
         </div>
         <div class="cover_container">
             <div class="covers">
@@ -54,7 +54,7 @@
                 <span class="material-symbols-outlined" id="icon_back">
                     arrow_back_ios
                 </span>
-                <img src="assets/imgs/main_cover.png" class="main">
+                <img src="" class="main" id="capaavaliação novo aeon ">
                 <span class="material-symbols-outlined" id="icon_forward">
                     arrow_forward_ios
                 </span>
@@ -62,18 +62,7 @@
             </div>
             <div class="about">
                 <h2>Sobre o álbum</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quasi voluptatum! Illo
-                    necessitatibus debitis in labore iste laborum quo aut inventore beatae, hic ex repudiandae quidem
-                    accusantium libero autem voluptate.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quasi voluptatum! Illo
-                    necessitatibus debitis in labore iste laborum quo aut inventore beatae, hic ex repudiandae quidem
-                    accusantium libero autem voluptate.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quasi voluptatum! Illo
-                    necessitatibus debitis in labore iste laborum quo aut inventore beatae, hic ex repudiandae quidem
-                    accusantium libero autem voluptate.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quasi voluptatum! Illo
-                    necessitatibus debitis in labore iste laborum quo aut inventore beatae, hic ex repudiandae quidem
-                    accusantium libero autem voluptate.</p>
+                <p id="descricao"></p>
                 <div class="expand_text">
                     <span id="text_expand">
                         <span class="material-symbols-outlined">
@@ -102,7 +91,7 @@
         </div>
         <div class="main_songs">
             <h2>Principais faixas</h2>
-            <div class="songs_container">
+            <div class="songs_container" id="song_container">
                 <div class="song">
                     <div class="song_photo">
                         <img src="assets/imgs/main_cover.png">
@@ -269,7 +258,7 @@
     <section class="rating">
         <div class="rating_container">
             <h2>Avaliação do álbum</h2>
-            <span class="rating_number">
+            <span class="rating_number" id="avaliacao">
                 4,8
             </span>
             <div class="stars">
@@ -283,7 +272,7 @@
         </div>
         <div class="vertical_bar"></div>
         <div class="rating_description">
-            <p>Lançado em 1975, o álbum causou <span class="destaque_text">estranhamento</span> no público por trazer
+            <p id="descricao_avaliacao">Lançado em 1975, o álbum causou <span class="destaque_text">estranhamento</span> no público por trazer
                 letras densas e referências ao <span class="destaque_text">ocultismo</span> e à <span
                     class="destaque_text">filosofia</span>. Diferente dos sucessos anteriores de Raul Seixas, esse
                 trabalho foi <span class="destaque_text">pouco compreendido</span> na época e teve baixa aceitação

@@ -62,17 +62,17 @@ const assignAlbum = (req, res, next) => {
         });
 }
 
-const getAllAlbuns = async (req, res) => {
+const getAllAlbuns = async (req, res) => {  
     const result = await albumModel.getAllAlbuns();
 
     res.status(200).json(result);
 }
 
 const getAlbumByIdWithSongs = async (req, res) => {
-    const { id } = req.body;
-    const result = await albumModel.getAlbumByIdWithSongs(id);
+    const id = req.params.id;
 
-    res.status(200).json(result);
+    const result = await albumModel.getAlbumByIdWithSongs(id);
+    return res.status(200).json(result);
 }
 
 module.exports = {
