@@ -362,7 +362,9 @@ span.eight {
 }
 .curiosities .curiosities_container .curiosities_card{
     flex: 1;
+    max-width: 300px;
     position: relative;
+    box-sizing: border-box;
 }
 .curiosities .curiosities_container .curiosities_card img{
     width: 100%;
@@ -370,6 +372,8 @@ span.eight {
     border-radius: 20px;
 }
 .curiosities .curiosities_container .curiosities_card p{
+    padding: 20px;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     opacity: 0;

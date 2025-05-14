@@ -54,5 +54,17 @@ function obterAlbumInfo() {
         });
     });
 
-    fetch()
+    const curiosidades = document.getElementById('curiosidades');
+    fetch("http://localhost:3333/album/getCards/1", { method: "GET" }).then((result) => {
+        result.json().then(data => {
+            for(let i=0; i<data.length; i++){
+                curiosidades.innerHTML += `
+                    <div class="curiosities_card">
+                        <img src="${data[i].srcFoto}">
+                        <p>${data[i].descricao}</p>
+                    </div>
+                `;
+            }
+        })
+    })
 }
