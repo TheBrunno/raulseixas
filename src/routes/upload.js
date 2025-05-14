@@ -31,6 +31,6 @@ router.post('/upload/card', cardUpload.single('photo'), (req, res) => {
     cardController.create(req, res);
 
     return res.status(200).json({ file: req.file.originalname });
-})
+});
 
 module.exports = router;

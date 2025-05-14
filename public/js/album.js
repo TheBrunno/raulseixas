@@ -51,8 +51,8 @@ function obterAlbumInfo() {
                 </div>
                 `
             }
-
-
         });
-    })
+    });
+
+    fetch()
 }
