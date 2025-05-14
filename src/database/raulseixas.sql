@@ -94,3 +94,7 @@ values
 (3, 1, "Caminhos");
 
 update album set nome = 'Novo Aeon' where id = 1;
+
+select * from musica;
+
+select * from cards;
