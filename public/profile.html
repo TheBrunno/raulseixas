@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil | RaulSeixas</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/nav.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="js/profile.js"></script>
+</head>
+
+<body onload="carregarInfoPerfil()">
+    <div class="background_gradient"></div>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/imgs/logo.png">
+            </a>
+        </div>
+        <div class="links">
+            <ul>
+                <li>
+                    <a href="#">Álbuns</a>
+                </li>
+                <li>
+                    <a href="#">Biografia</a>
+                </li>
+                <li>
+                    <a href="#">Momentos</a>
+                </li>
+                <li>
+                    <a href="perfil.html">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="info_container">
+        <div class="photo">
+            <img src="" id="img_perfil">
+        </div>
+        <div class="info">
+            <div class="name">
+                <h1 id="username"></h1>
+            </div>
+            <div class="bar"></div>
+            <div class="item email">
+                <img src="assets/imgs/mail.svg">
+                <span id="useremail"></span>
+            </div>
+            <div class="item prestige">
+                <img src="assets/imgs/prestige.svg">
+                <span id="userprestige"></span>
+            </div>
+            <button onclick="sair()">
+                Sair
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
