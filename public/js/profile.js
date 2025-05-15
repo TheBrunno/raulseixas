@@ -28,3 +28,26 @@ function sair(){
     sessionStorage.clear();
     window.location.href = "login.html";
 }
+
+function upload(){
+    const photoLocal = document.getElementById('img_perfil');
+    const uploadedFile = document.getElementById('input_img').files[0];
+
+    if(uploadedFile){
+        const formData = new FormData();
+        formData.append('id', sessionStorage.getItem('id'));
+        formData.append('userpfp', uploadedFile);
+
+        fetch('http://localhost:3333/adm/upload/userpfp', {
+            method: 'POST',
+            body: formData
+        }).then((res) => {
+            res.json().then((data) => {
+                photoLocal.src = data.file;
+                sessionStorage.setItem('foto', data.file);
+            })
+        })
+    }
+
+    // console.log(uploadedFile);
+}

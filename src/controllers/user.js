@@ -65,7 +65,18 @@ async function autenticar(req, res) {
     }
 }
 
+async function uploadIMG (req, res) {
+    const { id } = req.body;
+
+    userModel.upload(id, "uploads/user/"+req.file.filename).then(() => {
+        res.status(200);
+    }).catch((err) => {
+        res.status(500).json(err.sqlMessage);
+    })
+} 
+
 module.exports = {
     cadastrar,
-    autenticar
+    autenticar,
+    uploadIMG
 }

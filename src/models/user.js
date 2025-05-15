@@ -28,8 +28,18 @@ const login = async (email, password) => {
 
     return result;
 }
+
+const upload = async (id, file) => {
+    const sqlMessage = `
+        update usuario set foto = '${file}' where id = ${id}
+    `;
+
+    return database.execute(sqlMessage);
+}
+
 module.exports = {
     register,
     existUser,
-    login
+    login,
+    upload
 };

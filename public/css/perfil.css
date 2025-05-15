@@ -19,6 +19,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.photo input{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
 }
 .photo img{
     border-radius: 50%;
