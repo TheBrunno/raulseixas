@@ -47,7 +47,15 @@ async function autenticar(req, res) {
         userModel.login(email, senha)
             .then((result) => {
                 if (result.length == 1) {
-                    res.json({ nome: result[0].nome, email: result[0].email });
+                    res.json({ 
+                        id: result[0].id, 
+                        nome: result[0].nome, 
+                        email: result[0].email,
+                        contadorLogins: result[0].contadorLogins,
+                        foto: result[0].foto,
+                        prestigio: result[0].prestigio,
+                        isADM: result[0].isADM
+                    });
                 } else {
                     res.status(403).json("Usuário ou senha incorreta!");
                 }

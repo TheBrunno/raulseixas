@@ -15,7 +15,7 @@ const existUser = (email) => {
 }
 
 const login = async (email, password) => {
-    const sqlStatment = `select id, nome, email, contadorLogins from usuario
+    const sqlStatment = `select id, nome, email, contadorLogins, foto, prestigio, isADM from usuario
                         where email = '${email}' and senha = '${password}'`
 
     const result = await database.execute(sqlStatment);

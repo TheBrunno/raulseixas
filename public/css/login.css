@@ -98,3 +98,10 @@ body{
     border-radius: 10px;
     margin-top: 20px;
 }
+
+.error_message{
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    bottom: 0;
+}
