@@ -16,6 +16,7 @@ body {
     position: absolute;
     background-image: linear-gradient(to bottom, rgba(242, 228, 27, 0.15), #73737300);
     z-index: -1;
+    top: 0;
 }
 
 .cover_container {
@@ -134,7 +135,7 @@ body {
 
 .second_section {
     display: flex;
-    padding: 5vw;
+    padding: 50px;
 }
 
 .second_section .lyrics {
@@ -223,7 +224,7 @@ span.eight {
 
 .songs_container .song:not(.expanded) {
     padding: 10px 10px 10px 20px;
-    height: 90px;
+    height: 80px;
 }
 
 .songs_container .song {
@@ -425,7 +426,7 @@ section.rating{
     flex: 1;
     background-image: url("../assets/imgs/sociedade_alternativa.png");
     background-repeat: no-repeat;
-    background-size: auto, 100%;
+    background-size: 46%;
     background-position: top;
     height: 80vh;
     display: flex;
@@ -444,7 +445,7 @@ span.destaque_text{
     font-weight: 500;
 }
 .rating_number{
-    font-size: 200px;
+    font-size: 150px;
     font-weight: bold;
     font-family: "Open Sans", sans-serif;
 }
@@ -494,7 +495,7 @@ span.destaque_text{
 }
 .comment_info .profile span{
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
 }
 .comment_buttons{
     display: flex;
@@ -569,4 +570,13 @@ span.destaque_text{
     width: 10%;
     text-align: center;
     cursor: pointer;
+}
+.profile img{
+    width: 50px;
+}
+.first_section{
+    margin-top: 130px;
+}
+.comments_ad img{
+    width: 150px;
 }

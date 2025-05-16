@@ -1,8 +1,14 @@
 nav{
     padding: 10px 30px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    z-index: 10000;
+    width: 100vw;
+    backdrop-filter: blur(10px) brightness(70%);
+    top: 0;
 }
 
 nav ul{
@@ -13,4 +19,7 @@ nav ul a{
     color: #fff;
     text-decoration: none;
     padding: 20px 30px;
+}
+.logo img{
+    width: 85px;
 }
