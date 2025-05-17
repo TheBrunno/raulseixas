@@ -22,6 +22,17 @@ const create = async (userId, albumId, comment) => {
     return database.execute(sqlStatment);
 }
 
+const getAllByAlbum = (fkAlbum) => {
+    const sqlStatment = `
+        select co.id idComentario, fkUsuario idUsuario, fkAlbum idAlbum, comentario, upvotes, downvotes, nome, foto from comentario co
+        inner join usuario us on co.fkUsuario = us.id
+        where co.fkAlbum = ${fkAlbum};
+    `
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
-    create
+    create,
+    getAllByAlbum
 }
