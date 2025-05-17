@@ -18,12 +18,12 @@ const uploadRouter = require("./src/routes/upload");
 const userRouter = require("./src/routes/user");
 const songRouter = require("./src/routes/song");
 const albumRouter = require("./src/routes/album");
+const commentRouter = require("./src/routes/comments");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public/")));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
-
 
 app.use(cors());
 
@@ -32,6 +32,7 @@ app.use("/adm", uploadRouter);
 app.use("/user", userRouter);
 app.use("/song", songRouter);
 app.use("/album", albumRouter);
+app.use("/comment", commentRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`
