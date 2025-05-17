@@ -67,4 +67,39 @@ function obterAlbumInfo() {
             }
         })
     })
+
+    const comentariosContainer = document.getElementById('comentario_container');
+    fetch("http://localhost:3333/comment/getAllByAlbum/1", { method: 'GET' }).then((result) => {
+        result.json().then(data => {
+            for(let i=0; i<data.length; i++){
+                let foto = 'assets/imgs/default_user_photo.png';
+                if(data[i].foto){
+                    foto = `../../${data[i].foto}`;
+                }
+                comentariosContainer.innerHTML += `
+                    <div class="comment">
+                        <div class="comment_info">
+                            <div class="profile">
+                                <div class="profile_photo">
+                                    <img src="${foto}">
+                                </div>
+                                <span>${data[i].nome}</span>
+                            </div>
+                            <div class="comment_data">
+                                ${data[i].comentario}
+                            </div>
+                        </div>
+                        <div class="comment_buttons">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                            <span class="material-symbols-outlined">
+                                arrow_downward
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        })
+    })
 }
