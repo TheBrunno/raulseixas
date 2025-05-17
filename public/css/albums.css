@@ -571,7 +571,7 @@ span.destaque_text{
     color: #fff;
     width: 80%;
 }
-.comment_field span{
+.comment_field span:not(.material-symbols-outlined){
     font-size: 50px;
     width: 10%;
     text-align: center;
@@ -592,4 +592,19 @@ span.destaque_text{
 }
 .comments_ad img{
     width: 150px;
+}
+.send_button{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.send_button span{
+    font-size: 50px;
+    color: #fff;
+}
+.proprio{
+    border: 2px solid #F9B631;
 }

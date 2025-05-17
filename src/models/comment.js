@@ -26,7 +26,8 @@ const getAllByAlbum = (fkAlbum) => {
     const sqlStatment = `
         select co.id idComentario, fkUsuario idUsuario, fkAlbum idAlbum, comentario, upvotes, downvotes, nome, foto from comentario co
         inner join usuario us on co.fkUsuario = us.id
-        where co.fkAlbum = ${fkAlbum};
+        where co.fkAlbum = ${fkAlbum}
+        order by co.id asc;
     `
 
     return database.execute(sqlStatment);

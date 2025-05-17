@@ -57,7 +57,7 @@ function obterAlbumInfo() {
     const curiosidades = document.getElementById('curiosidades');
     fetch("http://localhost:3333/album/getCards/1", { method: "GET" }).then((result) => {
         result.json().then(data => {
-            for(let i=0; i<data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 curiosidades.innerHTML += `
                     <div class="curiosities_card">
                         <img src="${data[i].srcFoto}">
@@ -71,13 +71,15 @@ function obterAlbumInfo() {
     const comentariosContainer = document.getElementById('comentario_container');
     fetch("http://localhost:3333/comment/getAllByAlbum/1", { method: 'GET' }).then((result) => {
         result.json().then(data => {
-            for(let i=0; i<data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 let foto = 'assets/imgs/default_user_photo.png';
-                if(data[i].foto){
+                let proprio = '';
+                if (data[i].foto) {
                     foto = `../../${data[i].foto}`;
                 }
+                if(data[i].idUsuario == sessionStorage.getItem('id')) proprio = 'proprio';
                 comentariosContainer.innerHTML += `
-                    <div class="comment">
+                    <div class="comment ${proprio}">
                         <div class="comment_info">
                             <div class="profile">
                                 <div class="profile_photo">
@@ -101,5 +103,61 @@ function obterAlbumInfo() {
                 `;
             }
         })
+    })
+}
+
+function sendComment() {
+    const comment = document.getElementById('ipt_comment').value;
+    const comentariosContainer = document.getElementById('comentario_container');
+    const albumId = 1;
+    const userId = sessionStorage.getItem('id');
+    console.log(userId)
+
+    fetch("http://localhost:3333/comment/create", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "fkUsuario": userId,
+            "fkAlbum": albumId,
+            "comment": comment
+        })
+    }).then((res) => {
+        document.getElementById('ipt_comment').value = '';
+        let foto = sessionStorage.getItem('foto');
+        if (foto == 'null') {
+            foto = `assets/imgs/default_user_photo.png`;
+        }
+
+        comentariosContainer.innerHTML += `
+                    <div class="comment proprio">
+                        <div class="comment_info">
+                            <div class="profile">
+                                <div class="profile_photo">
+                                    <img src="${foto}">
+                                </div>
+                                <span>${sessionStorage.getItem('nome')}</span>
+                            </div>
+                            <div class="comment_data">
+                                ${comment}
+                            </div>
+                        </div>
+                        <div class="comment_buttons">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                            <span class="material-symbols-outlined">
+                                arrow_downward
+                            </span>
+                        </div>
+                    </div>
+                `;
+        comentariosContainer.scrollTo({
+            top: comentariosContainer.scrollHeight,
+            behavior: 'smooth'
+        });
+    }).catch((err) => {
+        console.log(err);
     })
 }
