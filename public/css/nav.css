@@ -12,6 +12,7 @@ nav:not(.adm_nav){
     justify-content: space-between;
     padding: 10px 30px;
     top: 0;
+    transition: transform 0.25s ease;
 }
 nav ul{
     display: flex;
@@ -40,4 +41,9 @@ nav ul a{
 }
 .adm_nav .active{
     background-color: #3f3f3f;
+}
+
+/* esconde a nav quando tiver subindo -> logica no js */
+.nav.hidden {
+  transform: translateY(-100%);
 }
