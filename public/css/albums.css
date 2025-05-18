@@ -608,3 +608,15 @@ span.destaque_text{
 .proprio{
     border: 2px solid #F9B631;
 }
+#entre{
+    width: 100%;
+    text-align: center;
+}
+#entre a{
+    text-decoration: none;
+    color: #F9B631;
+    font-weight: 600;
+}
+.proprio .comment_buttons span{
+    color: #6d6d6d;
+}

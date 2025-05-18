@@ -15,9 +15,10 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="js/profile.js"></script>
+    <script src="js/isLogged.js"></script>
 </head>
 
-<body onload="carregarInfoPerfil()">
+<body onload="carregarInfoPerfil(); showLinkProfilePhoto()">
     <div class="background_gradient"></div>
     <nav>
         <div class="logo">
@@ -37,7 +38,7 @@
                     <a href="#">Momentos</a>
                 </li>
                 <li>
-                    <a href="profile.html">Perfil</a>
+                    <a href="profile.html" id="loginouperfil">Perfil</a>
                 </li>
             </ul>
         </div>

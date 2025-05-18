@@ -14,6 +14,7 @@ nav{
 nav ul{
     display: flex;
     list-style: none;
+    align-items: center;
 }
 nav ul a{
     color: #fff;
@@ -22,4 +23,8 @@ nav ul a{
 }
 .logo img{
     width: 85px;
+}
+#loginouperfil img{
+    width: 50px;
+    border-radius: 50%;
 }

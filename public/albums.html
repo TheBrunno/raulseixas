@@ -16,9 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="js/audio.js"></script>
     <script src="js/album.js"></script>
+    <script src="js/isLogged.js"></script>
 </head>
 
-<body onload="obterAlbumInfo()">
+<body onload="obterAlbumInfo(); showLinkProfilePhoto(); blockCommentsIfNotLogged()">
     <div class="background_gradient"></div>
     <nav>
         <div class="logo">
@@ -38,7 +39,7 @@
                     <a href="#">Momentos</a>
                 </li>
                 <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.html" id="loginouperfil">Login</a>
                 </li>
             </ul>
         </div>
@@ -123,7 +124,7 @@
         <div class="comment_container">
             <h2>Comentários</h2>
             <div class="comments_wrapper" id="comentario_container"></div>
-            <div class="comment_field">
+            <div class="comment_field" id="comment_area">
                 <input type="text" id="ipt_comment">
                 <button onclick="sendComment()" class="send_button">
                     <span class="material-symbols-outlined">
