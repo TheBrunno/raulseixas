@@ -51,3 +51,7 @@ function upload(){
 
     // console.log(uploadedFile);
 }
+
+function gotoADM(){
+    window.location.href = "dashboard_adm.html";
+}

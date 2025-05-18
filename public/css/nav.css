@@ -1,16 +1,18 @@
 nav{
-    padding: 10px 30px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     position: fixed;
     z-index: 10000;
     width: 100vw;
     backdrop-filter: blur(10px) brightness(70%);
-    top: 0;
 }
 
+nav:not(.adm_nav){
+    justify-content: space-between;
+    padding: 10px 30px;
+    top: 0;
+}
 nav ul{
     display: flex;
     list-style: none;
@@ -20,6 +22,8 @@ nav ul a{
     color: #fff;
     text-decoration: none;
     padding: 20px 30px;
+    display: flex;
+    align-items: center;
 }
 .logo img{
     width: 85px;
@@ -27,4 +31,13 @@ nav ul a{
 #loginouperfil img{
     width: 50px;
     border-radius: 50%;
+}
+
+/* nav inferior do adm */
+.adm_nav{
+    bottom: 0;
+    justify-content: center;
+}
+.adm_nav .active{
+    background-color: #3f3f3f;
 }

@@ -27,3 +27,20 @@ function blockCommentsIfNotLogged(){
         comment_area.innerHTML = `<p id="entre"><a href="login.html">Entre</a> para também poder fazer comentarios.</p>`;
     }
 }
+
+function verifyIfADM(){
+    const isADM = Number(sessionStorage.getItem('isADM'));
+
+    if(isADM){
+        const local = document.getElementById('info_local');
+
+        local.innerHTML += `
+            <button onclick="gotoADM()" class="adm">
+                Página ADM
+                <span class="material-symbols-outlined">
+                    settings
+                </span>
+            </button>
+        `;
+    }
+}

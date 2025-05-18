@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | RaulSeixas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/dashboard_adm.css">
+    <link rel="stylesheet" href="css/nav.css">
+
+    <script src="js/isLogged.js"></script>
+</head>
+
+<body onload="showLinkProfilePhoto(); albumCharts()">
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/imgs/logo.png">
+            </a>
+        </div>
+        <div class="links">
+            <ul>
+                <li>
+                    <a href="#">Álbuns</a>
+                </li>
+                <li>
+                    <a href="#">Biografia</a>
+                </li>
+                <li>
+                    <a href="#">Momentos</a>
+                </li>
+                <li>
+                    <a href="login.html" id="loginouperfil">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="graphs_container" id="graphContainer">
+        <div class="column">
+            <div class="graph1">
+                <h2>⭐ Avaliação de cada álbum ⭐</h2>
+                <canvas id="rating" width="600" height="350"></canvas>
+            </div>
+            <div class="most_graph1">
+                <h2>Álbum mais bem avaliado:</h2>
+                <span>
+                    Há 10 Mil Anos Atrás
+                </span>
+            </div>
+        </div>
+        <div class="column">
+            <div class="graph1">
+                <h2>👁️ Views em cada álbum 👁️</h2>
+                <canvas id="views" width="600" height="350"></canvas>
+            </div>
+            <div class="most_graph1">
+                <h2>Álbum mais visto:</h2>
+                <span>
+                    Há 10 Mil Anos Atrás
+                </span>
+            </div>
+        </div>
+        <div class="column column_options" id="options">
+            <h3>Modo de exibição</h3>
+            <select id="slc_mode" onchange="changeMode()">
+                <option value="album">Álbum</option>
+                <option value="musica">Música</option>
+            </select>
+        </div>
+    </div>
+    <nav class="adm_nav">
+        <ul>
+            <li>
+                <a href="dashboard_adm.html" class="active">
+                    <span class="material-symbols-outlined">
+                        pie_chart
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="material-symbols-outlined">
+                        library_music
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="material-symbols-outlined">
+                        groups
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+<script src="js/dashboardAdm.js"></script>
+<script src="js/dashboardAdm_charts.js"></script>

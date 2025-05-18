@@ -73,12 +73,9 @@ body {
     font-size: 16px;
     letter-spacing: 1px;
 }
-
-.info button{
+.info .adm, .info .sair{
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
-    background-color: rgb(182, 34, 34);
     padding: 20px;
     border-radius: 10px;
     border: none;
@@ -87,6 +84,16 @@ body {
     align-items: center;
     gap: 10px;
     position: absolute;
+}
+.info .adm{
+    color: #292929;
+    background-color: #F9B631;
+    top: -10px;
+    right: 50px;
+}
+.info .sair{
+    color: #fff;
+    background-color: rgb(182, 34, 34);
     right: 50px;
     bottom: 0;
 }

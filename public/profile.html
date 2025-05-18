@@ -18,7 +18,7 @@
     <script src="js/isLogged.js"></script>
 </head>
 
-<body onload="carregarInfoPerfil(); showLinkProfilePhoto()">
+<body onload="carregarInfoPerfil(); showLinkProfilePhoto(); verifyIfADM()">
     <div class="background_gradient"></div>
     <nav>
         <div class="logo">
@@ -48,7 +48,7 @@
             <input type="file" accept="image/*" onchange="upload()" id="input_img">
             <img src="" id="img_perfil">
         </div>
-        <div class="info">
+        <div class="info" id="info_local">
             <div class="name">
                 <h1 id="username"></h1>
             </div>
@@ -61,7 +61,7 @@
                 <img src="assets/imgs/prestige.svg">
                 <span id="userprestige"></span>
             </div>
-            <button onclick="sair()">
+            <button onclick="sair()" class="sair">
                 Sair
                 <span class="material-symbols-outlined">
                     logout
