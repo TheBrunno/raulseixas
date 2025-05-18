@@ -30,7 +30,7 @@ function obterAlbumInfo() {
                     <div class="name_controlers">
                         <span class="name_song">${res[i].musica}</span>
                         <audio id="audio"
-                            src="../../${res[0].src_musica}"></audio>
+                            src="../../${res[i].src_musica}"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
                             <span id="current_time">00:00</span>
@@ -40,7 +40,7 @@ function obterAlbumInfo() {
                             <span class="material-symbols-outlined">
                                 skip_previous
                             </span>
-                            <span class="material-symbols-outlined" onclick="play(this)">
+                            <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
                                 resume
                             </span>
                             <span class="material-symbols-outlined">
