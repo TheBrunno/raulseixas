@@ -28,9 +28,19 @@ const create = (id, fkAlbum, nome) => {
     return database.execute(sqlStatment);
 }
 
+const assingLRC = (id, fkAlbum, local) => {
+    const sqlStatment = `
+        update musica set srcLRC = '${local}'
+        where id = ${id} and fkAlbum = ${fkAlbum}
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     songExists,
     assingSong,
     getLastSongId,
-    create
+    create,
+    assingLRC
 }

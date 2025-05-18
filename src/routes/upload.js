@@ -14,9 +14,10 @@ const songUpload = multer({ storage: storageSong });
 const coverUpload = multer({ storage: storageCover });
 const cardUpload = multer({ storage: storageCard })
 const userUpload = multer({ storage: storageUser })
+const songLRCUpload = multer({ storage: storageSong })
 
 
-const { assingSong } = require('../controllers/song.js');
+const { assingSong, assingLRC } = require('../controllers/song.js');
 const { assignAlbum } = require('../controllers/album.js');
 const cardController = require('../controllers/card.js');
 const userController = require('../controllers/user.js');
@@ -24,6 +25,9 @@ const userController = require('../controllers/user.js');
 const router = express.Router();
 
 router.post('/upload/song', songUpload.single('song'), verifyIfSongsExists, assingSong, (req, res) => {
+    return res.status(200).json({ file: req.file.originalname });
+});
+router.post('/upload/songLRC', songLRCUpload.single('songLRC'), verifyIfSongsExists, assingLRC, (req, res) => {
     return res.status(200).json({ file: req.file.originalname });
 });
 

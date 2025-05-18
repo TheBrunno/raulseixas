@@ -7,6 +7,7 @@ const fs = require('fs');
 const { parseBuffer } = require('music-metadata');
 
 const uploadPath = path.resolve(__dirname, '../../uploads/songs');
+const uploadPathLRC = path.resolve(__dirname, '../../uploads/lrc');
 
 const getSongDuration = async (file) => {    
     const durationSeconds = (await parseBuffer(file.buffer, file.mimetype)).format.duration;
@@ -20,7 +21,7 @@ const getSongDuration = async (file) => {
     return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
 }
 
-const saveFile = (req) => {
+const saveFile = (req, uploadPath) => {
     const uniqueName = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname);
     const finalLocal = path.join(uploadPath, uniqueName);
 
@@ -39,7 +40,7 @@ const assingSong = async (req, res, next) => {
     }
 
     const duration = await getSongDuration(req.file);
-    const uniqueName = saveFile(req);
+    const uniqueName = saveFile(req, uploadPath);
 
     songModel.assingSong(id, fkAlbum, 'uploads/songs/'+uniqueName, duration)
         .then((result) => {
@@ -70,7 +71,24 @@ const create = async (req, res) => {
     }
 }
 
+const assingLRC = (req, res) => {
+    const { id, fkAlbum } = req.body;
+
+    if(!fs.existsSync(uploadPathLRC)){
+        fs.mkdirSync(uploadPathLRC, { recursive: true });
+    }
+
+    const uniqueName = saveFile(req, uploadPathLRC);
+    songModel.assingLRC(id, fkAlbum, 'uploads/lrc/'+uniqueName)
+    .then((result) => {
+        return res.status(200).json({ "src": `uploads/lrc/${uniqueName}` });
+    }).catch((err) => {
+        res.status(500).json(err.sqlMessage);
+    });
+}
+
 module.exports = {
     assingSong,
-    create
+    create,
+    assingLRC
 }
