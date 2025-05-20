@@ -30,7 +30,7 @@ function obterAlbumInfo() {
                     <div class="name_controlers">
                         <span class="name_song">${res[i].musica}</span>
                         <audio id="audio"
-                            src="../../${res[i].src_musica}"></audio>
+                            src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
                             <span id="current_time">00:00</span>

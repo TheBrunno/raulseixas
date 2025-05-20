@@ -159,6 +159,7 @@ body {
     flex-direction: column;
     margin-left: 30px;
     margin-top: 30px;
+    height: 300px;
 }
 
 .lyrics .lyrics_container span {
@@ -167,33 +168,33 @@ body {
 
 span.one,
 span.five {
-    font-size: 30px;
+    font-size: 25px;
     opacity: 50%;
 }
 
 span.two,
 span.four {
-    font-size: 35px;
+    font-size: 30px;
     opacity: 60%;
 }
 
 span.main {
-    font-size: 45px;
+    font-size: 35px;
     color: #F9B631;
 }
 
 span.six {
-    font-size: 25px;
+    font-size: 20px;
     opacity: 45%;
 }
 
 span.seven {
-    font-size: 20px;
+    font-size: 15px;
     opacity: 30%;
 }
 
 span.eight {
-    font-size: 15px;
+    font-size: 10px;
     opacity: 20%;
 }
 

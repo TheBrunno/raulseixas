@@ -59,7 +59,8 @@ const getAlbumByIdWithSongs = (id) => {
                                 msc.id id_musica, 
                                 msc.nome musica, 
                                 msc.duracao duracao, 
-                                msc.srcMusica src_musica, 
+                                msc.srcMusica src_musica,
+                                msc.srcLRC src_lrc,
                                 msc.views views
                                 
                                 from album alb
