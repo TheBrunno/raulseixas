@@ -7,7 +7,7 @@ function obterAlbumInfo() {
     const avaliacao = document.getElementById('avaliacao');
     const descricao_avaliacao = document.getElementById('descricao_avaliacao');
 
-    fetch('http://localhost:3333/album/getAlbumWithSongs/1', {
+    fetch('/album/getAlbumWithSongs/1', {
         method: "GET"
     }).then((result) => {
         result.json().then((res) => {
@@ -30,7 +30,7 @@ function obterAlbumInfo() {
                     <div class="name_controlers">
                         <span class="name_song">${res[i].musica}</span>
                         <audio id="audio"
-                            src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}"></audio>
+                            src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}" idBD="${res[i].id_musica}"></audio>
                         <input type="range" id="progress" value="0">
                         <div class="times">
                             <span id="current_time">00:00</span>

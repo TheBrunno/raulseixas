@@ -8,6 +8,10 @@ const lyrics = [];
 let currentTime;
 let duration;
 
+function countViews (id){
+    fetch('/song/view/'+id, { method: "GET" });
+}
+
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -40,14 +44,16 @@ async function play(element) {
 
     lrc = audioEscolhido.getAttribute('lrc');
     await getLyrics(lrc);
-
+    
     // se entrar aq, é pq eu estou pausando o audio atual
     if (audio === audioEscolhido && !audio.paused) {
         audio.pause();
         element.innerHTML = 'resume';
         return;
     }
-
+    
+    const id = audioEscolhido.getAttribute('idBD');
+    countViews(id);
     resetStates();
 
     divPai.parentElement.classList.add('expanded');

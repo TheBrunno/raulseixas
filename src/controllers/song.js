@@ -87,8 +87,29 @@ const assingLRC = (req, res) => {
     });
 }
 
+const countView = (req, res) => {
+    const { id } = req.params;
+
+    songModel.countView(id).then(
+        (result) => {
+            if(result.length == 0){
+                res.status(400).json("Musica não existe");
+            }else{
+                songModel.addView(id, result[0].views).then(
+                    () => {
+                        res.status(200);
+                    }
+                )
+            }
+        }
+    ).catch((err) => {
+        res.status(400).json("Houve um erro na contagem de views");
+    })
+}
+
 module.exports = {
     assingSong,
     create,
-    assingLRC
+    assingLRC,
+    countView
 }

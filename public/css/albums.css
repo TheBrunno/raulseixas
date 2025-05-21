@@ -621,3 +621,6 @@ span.destaque_text{
 .proprio .comment_buttons span{
     color: #6d6d6d;
 }
+.pauseorresume{
+    cursor: pointer;
+}

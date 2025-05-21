@@ -37,10 +37,30 @@ const assingLRC = (id, fkAlbum, local) => {
     return database.execute(sqlStatment);
 }
 
+const countView = (id) => {
+    const sqlStatment = `
+        select views from musica
+        where id = ${id};
+    `;
+
+    return database.execute(sqlStatment);
+}
+
+const addView = (id, lastView) => {
+    const sqlStatment = `
+        update musica set views = ${lastView+1}
+        where id = ${id};
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     songExists,
     assingSong,
     getLastSongId,
     create,
-    assingLRC
+    assingLRC,
+    countView,
+    addView
 }
