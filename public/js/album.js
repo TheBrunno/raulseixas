@@ -7,17 +7,28 @@ function obterAlbumInfo() {
     const avaliacao = document.getElementById('avaliacao');
     const descricao_avaliacao = document.getElementById('descricao_avaliacao');
 
-    fetch('/album/getAlbumWithSongs/1', {
+    const params = new URLSearchParams(window.location.search);
+    let albumId = params.get('id');
+
+    if(!Number(albumId)) albumId = 1;
+
+
+    fetch('/album/getAlbumWithSongs/'+albumId, {
         method: "GET"
     }).then((result) => {
         result.json().then((res) => {
             console.log(res);
+            if(res.length == 0) window.location = '/'
 
             album.innerHTML = res[0].album;
             subtituloAlbum.innerHTML = res[0].subtitulo;
             descricao.innerHTML = res[0].descricao;
             capa.src = res[0].capa;
-            avaliacao.innerHTML = res[0].avaliacao.replace('.', ',');
+            try{
+                avaliacao.innerHTML = res[0].avaliacao.replace('.', ',');
+            }catch(err){
+                console.log(err)
+            }
             descricao_avaliacao.innerHTML = res[0].descricaoAvaliacao;
 
             containerMusicas.innerHTML = '';
@@ -55,7 +66,7 @@ function obterAlbumInfo() {
     });
 
     const curiosidades = document.getElementById('curiosidades');
-    fetch("http://localhost:3333/album/getCards/1", { method: "GET" }).then((result) => {
+    fetch("/album/getCards/"+albumId, { method: "GET" }).then((result) => {
         result.json().then(data => {
             for (let i = 0; i < data.length; i++) {
                 curiosidades.innerHTML += `
@@ -69,7 +80,7 @@ function obterAlbumInfo() {
     })
 
     const comentariosContainer = document.getElementById('comentario_container');
-    fetch("http://localhost:3333/comment/getAllByAlbum/1", { method: 'GET' }).then((result) => {
+    fetch("/comment/getAllByAlbum/"+albumId, { method: 'GET' }).then((result) => {
         result.json().then(data => {
             for (let i = 0; i < data.length; i++) {
                 let foto = 'assets/imgs/default_user_photo.png';
@@ -113,7 +124,7 @@ function sendComment() {
     const userId = sessionStorage.getItem('id');
     console.log(userId)
 
-    fetch("http://localhost:3333/comment/create", {
+    fetch("/comment/create", {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
