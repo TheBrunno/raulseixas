@@ -43,7 +43,7 @@ const assignAlbum = (id, local) => {
 }
 
 const getAllAlbuns = () => {
-    const sqlStatment = `select * from album`;
+    const sqlStatment = `select id, nome, srcCapa from album`;
 
     return database.execute(sqlStatment);
 }

@@ -1,116 +1,116 @@
 function songCharts(mode) {
     // buscar no banco a partir do nome do album (mode)
 
-    fetch("/dashboard/getLessListenedSongs", { method: 'GET' }).then((res) => res.json())
-    .then(json => {
-        console.log(json)
+    fetch("/dashboard/getLessListenedSongs/"+mode, { method: 'GET' }).then((res) => res.json())
+        .then(json => {
+            console.log(json)
 
-        const labels = [];
-        const data = [];
+            const labels = [];
+            const data = [];
 
-        for(let i=0; i<json.length; i++){
-            labels.push(json[i].nome);
-            data.push(json[i].views);
-        }
+            for (let i = 0; i < json.length; i++) {
+                labels.push(json[i].nome);
+                data.push(json[i].views);
+            }
 
-        document.getElementById('less_listened_song').innerHTML = labels[0];
+            document.getElementById('less_listened_song').innerHTML = labels[0];
 
-        const leastListened = document.getElementById('leastListened').getContext('2d');
-        new Chart(leastListened, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        data: data,
-                        borderColor: '#F9B631',
-                        backgroundColor: '#F9B631',
-                        fill: true,
-                        borderRadius: 5,
-                        color: '#fff',
-                    }
-                ]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            const leastListened = document.getElementById('leastListened').getContext('2d');
+            new Chart(leastListened, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: data,
+                            borderColor: '#F9B631',
+                            backgroundColor: '#F9B631',
+                            fill: true,
+                            borderRadius: 5,
+                            color: '#fff',
+                        }
+                    ]
                 },
-                scales: {
-                    y: {
-                        ticks: {
-                            stepSize: 50,
-                            padding: 10
-                        },
-                        grid: {
+                options: {
+                    plugins: {
+                        legend: {
                             display: false
                         }
                     },
-                    x: {
-                        grid: {
-                            display: false
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 50,
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
                         }
                     }
                 }
+            });
+        });
+    fetch("/dashboard/getMostListenedSongs/"+mode, { method: 'GET' }).then((res) => res.json())
+        .then(json => {
+            console.log(json)
+
+            const labels = [];
+            const data = [];
+
+            for (let i = 0; i < json.length; i++) {
+                labels.push(json[i].nome);
+                data.push(json[i].views);
             }
-        });    
-    });
-    fetch("/dashboard/getMostListenedSongs", { method: 'GET' }).then((res) => res.json())
-    .then(json => {
-        console.log(json)
 
-        const labels = [];
-        const data = [];
+            document.getElementById('most_listened_song').innerHTML = labels[0];
 
-        for(let i=0; i<json.length; i++){
-            labels.push(json[i].nome);
-            data.push(json[i].views);
-        }
-
-        document.getElementById('most_listened_song').innerHTML = labels[0];
-
-        const mostListened = document.getElementById('mostListened').getContext('2d');
-        new Chart(mostListened, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        data: data,
-                        borderColor: '#F9B631',
-                        backgroundColor: '#F9B631',
-                        fill: true,
-                        borderRadius: 5,
-                        color: '#fff',
-                    }
-                ]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            const mostListened = document.getElementById('mostListened').getContext('2d');
+            new Chart(mostListened, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: data,
+                            borderColor: '#F9B631',
+                            backgroundColor: '#F9B631',
+                            fill: true,
+                            borderRadius: 5,
+                            color: '#fff',
+                        }
+                    ]
                 },
-                scales: {
-                    y: {
-                        ticks: {
-                            stepSize: 50,
-                            padding: 10
-                        },
-                        grid: {
+                options: {
+                    plugins: {
+                        legend: {
                             display: false
                         }
                     },
-                    x: {
-                        grid: {
-                            display: false
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 50,
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
                         }
                     }
                 }
-            }
-        });    
-    })
+            });
+        })
 }
 
 function albumCharts() {
@@ -243,56 +243,65 @@ function changeMode() {
         albumCharts();
 
     } else if (mode == 'musica') {
-        graphContainer.innerHTML = `
-            <div class="column">
-                <div class="graph1">
-                    <h2>➕ Músicas mais ouvidas 👂</h2>
-                    <canvas id="mostListened" width="600" height="350"></canvas>
-                </div>
-                <div class="most_graph1">
-                    <h2>Música mais ouvida:</h2>
-                    <span id="most_listened_song">
-                        Há 10 Mil Anos Atrás
-                    </span>
-                </div>
-            </div>
-            <div class="column">
-                <div class="graph1">
-                    <h2>➖ Músicas menos ouvidas 👂</h2>
-                    <canvas id="leastListened" width="600" height="350"></canvas>
-                </div>
-                <div class="most_graph1">
-                    <h2>Música menos ouvida:</h2>
-                    <span id="less_listened_song">
-                        Há 10 Mil Anos Atrás
-                    </span>
-                </div>
-            </div>
-            <div class="column column_options" id="options">
-                <h3>Modo de exibição</h3>
-                <select id="slc_mode" onchange="changeMode()">
-                    <option value="album">Álbum</option>
-                    <option value="musica" selected>Música</option>
-                </select>
+        let options = '';
 
-                <h3>Álbum</h3>
-                <select id="slc_album">
-                    <option value="geral">Geral</option>
-                    <option value="novoaeon">Novo Aeon</option>
-                    <option value="krig">Krig-ha Bandolo!</option>
-                    <option value="gita">Gita</option>
-                    <option value="terra">O Dia Em Que A Terra Parou</option>
-                    <option value="diabo">Panela do Diabo</option>
-                    <option value="atras">Há 10 Mil Anos Atrás</option>
-                    <option value="743">Mêtro Linhas 743</option>
-                    <option value="chuva">O Medo da Chuva</option>
-                    <option value="anarkilopolis">Anarkilópolis</option>
-                </select>
-            </div>
-        `;
+        fetch('/album/getAllAlbuns', { method: "GET" }).then(response => response.json())
+            .then((json) => {
+                for (let i = 0; i < json.length; i++) {
+                    options += `<option value="${json[i].id}">${json[i].nome}</option>`;
+                }
 
-        songCharts('geral');
+                graphContainer.innerHTML = `
+                    <div class="column">
+                        <div class="graph1">
+                            <h2>➕ Músicas mais ouvidas 👂</h2>
+                            <canvas id="mostListened" width="600" height="350"></canvas>
+                        </div>
+                        <div class="most_graph1">
+                            <h2>Música mais ouvida:</h2>
+                            <span id="most_listened_song">
+                                Há 10 Mil Anos Atrás
+                            </span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="graph1">
+                            <h2>➖ Músicas menos ouvidas 👂</h2>
+                            <canvas id="leastListened" width="600" height="350"></canvas>
+                        </div>
+                        <div class="most_graph1">
+                            <h2>Música menos ouvida:</h2>
+                            <span id="less_listened_song">
+                                Há 10 Mil Anos Atrás
+                            </span>
+                        </div>
+                    </div>
+                    <div class="column column_options" id="options">
+                        <h3>Modo de exibição</h3>
+                        <select id="slc_mode" onchange="changeMode()">
+                            <option value="album">Álbum</option>
+                            <option value="musica" selected>Música</option>
+                        </select>
 
+                        <h3>Álbum</h3>
+                        <select id="slc_album" onchange="changeAlbum(this)">
+                            <option value="geral">Geral</option>
+                            ${options}
+                        </select>
+                    </div>
+                `;
+
+                songCharts('geral');
+
+            })
     }
 }
 
+function changeAlbum(element){
+    const albumID = element.value;
+
+    Chart.getChart("leastListened").destroy();
+    Chart.getChart("mostListened").destroy();
+
+    songCharts(albumID);
+}
