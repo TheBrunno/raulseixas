@@ -1,46 +1,61 @@
 function songCharts(mode) {
     // buscar no banco a partir do nome do album (mode)
-    const leastListened = document.getElementById('leastListened').getContext('2d');
-    new Chart(leastListened, {
-        type: 'bar',
-        data: {
-            labels: ['Novo Aeon', 'Krig-ha Bandolo!', 'Gita', 'O dia em que a terra parou', 'Panela do Diabo', 'Há 10 mil anos atrás', 'Metrô linha 743', 'O medo da chuva', 'Anarkilópolis'],
-            datasets: [
-                {
-                    data: [51, 62, 77, 15, 83, 111, 64, 38, 24],
-                    borderColor: '#F9B631',
-                    backgroundColor: '#F9B631',
-                    fill: true,
-                    borderRadius: 5,
-                    color: '#fff',
-                }
-            ]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
+
+    fetch("/dashboard/getLessListenedSongs", { method: 'GET' }).then((res) => res.json())
+    .then(json => {
+        console.log(json)
+
+        const labels = [];
+        const data = [];
+
+        for(let i=0; i<json.length; i++){
+            labels.push(json[i].nome);
+            data.push(json[i].views);
+        }
+
+        document.getElementById('less_listened_song').innerHTML = labels[0];
+
+        const leastListened = document.getElementById('leastListened').getContext('2d');
+        new Chart(leastListened, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        data: data,
+                        borderColor: '#F9B631',
+                        backgroundColor: '#F9B631',
+                        fill: true,
+                        borderRadius: 5,
+                        color: '#fff',
+                    }
+                ]
             },
-            scales: {
-                y: {
-                    ticks: {
-                        stepSize: 50,
-                        padding: 10
-                    },
-                    grid: {
+            options: {
+                plugins: {
+                    legend: {
                         display: false
                     }
                 },
-                x: {
-                    grid: {
-                        display: false
+                scales: {
+                    y: {
+                        ticks: {
+                            stepSize: 50,
+                            padding: 10
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
                     }
                 }
             }
-        }
+        });    
     });
-
     fetch("/dashboard/getMostListenedSongs", { method: 'GET' }).then((res) => res.json())
     .then(json => {
         console.log(json)
@@ -52,6 +67,8 @@ function songCharts(mode) {
             labels.push(json[i].nome);
             data.push(json[i].views);
         }
+
+        document.getElementById('most_listened_song').innerHTML = labels[0];
 
         const mostListened = document.getElementById('mostListened').getContext('2d');
         new Chart(mostListened, {
@@ -234,7 +251,7 @@ function changeMode() {
                 </div>
                 <div class="most_graph1">
                     <h2>Música mais ouvida:</h2>
-                    <span>
+                    <span id="most_listened_song">
                         Há 10 Mil Anos Atrás
                     </span>
                 </div>
@@ -246,7 +263,7 @@ function changeMode() {
                 </div>
                 <div class="most_graph1">
                     <h2>Música menos ouvida:</h2>
-                    <span>
+                    <span id="less_listened_song">
                         Há 10 Mil Anos Atrás
                     </span>
                 </div>

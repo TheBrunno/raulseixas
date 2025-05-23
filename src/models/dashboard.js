@@ -1,9 +1,9 @@
 const database = require('../database/config');
 
-const getMostListenedSongs = () => {
+const getMostOrLessListenedSongs = (mode) => {
     const sqlStatment = `
         select nome, views from musica
-        order by views desc
+        order by views ${mode}
         limit 9;
     `;
 
@@ -11,5 +11,5 @@ const getMostListenedSongs = () => {
 }
 
 module.exports = {
-    getMostListenedSongs
+    getMostOrLessListenedSongs
 }
