@@ -11,5 +11,9 @@ router.get("/getLessListenedSongs/:id", function (req, res) {
     dashboardController.getLessListenedSongs(req, res);
 });
 
+router.get("/getViewsPerAlbum", function(req, res) {
+    dashboardController.getViewsPerAlbum(req, res);
+});
+
 
 module.exports = router;

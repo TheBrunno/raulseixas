@@ -1,7 +1,7 @@
 function songCharts(mode) {
     // buscar no banco a partir do nome do album (mode)
 
-    fetch("/dashboard/getLessListenedSongs/"+mode, { method: 'GET' }).then((res) => res.json())
+    fetch("/dashboard/getLessListenedSongs/" + mode, { method: 'GET' }).then((res) => res.json())
         .then(json => {
             console.log(json)
 
@@ -56,7 +56,7 @@ function songCharts(mode) {
                 }
             });
         });
-    fetch("/dashboard/getMostListenedSongs/"+mode, { method: 'GET' }).then((res) => res.json())
+    fetch("/dashboard/getMostListenedSongs/" + mode, { method: 'GET' }).then((res) => res.json())
         .then(json => {
             console.log(json)
 
@@ -159,46 +159,61 @@ function albumCharts() {
         }
     });
 
-    const albumViews = document.getElementById('views').getContext('2d');
-    new Chart(albumViews, {
-        type: 'bar',
-        data: {
-            labels: ['Novo Aeon', 'Krig-ha Bandolo!', 'Gita', 'O dia em que a terra parou', 'Panela do Diabo', 'Há 10 mil anos atrás', 'Metrô linha 743', 'O medo da chuva', 'Anarkilópolis'],
-            datasets: [
-                {
-                    data: [51, 62, 77, 15, 83, 111, 64, 38, 24],
-                    borderColor: '#F9B631',
-                    backgroundColor: '#F9B631',
-                    fill: true,
-                    borderRadius: 5,
-                    color: '#fff',
-                }
-            ]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        stepSize: 50,
-                        padding: 10
-                    },
-                    grid: {
-                        display: false
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    }
-                }
+    fetch('/dashboard/getViewsPerAlbum', { method: 'GET' }).then(response => response.json())
+        .then((json) => {
+            const labels = [];
+            const datas = [];
+
+            for(let i=0; i<json.length; i++){
+                labels.push(json[i].nome);
+                datas.push(json[i].views_album);
             }
-        }
-    });
+
+            const mostListenedAlbum = json[0].nome;
+            document.getElementById("most_viewed_album").innerHTML = mostListenedAlbum;
+
+            const albumViews = document.getElementById('views').getContext('2d');
+            new Chart(albumViews, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: datas,
+                            borderColor: '#F9B631',
+                            backgroundColor: '#F9B631',
+                            fill: true,
+                            borderRadius: 5,
+                            color: '#fff',
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 50,
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+        })
 };
 
 function changeMode() {
@@ -226,8 +241,7 @@ function changeMode() {
                 </div>
                 <div class="most_graph1">
                     <h2>Álbum mais visto:</h2>
-                    <span>
-                        Há 10 Mil Anos Atrás
+                    <span id="most_viewed_album">
                     </span>
                 </div>
             </div>
@@ -297,7 +311,7 @@ function changeMode() {
     }
 }
 
-function changeAlbum(element){
+function changeAlbum(element) {
     const albumID = element.value;
 
     Chart.getChart("leastListened").destroy();
