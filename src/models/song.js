@@ -37,19 +37,19 @@ const assingLRC = (id, fkAlbum, local) => {
     return database.execute(sqlStatment);
 }
 
-const countView = (id) => {
+const countView = (id, fkAlbum) => {
     const sqlStatment = `
         select views from musica
-        where id = ${id};
+        where id = ${id} and fkAlbum = ${fkAlbum};
     `;
 
     return database.execute(sqlStatment);
 }
 
-const addView = (id, lastView) => {
+const addView = (id, fkAlbum, lastView) => {
     const sqlStatment = `
         update musica set views = ${lastView+1}
-        where id = ${id};
+        where id = ${id} and fkAlbum = ${fkAlbum};
     `;
 
     return database.execute(sqlStatment);

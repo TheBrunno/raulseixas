@@ -8,8 +8,8 @@ const lyrics = [];
 let currentTime;
 let duration;
 
-function countViews (id){
-    fetch('/song/view/'+id, { method: "GET" });
+function countViews (id, fkAlbum){
+    fetch(`/song/view/${id}/${fkAlbum}`, { method: "GET" });
 }
 
 function formatTime(time) {
@@ -53,7 +53,9 @@ async function play(element) {
     }
     
     const id = audioEscolhido.getAttribute('idBD');
-    countViews(id);
+    const fkAlbum = audioEscolhido.getAttribute('fkAlbum');
+    
+    countViews(id, fkAlbum);
     resetStates();
 
     divPai.parentElement.classList.add('expanded');

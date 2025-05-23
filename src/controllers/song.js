@@ -88,14 +88,14 @@ const assingLRC = (req, res) => {
 }
 
 const countView = (req, res) => {
-    const { id } = req.params;
+    const { id, fkAlbum } = req.params;
 
-    songModel.countView(id).then(
+    songModel.countView(id, fkAlbum).then(
         (result) => {
             if(result.length == 0){
                 res.status(400).json("Musica não existe");
             }else{
-                songModel.addView(id, result[0].views).then(
+                songModel.addView(id, fkAlbum, result[0].views).then(
                     () => {
                         res.status(200);
                     }

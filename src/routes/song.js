@@ -7,7 +7,7 @@ router.post("/create", function (req, res) {
     songController.create(req, res);
 });
 
-router.get("/view/:id", function (req, res){
+router.get("/view/:id/:fkAlbum", function (req, res){
     songController.countView(req, res);
 })
 
