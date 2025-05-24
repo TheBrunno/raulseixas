@@ -70,6 +70,17 @@ create table votes(
     foreign key(fkUsuarioVoto) references usuario(id)
 );
 
+create table avaliacao(
+	fkusuario int,
+    fkalbum int,
+    avaliacao tinyint,
+    
+    foreign key (fkusuario) references usuario(id),
+    foreign key (fkalbum) references album(id),
+    
+    primary key(fkusuario, fkalbum)
+);
+
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
 flush privileges;

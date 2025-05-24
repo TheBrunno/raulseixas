@@ -198,6 +198,19 @@
         for(let i=0; i<contStars; i++){
             stars[i].classList.add('material-symbols-outlined-filled');
         }
+
+        const params = new URLSearchParams(window.location.search);
+        let albumId = params.get('id');
+
+        if(!Number(albumId)) albumId = 1;
+
+        fetch('/avaliacao/register', { method: 'POST', headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                fkAlbum: albumId,
+                fkUsuario: sessionStorage.getItem('id'),
+                avaliacao: contStars
+            }) 
+        })
         
         setTimeout(() => {
             hiddenAvaliacao();
