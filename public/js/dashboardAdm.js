@@ -114,49 +114,63 @@ function songCharts(mode) {
 }
 
 function albumCharts() {
-    const albumRating = document.getElementById('rating').getContext('2d');
-    Chart.defaults.color = '#fff';
-    new Chart(albumRating, {
-        type: 'bar',
-        data: {
-            labels: ['Novo Aeon', 'Krig-ha Bandolo!', 'Gita', 'O dia em que a terra parou', 'Panela do Diabo', 'Há 10 mil anos atrás', 'Metrô linha 743', 'O medo da chuva', 'Anarkilópolis'],
-            datasets: [
-                {
-                    data: [4.8, 4.3, 4, 3.9, 3, 5, 4, 3.8, 4.4],
-                    borderColor: '#F9B631',
-                    backgroundColor: '#F9B631',
-                    fill: true,
-                    borderRadius: 5,
-                    color: '#fff',
-                }
-            ]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    min: 0,
-                    max: 5,
-                    ticks: {
-                        stepSize: 1,
-                        autoSkip: false,
-                        padding: 10
-                    },
-                    grid: {
-                        display: false
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    }
-                }
+    fetch('/dashboard/getRatingPerAlbum', { method: 'GET' })
+        .then(result => result.json())
+        .then((json) => {
+            let labels = [];
+            let datas = [];
+            for(let i=0; i<json.length; i++){
+                labels.push(json[i].album);
+                datas.push(json[i].avaliacao)
             }
-        }
+
+            const mostRatedAlbum = json[0].album;
+            document.getElementById("most_rated_album").innerHTML = mostRatedAlbum;
+
+            const albumRating = document.getElementById('rating').getContext('2d');
+            Chart.defaults.color = '#fff';
+            new Chart(albumRating, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: datas,
+                            borderColor: '#F9B631',
+                            backgroundColor: '#F9B631',
+                            fill: true,
+                            borderRadius: 5,
+                            color: '#fff',
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1,
+                                autoSkip: false,
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
     });
 
     fetch('/dashboard/getViewsPerAlbum', { method: 'GET' }).then(response => response.json())
@@ -164,7 +178,7 @@ function albumCharts() {
             const labels = [];
             const datas = [];
 
-            for(let i=0; i<json.length; i++){
+            for (let i = 0; i < json.length; i++) {
                 labels.push(json[i].nome);
                 datas.push(json[i].views_album);
             }
@@ -229,9 +243,7 @@ function changeMode() {
                 </div>
                 <div class="most_graph1">
                     <h2>Álbum mais bem avaliado:</h2>
-                    <span>
-                        Há 10 Mil Anos Atrás
-                    </span>
+                    <span id="most_rated_album"></span>
                 </div>
             </div>
             <div class="column">

@@ -32,8 +32,18 @@ const getViewsPerAlbum = () => {
     return database.execute(sqlStatment);
 }
 
+const getRatingPerAlbum = () => {
+    const sqlStatment = `
+        select nome album, round((select avg(avaliacao) from avaliacao where fkalbum = album.id group by fkalbum), 1) avaliacao
+        from album order by avaliacao desc;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     getMostOrLessListenedSongs,
     getMostOrLessListenedSongsByAlbum,
-    getViewsPerAlbum
+    getViewsPerAlbum,
+    getRatingPerAlbum
 }

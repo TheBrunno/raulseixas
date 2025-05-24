@@ -11,15 +11,15 @@ function obterAlbumInfo() {
     const params = new URLSearchParams(window.location.search);
     let albumId = params.get('id');
 
-    if(!Number(albumId)) albumId = 1;
+    if (!Number(albumId)) albumId = 1;
 
 
-    fetch('/album/getAlbumWithSongs/'+albumId, {
+    fetch('/album/getAlbumWithSongs/' + albumId, {
         method: "GET"
     }).then((result) => {
         result.json().then((res) => {
             console.log(res);
-            if(res.length == 0) window.location = '/'
+            if (res.length == 0) window.location = '/'
 
             album.innerHTML = res[0].album;
             subtituloAlbum.innerHTML = res[0].subtitulo;
@@ -28,21 +28,21 @@ function obterAlbumInfo() {
 
 
             let avaliacao_value = res[0].avaliacao;
-            for(let i=0; i<5; i++){
-                if(avaliacao_value >= 1){
+            for (let i = 0; i < 5; i++) {
+                if (avaliacao_value >= 1) {
                     stars_container.innerHTML += '<img src="assets/imgs/star_filled.svg">';
                     avaliacao_value--;
-                }else if(avaliacao_value > 0){
+                } else if (avaliacao_value > 0) {
                     stars_container.innerHTML += '<img src="assets/imgs/star_half.svg">';
                     avaliacao_value = 0;
-                }else{
+                } else {
                     stars_container.innerHTML += '<img src="assets/imgs/star.svg">';
                 }
             }
 
-            try{
+            try {
                 avaliacao.innerHTML = res[0].avaliacao.replace('.', ',');
-            }catch(err){
+            } catch (err) {
                 console.log(err)
             }
             descricao_avaliacao.innerHTML = res[0].descricaoAvaliacao;
@@ -82,7 +82,7 @@ function obterAlbumInfo() {
     });
 
     const curiosidades = document.getElementById('curiosidades');
-    fetch("/album/getCards/"+albumId, { method: "GET" }).then((result) => {
+    fetch("/album/getCards/" + albumId, { method: "GET" }).then((result) => {
         result.json().then(data => {
             for (let i = 0; i < data.length; i++) {
                 curiosidades.innerHTML += `
@@ -96,7 +96,7 @@ function obterAlbumInfo() {
     })
 
     const comentariosContainer = document.getElementById('comentario_container');
-    fetch("/comment/getAllByAlbum/"+albumId, { method: 'GET' }).then((result) => {
+    fetch("/comment/getAllByAlbum/" + albumId, { method: 'GET' }).then((result) => {
         result.json().then(data => {
             for (let i = 0; i < data.length; i++) {
                 let foto = 'assets/imgs/default_user_photo.png';
@@ -104,7 +104,7 @@ function obterAlbumInfo() {
                 if (data[i].foto) {
                     foto = `../../${data[i].foto}`;
                 }
-                if(data[i].idUsuario == sessionStorage.getItem('id')) proprio = 'proprio';
+                if (data[i].idUsuario == sessionStorage.getItem('id')) proprio = 'proprio';
                 comentariosContainer.innerHTML += `
                     <div class="comment ${proprio}">
                         <div class="comment_info">
@@ -187,4 +187,92 @@ function sendComment() {
     }).catch((err) => {
         console.log(err);
     })
+}
+
+function verificarAvaliacao() {
+    const params = new URLSearchParams(window.location.search);
+    let albumId = params.get('id');
+
+    if (!Number(albumId)) albumId = 1;
+
+    fetch(`/avaliacao/verify/${sessionStorage.getItem('id')}/${albumId}`, { method: 'GET' })
+        .then(res => res.json())
+        .then(json => {
+            if (json == 0) {
+                const body = document.getElementsByTagName('body')[0];
+                body.innerHTML += `
+                        <div class="avaliacao" id="avaliacao_container" onclick="expandAvaliacao()">
+                        <div class="avaliacao_button">
+                            <span class="material-symbols-outlined">
+                                star_half
+                            </span>
+                            Avalie esse álbum
+                        </div>
+                        <div class="avaliacao_container" id="avaliacao_hidden">
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        })
+}
+
+function expandAvaliacao() {
+    avaliacao_hidden.style.display = 'block';
+    avaliacao_container.classList.add('expanded')
+}
+
+function hiddenAvaliacao() {
+    avaliacao_container.style.display = 'none';
+}
+
+function registrarAvaliacao(local) {
+    let contStars = 1;
+    for (let i = 0; i < 5; i++) {
+        if (local.previousElementSibling) {
+            local = local.previousElementSibling;
+            contStars++;
+        }
+    }
+
+    const stars = avaliacao_hidden.querySelectorAll('span');
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('material-symbols-outlined-filled');
+    }
+
+    for (let i = 0; i < contStars; i++) {
+        stars[i].classList.add('material-symbols-outlined-filled');
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    let albumId = params.get('id');
+
+    if (!Number(albumId)) albumId = 1;
+
+    fetch('/avaliacao/register', {
+        method: 'POST', headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            fkAlbum: albumId,
+            fkUsuario: sessionStorage.getItem('id'),
+            avaliacao: contStars
+        })
+    })
+
+    setTimeout(() => {
+        hiddenAvaliacao();
+    }, 500)
 }
