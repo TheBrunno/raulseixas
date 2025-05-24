@@ -5,6 +5,7 @@ function obterAlbumInfo() {
     const containerMusicas = document.getElementById('song_container');
     const capa = document.getElementById('capa');
     const avaliacao = document.getElementById('avaliacao');
+    const stars_container = document.getElementById('stars_container');
     const descricao_avaliacao = document.getElementById('descricao_avaliacao');
 
     const params = new URLSearchParams(window.location.search);
@@ -24,6 +25,21 @@ function obterAlbumInfo() {
             subtituloAlbum.innerHTML = res[0].subtitulo;
             descricao.innerHTML = res[0].descricao;
             capa.src = res[0].capa;
+
+
+            let avaliacao_value = res[0].avaliacao;
+            for(let i=0; i<5; i++){
+                if(avaliacao_value >= 1){
+                    stars_container.innerHTML += '<img src="assets/imgs/star_filled.svg">';
+                    avaliacao_value--;
+                }else if(avaliacao_value > 0){
+                    stars_container.innerHTML += '<img src="assets/imgs/star_half.svg">';
+                    avaliacao_value = 0;
+                }else{
+                    stars_container.innerHTML += '<img src="assets/imgs/star.svg">';
+                }
+            }
+
             try{
                 avaliacao.innerHTML = res[0].avaliacao.replace('.', ',');
             }catch(err){

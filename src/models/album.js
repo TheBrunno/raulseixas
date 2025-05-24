@@ -54,7 +54,7 @@ const getAlbumByIdWithSongs = (id) => {
                                 alb.srcCapa capa,
                                 alb.subtitulo subtitulo,
                                 alb.descricao descricao,
-                                alb.avaliacao avaliacao,
+                                round((select avg(avaliacao) from avaliacao where fkalbum = alb.id group by fkalbum), 1) avaliacao,
                                 alb.descricaoAvaliacao descricaoAvaliacao,
                                 msc.id id_musica, 
                                 msc.nome musica, 

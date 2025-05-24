@@ -11,6 +11,22 @@ const register = (req, res) => {
     })
 }
 
+const verify = (req, res) => {
+    const { fkusuario, fkalbum } = req.params;
+
+    avaliacaoModel.verify(fkusuario, fkalbum)
+    .then((result) => {
+        if(result.length == 0){
+            res.status(200).json(0);
+        }else{
+            res.status(200).json(1);
+        }
+    }).catch((err) => {
+        res.status(400).json(err);
+    })
+}
+
 module.exports = {
-    register
+    register,
+    verify
 }

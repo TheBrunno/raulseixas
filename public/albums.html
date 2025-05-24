@@ -22,7 +22,7 @@
     <script src="js/nav.js"></script>
 </head>
 
-<body onload="obterAlbumInfo(); showLinkProfilePhoto(); blockCommentsIfNotLogged()">
+<body onload="obterAlbumInfo(); showLinkProfilePhoto(); blockCommentsIfNotLogged(); verificarAvaliacao(this)">
     <div class="background_gradient"></div>
     <nav class="nav">
         <div class="logo">
@@ -108,13 +108,7 @@
             <h2>Avaliação do álbum</h2>
             <span class="rating_number" id="avaliacao">
             </span>
-            <div class="stars">
-                <img src="assets/imgs/star_filled.svg">
-                <img src="assets/imgs/star_filled.svg">
-                <img src="assets/imgs/star_filled.svg">
-                <img src="assets/imgs/star_filled.svg">
-                <img src="assets/imgs/star_half.svg">
-            </div>
+            <div class="stars" id="stars_container"></div>
             <p>Nota dos fãs</p>
         </div>
         <div class="vertical_bar"></div>
@@ -142,36 +136,53 @@
                 recebido!</p>
         </div>
     </section>
-    <div class="avaliacao" id="avaliacao_container" onclick="expandAvaliacao()">
-        <div class="avaliacao_button">
-            <span class="material-symbols-outlined">
-                star_half
-            </span>
-            Avalie esse álbum
-        </div>
-        <div class="avaliacao_container" id="avaliacao_hidden">
-            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
-                star
-            </span>
-            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
-                star
-            </span>
-            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
-                star
-            </span>
-            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
-                star
-            </span>
-            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
-                star
-            </span>
-        </div>
-    </div>
 </body>
 
 </html>
 
 <script>
+    function verificarAvaliacao(){
+        const params = new URLSearchParams(window.location.search);
+        let albumId = params.get('id');
+
+        if(!Number(albumId)) albumId = 1;
+
+        fetch(`/avaliacao/verify/${sessionStorage.getItem('id')}/${albumId}`, { method: 'GET' })
+        .then(res => res.json())
+        .then(json => {
+            if(json == 0){
+                const body = document.getElementsByTagName('body')[0];
+                body.innerHTML += `
+                        <div class="avaliacao" id="avaliacao_container" onclick="expandAvaliacao()">
+                        <div class="avaliacao_button">
+                            <span class="material-symbols-outlined">
+                                star_half
+                            </span>
+                            Avalie esse álbum
+                        </div>
+                        <div class="avaliacao_container" id="avaliacao_hidden">
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                            <span class="material-symbols-outlined" onclick="registrarAvaliacao(this)">
+                                star
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        })
+    }
+
     function expandAvaliacao(){
         avaliacao_hidden.style.display = 'block';
         avaliacao_container.classList.add('expanded')
