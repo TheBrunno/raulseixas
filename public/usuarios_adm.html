@@ -12,14 +12,16 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/dashboard_adm.css">
+    <link rel="stylesheet" href="css/usuario.css">
     <link rel="stylesheet" href="css/nav.css">
 
     <script src="js/isLogged.js"></script>
+    <script src="js/usersAdm.js"></script>
+    <script src="js/nav.js"></script>
 </head>
 
-<body onload="showLinkProfilePhoto(); albumCharts();">
-    <nav>
+<body onload="showLinkProfilePhoto(); getUsers();">
+    <nav class="nav">
         <div class="logo">
             <a href="index.html">
                 <img src="assets/imgs/logo.png">
@@ -42,40 +44,14 @@
             </ul>
         </div>
     </nav>
-    <div class="graphs_container" id="graphContainer">
-        <div class="column">
-            <div class="graph1">
-                <h2>⭐ Avaliação de cada álbum ⭐</h2>
-                <canvas id="rating" width="600" height="350"></canvas>
-            </div>
-            <div class="most_graph1">
-                <h2>Álbum mais bem avaliado:</h2>
-                <span id="most_rated_album"></span>
-            </div>
-        </div>
-        <div class="column">
-            <div class="graph1">
-                <h2>👁️ Views em cada álbum 👁️</h2>
-                <canvas id="views" width="600" height="350"></canvas>
-            </div>
-            <div class="most_graph1">
-                <h2>Álbum mais visto:</h2>
-                <span id="most_viewed_album">
-                </span>
-            </div>
-        </div>
-        <div class="column column_options" id="options">
-            <h3>Modo de exibição</h3>
-            <select id="slc_mode" onchange="changeMode()">
-                <option value="album">Álbum</option>
-                <option value="musica">Música</option>
-            </select>
-        </div>
-    </div>
+
+    <h1>Usuários</h1>
+    <div class="usuarios_container" id="usuarios_container"></div>
+
     <nav class="adm_nav">
         <ul>
             <li>
-                <a href="dashboard_adm.html" class="active">
+                <a href="dashboard_adm.html">
                     <span class="material-symbols-outlined">
                         pie_chart
                     </span>
@@ -89,7 +65,7 @@
                 </a>
             </li>
             <li>
-                <a href="usuarios_adm.html">
+                <a href="usuarios_adm.html" class="active">
                     <span class="material-symbols-outlined">
                         groups
                     </span>
@@ -97,11 +73,6 @@
             </li>
         </ul>
     </nav>
-    </body>
+</body>
 
 </html>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
-<script src="js/dashboardAdm.js"></script>

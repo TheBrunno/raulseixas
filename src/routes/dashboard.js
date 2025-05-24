@@ -19,5 +19,8 @@ router.get("/getRatingPerAlbum", function (req, res){
     dashboardController.getRatingPerAlbum(req, res);
 })
 
+router.get("/getAllUsers", function (req, res){
+    dashboardController.getAllUsers(req, res);
+})
 
 module.exports = router;

@@ -52,9 +52,18 @@ const getRatingPerAlbum = (req, res) => {
     });
 }
 
+const getAllUsers = (req, res) => {
+    dashboardModel.getAllUsers().then((result) => {
+        return res.status(200).json(result);
+    }).catch((err) => {
+        return res.status(400).json(err);
+    });
+}
+
 module.exports = {
     getMostListenedSongs,
     getLessListenedSongs,
     getViewsPerAlbum,
-    getRatingPerAlbum
+    getRatingPerAlbum,
+    getAllUsers
 }

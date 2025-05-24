@@ -36,7 +36,7 @@ nav ul a{
 
 /* nav inferior do adm */
 .adm_nav{
-    bottom: 0;
+    bottom: -1px;
     justify-content: center;
 }
 .adm_nav .active{

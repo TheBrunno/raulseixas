@@ -41,9 +41,18 @@ const getRatingPerAlbum = () => {
     return database.execute(sqlStatment);
 }
 
+const getAllUsers = () => {
+    const sqlMessage = `
+        select nome, email, isADM, foto, prestigio, contadorLogins from usuario;
+    `;
+
+    return database.execute(sqlMessage);
+}
+
 module.exports = {
     getMostOrLessListenedSongs,
     getMostOrLessListenedSongsByAlbum,
     getViewsPerAlbum,
-    getRatingPerAlbum
+    getRatingPerAlbum,
+    getAllUsers
 }
