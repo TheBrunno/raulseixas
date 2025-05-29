@@ -17,10 +17,14 @@ router.get("/getViewsPerAlbum", function(req, res) {
 
 router.get("/getRatingPerAlbum", function (req, res){
     dashboardController.getRatingPerAlbum(req, res);
-})
+});
 
 router.get("/getAllUsers", function (req, res){
     dashboardController.getAllUsers(req, res);
+});
+
+router.get("/getAllAlbums", function (req, res){
+    dashboardController.getAllAlbums(req, res);
 })
 
 module.exports = router;

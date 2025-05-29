@@ -60,10 +60,21 @@ const getAllUsers = (req, res) => {
     });
 }
 
+const getAllAlbums = (req, res) => {
+    dashboardModel.getAllAlbums()
+        .then(result => {
+            return res.status(200).json(result);
+        })
+        .catch(err => {
+            return res.status(400).json(err);
+        })
+}
+
 module.exports = {
     getMostListenedSongs,
     getLessListenedSongs,
     getViewsPerAlbum,
     getRatingPerAlbum,
-    getAllUsers
+    getAllUsers,
+    getAllAlbums
 }

@@ -42,11 +42,22 @@ const getRatingPerAlbum = () => {
 }
 
 const getAllUsers = () => {
-    const sqlMessage = `
+    const sqlStatment = `
         select nome, email, isADM, foto, prestigio, contadorLogins from usuario;
     `;
 
-    return database.execute(sqlMessage);
+    return database.execute(sqlStatment);
+}
+
+const getAllAlbums = () => {
+    const sqlStatment = `
+        select alb.id id_album, alb.nome album, srcCapa, sum(views) views_album from album alb
+        inner join musica msc on msc.fkalbum = alb.id
+        group by alb.id, alb.nome, srcCapa
+        order by views_album desc
+    `;
+
+    return database.execute(sqlStatment);
 }
 
 module.exports = {
@@ -54,5 +65,6 @@ module.exports = {
     getMostOrLessListenedSongsByAlbum,
     getViewsPerAlbum,
     getRatingPerAlbum,
-    getAllUsers
+    getAllUsers,
+    getAllAlbums
 }

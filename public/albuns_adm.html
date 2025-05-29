@@ -12,15 +12,16 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet" href="css/albums_adm.css">
     <link rel="stylesheet" href="css/nav.css">
 
     <script src="js/isLogged.js"></script>
     <script src="js/usersAdm.js"></script>
     <script src="js/nav.js"></script>
-</head>
 
-<body onload="showLinkProfilePhoto(); getUsers();">
+    <script src="js/getAllAlbums.js"></script>
+</head>
+<body onload="getAllAlbums()">
     <nav class="nav">
         <div class="logo">
             <a href="index.html">
@@ -44,10 +45,13 @@
             </ul>
         </div>
     </nav>
-
-    <h1>Usuários</h1>
-    <div class="usuarios_container" id="usuarios_container"></div>
-
+    <h1>Álbuns</h1>
+    <div class="add_album">
+        <span class="material-symbols-outlined">
+            add
+        </span>        
+    </div>
+    <div class="albums_container" id="album_container"></div>
     <nav class="adm_nav">
         <ul>
             <li>
@@ -58,14 +62,14 @@
                 </a>
             </li>
             <li>
-                <a href="albuns_adm.html">
+                <a href="albuns_adm.html" class="active">
                     <span class="material-symbols-outlined">
                         library_music
                     </span>
                 </a>
             </li>
             <li>
-                <a href="usuarios_adm.html" class="active">
+                <a href="usuarios_adm.html">
                     <span class="material-symbols-outlined">
                         groups
                     </span>
