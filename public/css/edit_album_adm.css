@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+h1{
+    text-align: center;
+    margin: 30px 0;
+}
+body {
+    color: #fff;
+    background-color: #292929;
+    overflow-x: hidden;
+    height: 100vh;
+    padding: 110px 0 64px 0;
+    box-sizing: border-box;
+}
+
+.album_edit_container{
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 100px;
+}
+
+.album_edit_container > div{
+    height: 700px;
+}
+
+.album_edit_container .left{
+    flex: 1;
+}
+.album_edit_container .left img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.album_edit_container .right{
+    flex: 2;
+}
+.album_edit_container .right .row {
+    gap: 20px;
+    display: flex;
+}
+.album_edit_container .right .row .field{
+    display: flex;
+    flex-direction: column;
+}
+.album_edit_container .right .row .field label{
+    margin-left: 5px;
+    margin-bottom: 2px;
+}
+.album_edit_container .right .row .field input{
+    background-color: #3f3f3f;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
