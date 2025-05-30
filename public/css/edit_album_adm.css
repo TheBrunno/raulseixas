@@ -11,7 +11,6 @@ body {
     color: #fff;
     background-color: #292929;
     overflow-x: hidden;
-    height: 100vh;
     padding: 110px 0 64px 0;
     box-sizing: border-box;
 }
@@ -20,10 +19,7 @@ body {
     display: flex;
     box-sizing: border-box;
     padding: 0 100px;
-}
-
-.album_edit_container > div{
-    height: 700px;
+    gap: 50px;
 }
 
 .album_edit_container .left{
@@ -35,21 +31,37 @@ body {
 }
 
 .album_edit_container .right{
-    flex: 2;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .album_edit_container .right .row {
-    gap: 20px;
+    gap: 30px;
     display: flex;
 }
 .album_edit_container .right .row .field{
     display: flex;
     flex-direction: column;
 }
-.album_edit_container .right .row .field label{
+.row .field label{
     margin-left: 5px;
     margin-bottom: 2px;
 }
-.album_edit_container .right .row .field input{
+.titulo{
+    flex: 1;
+}
+.subtitulo {
+    flex: 2;
+}
+.descricao{
+    flex: 1;
+}
+.descricao_avaliacao{
+    flex: 1;
+}
+.row .field input,
+.row .field textarea{
     background-color: #3f3f3f;
     border: none;
     font-size: 16px;
@@ -57,4 +69,93 @@ body {
     color: #fff;
     padding: 10px 15px;
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+.album_edit_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+button{
+    background-color: #F9B631;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.bar_divisor{
+    background-color: #F9B631;
+    height: 2px;
+    border-radius: 10px;
+    width: 90vw;
+    margin: 30px auto;
+}
+.song_container{
+    display: flex;
+}
+.song_container > div{
+    flex: 1;
+}
+.song{
+    background-color: rgba(75, 75, 75, 0.69);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 30px;
+    border-radius: 5px;
+}
+.song_container h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.song img{
+    width: 50px;
+    border-radius: 5px;
+}
+.song .info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 10px;
+    color: #ffffffbb;
+}
+.song_list_container{
+    box-sizing: border-box;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.criar_musica_container{
+    box-sizing: border-box;
+    padding: 0 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.uploads{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.upload{
+    cursor: pointer;
+    background-color: #3f3f3f;
+    border-radius: 10px;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.uploads > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

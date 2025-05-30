@@ -21,6 +21,7 @@
 
     <script src="js/getOneAlbum.js"></script>
 </head>
+
 <body onload="showLinkProfilePhoto(); getOneAlbum(new URLSearchParams(window.location.search).get('fkalbum'))">
     <nav class="nav">
         <div class="logo">
@@ -47,19 +48,106 @@
     </nav>
     <h1>Editar álbum</h1>
 
-    <div class="album_edit_container">
-        <div class="left">
-            <img src="assets/imgs/main_cover.png">
-        </div>
-        <div class="right">
-            <div class="row">
-                <div class="field titulo">
-                    <label for="ipt_titulo">Título</label>
-                    <input type="text" id="ipt_titulo">
+    <div class="album_edit_wrapper">
+        <div class="album_edit_container">
+            <div class="left">
+                <img src="assets/imgs/main_cover.png">
+            </div>
+            <div class="right">
+                <div class="row">
+                    <div class="field titulo">
+                        <label for="ipt_titulo">Título</label>
+                        <input type="text" id="ipt_titulo">
+                    </div>
+                    <div class="field subtitulo">
+                        <label for="ipt_subtitulo">Subtítulo</label>
+                        <input type="text" id="ipt_subtitulo">
+                    </div>
                 </div>
-                <div class="field">
-                    <label for="ipt_subtitulo">Subtítulo</label>
-                    <input type="text" id="ipt_subtitulo">
+                <div class="row">
+                    <div class="field descricao">
+                        <label for="ipt_descricao">Descrição</label>
+                        <textarea rows="5" type="text" id="ipt_descricao"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field descricao_avaliacao">
+                        <label for="ipt_descricao_avaliacao">Descrição avaliação</label>
+                        <textarea rows="3" type="text" id="ipt_descricao_avaliacao"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button>Salvar Alterações</button>
+    </div>
+    <div class="bar_divisor"></div>
+    <div class="song_wrapper">
+        <h1>Músicas</h1>
+        <div class="song_container">
+            <div class="left">
+                <h2>Músicas do álbum</h2>
+                <div class="song_list_container">
+                    <div class="song">
+                        <p>Maluco Beleza</p>
+                        <div class="info">
+                            <p class="duration">03:56</p>
+                            <img src="assets/imgs/main_cover.png">
+                        </div>
+                    </div>
+                    <div class="song">
+                        <p>Maluco Beleza</p>
+                        <div class="info">
+                            <p class="duration">03:56</p>
+                            <img src="assets/imgs/main_cover.png">
+                        </div>
+                    </div>
+                    <div class="song">
+                        <p>Maluco Beleza</p>
+                        <div class="info">
+                            <p class="duration">03:56</p>
+                            <img src="assets/imgs/main_cover.png">
+                        </div>
+                    </div>
+                    <div class="song">
+                        <p>Maluco Beleza</p>
+                        <div class="info">
+                            <p class="duration">03:56</p>
+                            <img src="assets/imgs/main_cover.png">
+                        </div>
+                    </div>
+                    <div class="song">
+                        <p>Maluco Beleza</p>
+                        <div class="info">
+                            <p class="duration">03:56</p>
+                            <img src="assets/imgs/main_cover.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <h2>Criar nova música</h2>
+                <div class="criar_musica_container">
+                    <div class="row">
+                        <div class="field">
+                            <label for="ipt_songname">Título</label>
+                            <input type="text" id="ipt_songname">
+                        </div>
+                    </div>
+                    <div class="row uploads">
+                        <div>
+                            <label>Upload MP3</label>
+                            <div class="upload">
+                                <img src="./assets/imgs/upload_song.svg">
+                            </div>
+                        </div>
+                        <div>
+                            <label>Upload LRC</label>
+                            <div class="upload">
+                                <img src="./assets/imgs/upload_lrc.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <button>Criar Música</button>
                 </div>
             </div>
         </div>
