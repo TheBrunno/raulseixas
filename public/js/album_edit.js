@@ -43,3 +43,37 @@ function getOneAlbum(fkalbum){
         console.log(json)
     })
 }
+
+function uploadCuriosityCardImagePreview(){
+    const imgLocal = document.getElementById('imgCuriosity');
+    const uploadedFile = document.getElementById('input_img_curiosities').files[0];
+
+    console.log(uploadedFile)
+    if(uploadedFile){
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imgLocal.src = e.target.result;
+        }
+        reader.readAsDataURL(uploadedFile);
+    }
+}
+
+function createCuriosity(){
+    const uploadedFile = document.getElementById('input_img_curiosities').files[0];
+    const description = document.getElementById('ipt_descricao_curiosidades').value;
+
+    if(uploadedFile){
+        const formData = new FormData();
+        formData.append('fkAlbum', new URLSearchParams(window.location.search).get('fkalbum'));
+        formData.append('photo', uploadedFile);
+        formData.append('descricao', description);
+        
+        fetch('/adm/upload/card', { 
+            method: 'POST',
+            body: formData
+        }).then(() => {
+            location.reload();
+        })
+    }
+
+}

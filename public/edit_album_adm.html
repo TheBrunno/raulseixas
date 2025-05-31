@@ -19,7 +19,7 @@
     <script src="js/usersAdm.js"></script>
     <script src="js/nav.js"></script>
 
-    <script src="js/getOneAlbum.js"></script>
+    <script src="js/album_edit.js"></script>
 </head>
 
 <body onload="showLinkProfilePhoto(); getOneAlbum(new URLSearchParams(window.location.search).get('fkalbum'))">
@@ -126,7 +126,8 @@
         <div class="left">
             <h2>Imagem</h2>
             <div class="img_curiosities_upload">
-                <img src="assets/imgs/img.svg">
+                <input type="file" accept="image/*" onchange="uploadCuriosityCardImagePreview()" id="input_img_curiosities">
+                <img src="assets/imgs/img.svg" id="imgCuriosity">
             </div>
         </div>
         <div class="right">
@@ -138,7 +139,7 @@
                         <textarea rows="6" id="ipt_descricao_curiosidades"></textarea>
                     </div>
                 </div>
-                <button>Criar curiosidade</button>
+                <button onclick="createCuriosity()">Criar curiosidade</button>
             </div>
         </div>
     </div>
