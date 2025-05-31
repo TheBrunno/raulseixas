@@ -65,7 +65,7 @@ const getAlbumByIdWithSongs = (id) => {
                                 
                                 from album alb
                         inner join musica msc on alb.id = msc.fkAlbum
-                        where alb.id = ${id}`;
+                        where alb.id = ${id} and msc.srcMusica is not null`;
 
     return database.execute(sqlStatment);
 }
