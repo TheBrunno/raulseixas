@@ -208,7 +208,6 @@ function saveInfos() {
             descricao_avaliacao: descricaoAvaliacao
         })
     }).then((result) => {
-        console.log(result)
-        // location.reload();
+        window.location.href = './albuns_adm.html';
     })
 }
