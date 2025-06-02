@@ -139,3 +139,27 @@ function uploadSongWithLRCFile(){
             })
     }
 }
+
+
+function changeAlbumImage(){
+    const fkAlbum = new URLSearchParams(window.location.search).get('fkalbum');
+    const file = document.getElementById('ipt_album_photo').files[0];
+    const albumImg = document.getElementById('albumImg');
+
+    if(file){
+        const formdata = new FormData();
+
+        formdata.append('id', fkAlbum);
+        formdata.append('cover', file);
+        
+        fetch('/adm/upload/cover', { 
+            method: 'POST', 
+            body: formdata
+        }).then((response) => response.json())
+        .then(data => {
+            albumImg.src = data.src;
+        })
+    }
+
+
+}

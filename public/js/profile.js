@@ -37,7 +37,7 @@ function upload(){
         const formData = new FormData();
         formData.append('id', sessionStorage.getItem('id'));
         formData.append('userpfp', uploadedFile);
-
+        
         fetch('http://localhost:3333/adm/upload/userpfp', {
             method: 'POST',
             body: formData
