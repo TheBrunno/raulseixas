@@ -19,7 +19,7 @@ create table album (
   descricao varchar(1000),
   subtitulo varchar(200),
   avaliacao decimal(2, 1),
-  descricaoAvaliacao varchar(500)
+  descricaoAvaliacao varchar(1000)
 );
 
 create table musica (
@@ -81,6 +81,22 @@ create table avaliacao(
     primary key(fkusuario, fkalbum)
 );
 
+create table playlist(
+	fkUsuario int primary key,
+    nome varchar(200)
+);
+
+create table playlist_has_musica(
+	fkUsuario int,
+    fkMusica int,
+    fkAlbum int,
+    adicionada_em datetime,
+    
+    primary key(fkUsuario, fkMusica, fkAlbum),
+    foreign key(fkMusica, fkAlbum) references musica(id, fkAlbum),
+    foreign key(fkUsuario) references playlist(fkUsuario)
+);
+
 create user 'raulseixas_user_api' identified by 'raulseixas';
 grant select, insert, update, delete on raulseixas.* to 'raulseixas_user_api';
 flush privileges;
@@ -96,7 +112,6 @@ where id = 1;
 select * from album;
 
 desc album;
-alter table album modify descricaoAvaliacao varchar(5000);
 
 desc musica;
 insert into musica(id, fkAlbum, nome) 
