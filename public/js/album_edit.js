@@ -21,25 +21,27 @@ function getOneAlbum(fkalbum){
         const ratingDescription = document.getElementById('ipt_descricao_avaliacao');
         const albumImg = document.getElementById('albumImg');
 
-        title.value = json[0].album;
-        subtitle.value = json[0].subtitulo;
-        description.value = json[0].descricao;
-        ratingDescription.value = json[0].descricaoAvaliacao;
-        albumImg.src = '../../'+json[0].capa;
+        json[0].album ? title.value = json[0].album : title.value = '';
+        json[0].subtitulo ? subtitle.value = json[0].subtitulo : subtitle.value = '';
+        json[0].descricao ? description.value = json[0].descricao : description.value = '';
+        json[0].descricaoAvaliacao ? ratingDescription.value = json[0].descricaoAvaliacao : ratingDescription.value = '';
+        json[0].capa ? albumImg.src = '../../'+json[0].capa : albumImg.src = './assets/imgs/img.svg';
 
         const containerSongs = document.getElementById('songContainer');
         containerSongs.innerHTML = '';
 
         for(let i=0; i<json.length; i++){
-            containerSongs.innerHTML += `
-            <div class="song">
-                <p>${json[i].musica}</p>
-                <div class="info">
-                    <p class="duration">${(json[i].duracao).replace('00:', '')}</p>
-                    <img src="../../${json[i].capa}">
+            if(json[i].musica){
+                containerSongs.innerHTML += `
+                <div class="song">
+                    <p>${json[i].musica}</p>
+                    <div class="info">
+                        <p class="duration">${(json[i].duracao).replace('00:', '')}</p>
+                        <img src="../../${json[i].capa}">
+                    </div>
                 </div>
-            </div>
-            `;
+                `;
+            }
         }
 
         console.log(json)
@@ -185,5 +187,28 @@ function changeInfos(){
         })
     }).then((result) => {
         location.reload();
+    })
+}
+
+function saveInfos() {
+    const titulo = document.getElementById('ipt_titulo').value;
+    const subtitulo = document.getElementById('ipt_subtitulo').value;
+    const descricao = document.getElementById('ipt_descricao').value;
+    const descricaoAvaliacao = document.getElementById('ipt_descricao_avaliacao').value;
+
+    fetch('/album/create', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            titulo,
+            subtitulo, 
+            descricao, 
+            descricao_avaliacao: descricaoAvaliacao
+        })
+    }).then((result) => {
+        console.log(result)
+        // location.reload();
     })
 }

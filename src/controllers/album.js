@@ -5,15 +5,15 @@ const fs = require('fs');
 const uploadPath = path.resolve(__dirname, '../../uploads/cover');
 
 const create = async (req, res) => {
-    const { nome } = req.body;
+    const { titulo, subtitulo, descricao, descricao_avaliacao } = req.body;
 
     try {
-        await albumModel.create(nome);
+        await albumModel.create(titulo, descricao, subtitulo, descricao_avaliacao);
     } catch (err) {
         return res.status(500).json("Esse álbum já existe!")
     }
 
-    const album = await albumModel.getByName(nome);
+    const album = await albumModel.getByName(titulo);
 
     res.status(200).json(album);
 }

@@ -12,16 +12,17 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/albums_adm.css">
+    <link rel="stylesheet" href="css/edit_album_adm.css">
     <link rel="stylesheet" href="css/nav.css">
 
     <script src="js/isLogged.js"></script>
     <script src="js/usersAdm.js"></script>
     <script src="js/nav.js"></script>
 
-    <script src="js/getAllAlbums.js"></script>
+    <script src="js/album_edit.js"></script>
 </head>
-<body onload="showLinkProfilePhoto(); getAllAlbums()">
+
+<body onload="showLinkProfilePhoto()">
     <nav class="nav">
         <div class="logo">
             <a href="index.html">
@@ -45,13 +46,40 @@
             </ul>
         </div>
     </nav>
-    <h1>Álbuns</h1>
-    <a href="create_album_adm.html" class="add_album">
-        <span class="material-symbols-outlined">
-            add
-        </span>
-    </a>
-    <div class="albums_container" id="album_container"></div>
+    <h1>Criar álbum</h1>
+
+    <div class="album_edit_wrapper">
+        <div class="album_edit_container">
+            <div class="left">
+                <img src="./assets/imgs/img.svg" id="albumImg">
+            </div>
+            <div class="right">
+                <div class="row">
+                    <div class="field titulo">
+                        <label for="ipt_titulo">Título</label>
+                        <input type="text" id="ipt_titulo">
+                    </div>
+                    <div class="field subtitulo">
+                        <label for="ipt_subtitulo">Subtítulo</label>
+                        <input type="text" id="ipt_subtitulo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field descricao">
+                        <label for="ipt_descricao">Descrição</label>
+                        <textarea rows="5" type="text" id="ipt_descricao"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field descricao_avaliacao">
+                        <label for="ipt_descricao_avaliacao">Descrição avaliação</label>
+                        <textarea rows="3" type="text" id="ipt_descricao_avaliacao"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="saveInfos()">Criar álbum</button>
+    </div>
     <nav class="adm_nav">
         <ul>
             <li>

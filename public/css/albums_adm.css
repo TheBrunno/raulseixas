@@ -49,6 +49,7 @@ body {
     border-radius: 8px;
 }
 .add_album{
+    text-decoration: none;
     position: fixed;
     background-color: #ffc756;
     padding: 20px;

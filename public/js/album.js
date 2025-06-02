@@ -49,34 +49,36 @@ function obterAlbumInfo() {
 
             containerMusicas.innerHTML = '';
             for (let i = 0; i < res.length; i++) {
-                containerMusicas.innerHTML += `
-                    <div class="song">
-                    <div class="song_photo">
-                        <img src="../../${res[0].capa}">
-                    </div>
-                    <div class="name_controlers">
-                        <span class="name_song">${res[i].musica}</span>
-                        <audio id="audio"
-                            src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}" idBD="${res[i].id_musica}" fkAlbum=${res[i].id_album}></audio>
-                        <input type="range" id="progress" value="0">
-                        <div class="times">
-                            <span id="current_time">00:00</span>
-                            <span id="duration">${res[i].duracao.replace("00:", "")}</span>
+                if(res[i].musica){
+                    containerMusicas.innerHTML += `
+                        <div class="song">
+                        <div class="song_photo">
+                            <img src="../../${res[0].capa}">
                         </div>
-                        <div class="controls">
-                            <span class="material-symbols-outlined">
-                                skip_previous
-                            </span>
-                            <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
-                                resume
-                            </span>
-                            <span class="material-symbols-outlined">
-                                skip_next
-                            </span>
+                        <div class="name_controlers">
+                            <span class="name_song">${res[i].musica}</span>
+                            <audio id="audio"
+                                src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}" idBD="${res[i].id_musica}" fkAlbum=${res[i].id_album}></audio>
+                            <input type="range" id="progress" value="0">
+                            <div class="times">
+                                <span id="current_time">00:00</span>
+                                <span id="duration">${res[i].duracao.replace("00:", "")}</span>
+                            </div>
+                            <div class="controls">
+                                <span class="material-symbols-outlined">
+                                    skip_previous
+                                </span>
+                                <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
+                                    resume
+                                </span>
+                                <span class="material-symbols-outlined">
+                                    skip_next
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                `
+                    `
+                }
             }
         });
     });

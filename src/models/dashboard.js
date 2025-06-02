@@ -52,7 +52,7 @@ const getAllUsers = () => {
 const getAllAlbums = () => {
     const sqlStatment = `
         select alb.id id_album, alb.nome album, srcCapa, sum(views) views_album from album alb
-        inner join musica msc on msc.fkalbum = alb.id
+        left join musica msc on msc.fkalbum = alb.id
         group by alb.id, alb.nome, srcCapa
         order by views_album desc
     `;

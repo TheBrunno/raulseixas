@@ -7,9 +7,9 @@ const albumExists = (fkAlbum) => {
     return database.execute(sqlStatment);
 }
 
-const create = (name) => {
-    const sqlStatment = `insert into album(nome)
-                            values ('${name}')`;
+const create = (nome, descricao, subtitulo, descricaoAvaliacao) => {
+    const sqlStatment = `insert into album(nome, descricao, subtitulo, descricaoAvaliacao)
+                            values ('${nome}', '${descricao}', '${subtitulo}', '${descricaoAvaliacao}')`;
 
     return database.execute(sqlStatment);
 }
@@ -64,8 +64,8 @@ const getAlbumByIdWithSongs = (id) => {
                                 msc.views views
                                 
                                 from album alb
-                        inner join musica msc on alb.id = msc.fkAlbum
-                        where alb.id = ${id} and msc.srcMusica is not null`;
+                        left join musica msc on alb.id = msc.fkAlbum
+                        where alb.id = ${id}`;
 
     return database.execute(sqlStatment);
 }
