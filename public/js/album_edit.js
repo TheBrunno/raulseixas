@@ -163,3 +163,27 @@ function changeAlbumImage(){
 
 
 }
+
+function changeInfos(){
+    const titulo = document.getElementById('ipt_titulo').value;
+    const subtitulo = document.getElementById('ipt_subtitulo').value;
+    const descricao = document.getElementById('ipt_descricao').value;
+    const descricaoAvaliacao = document.getElementById('ipt_descricao_avaliacao').value;
+    const idAlbum = new URLSearchParams(window.location.search).get('fkalbum');
+
+    fetch('/album/edit/album/', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: idAlbum,
+            titulo, 
+            subtitulo, 
+            descricao, 
+            descricao_avaliacao: descricaoAvaliacao
+        })
+    }).then((result) => {
+        location.reload();
+    })
+}

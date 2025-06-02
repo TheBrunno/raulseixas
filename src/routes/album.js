@@ -24,4 +24,8 @@ router.get("/getCards/:fkAlbum", function (req, res){
     cardController.getAllCardsFromIdAlbum(req, res);
 });
 
+router.post('/edit/album', function(req, res) {
+    albumController.editInfos(req, res);
+})
+
 module.exports = router;

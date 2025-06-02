@@ -75,10 +75,20 @@ const getAlbumByIdWithSongs = async (req, res) => {
     return res.status(200).json(result);
 }
 
+const editInfos = (req, res) => {
+    const { id, titulo, subtitulo, descricao, descricao_avaliacao } = req.body;
+
+    albumModel.editInfos(id, titulo, subtitulo, descricao, descricao_avaliacao)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+}
+
 module.exports = {
     create,
     addDescription,
     assignAlbum,
     getAllAlbuns,
-    getAlbumByIdWithSongs 
+    getAlbumByIdWithSongs,
+    editInfos
 }

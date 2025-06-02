@@ -70,6 +70,20 @@ const getAlbumByIdWithSongs = (id) => {
     return database.execute(sqlStatment);
 }
 
+const editInfos = (id, titulo, subtitulo, descricao, descricao_avaliacao) => {
+    const sqlStatment = `
+        update album 
+        set
+        nome = '${titulo}',
+        subtitulo = '${subtitulo}',
+        descricao = '${descricao}',
+        descricaoAvaliacao = '${descricao_avaliacao}'
+        where id = ${id};
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     albumExists,
     create,
@@ -78,5 +92,6 @@ module.exports = {
     addDescription,
     assignAlbum,
     getAllAlbuns,
-    getAlbumByIdWithSongs
+    getAlbumByIdWithSongs,
+    editInfos
 }
