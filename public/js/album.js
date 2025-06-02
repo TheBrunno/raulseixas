@@ -51,7 +51,7 @@ function obterAlbumInfo() {
             for (let i = 0; i < res.length; i++) {
                 if(res[i].musica){
                     containerMusicas.innerHTML += `
-                        <div class="song">
+                    <div class="song">
                         <div class="song_photo">
                             <img src="../../${res[0].capa}">
                         </div>
@@ -65,13 +65,13 @@ function obterAlbumInfo() {
                                 <span id="duration">${res[i].duracao.replace("00:", "")}</span>
                             </div>
                             <div class="controls">
-                                <span class="material-symbols-outlined">
+                                <span class="material-symbols-outlined" onclick="skipPrevious(${i}, ${res.length})">
                                     skip_previous
                                 </span>
                                 <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
                                     resume
                                 </span>
-                                <span class="material-symbols-outlined">
+                                <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
                                     skip_next
                                 </span>
                             </div>

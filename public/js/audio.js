@@ -176,3 +176,17 @@ async function syncLyrics(time){
         }
     }
 }
+
+function skipPrevious(actual, max){
+    const songs = document.querySelectorAll('.song');
+
+    if(actual == 0) play(songs[max-1].getElementsByClassName('pauseorresume')[0]);
+    else play(songs[actual-1].getElementsByClassName('pauseorresume')[0]);
+}
+
+function skipNext(actual, max){
+    const songs = document.querySelectorAll('.song');
+
+    if(actual == max-1) play(songs[0].getElementsByClassName('pauseorresume')[0]);
+    else play(songs[actual+1].getElementsByClassName('pauseorresume')[0]);
+}
