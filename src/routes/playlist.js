@@ -7,4 +7,9 @@ router.get('/getPlaylistsByUserId/:id', function (req, res) {
     playlistController.getPlaylistsByUserId(req, res);
 })
 
+router.post('/putSongIntoPlaylist/', function (req, res) {
+    playlistController.putSongIntoPlaylist(req, res);
+})
+
+
 module.exports = router;

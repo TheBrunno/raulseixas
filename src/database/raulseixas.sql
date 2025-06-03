@@ -82,19 +82,23 @@ create table avaliacao(
 );
 
 create table playlist(
-	fkUsuario int primary key,
-    nome varchar(200)
+	id int auto_increment,
+	fkUsuario int,
+    nome varchar(200),
+    
+    primary key (id, fkUsuario)
 );
 
 create table playlist_has_musica(
+	fkPlaylist int,
 	fkUsuario int,
     fkMusica int,
     fkAlbum int,
-    adicionada_em datetime,
+    adicionada_em datetime default current_timestamp,
     
-    primary key(fkUsuario, fkMusica, fkAlbum),
+    primary key(fkPlaylist, fkUsuario, fkMusica, fkAlbum),
     foreign key(fkMusica, fkAlbum) references musica(id, fkAlbum),
-    foreign key(fkUsuario) references playlist(fkUsuario)
+    foreign key(fkPlaylist, fkUsuario) references playlist(id, fkUsuario)
 );
 
 create user 'raulseixas_user_api' identified by 'raulseixas';
@@ -124,3 +128,36 @@ update album set nome = 'Novo Aeon' where id = 1;
 select * from musica;
 
 select * from cards;
+
+
+INSERT INTO playlist (fkUsuario, nome) VALUES
+(2, 'Playlist 2');
+
+
+select 
+  pl.nome playlist, 
+  count(fkmusica) qtd_musica 
+from playlist pl
+left join playlist_has_musica phm 
+  on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
+where pl.fkUsuario = 1
+group by pl.id, pl.nome;
+
+select 
+	pl.id playlist_id, pl.nome playlist, msc.id musica_id, msc.fkalbum album_id, msc.nome musica, (select count(*) from playlist_has_musica where fkplaylist = playlist_id) qtd_musica
+from playlist pl
+left join playlist_has_musica phm 
+	on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
+left join musica msc
+	on msc.id = phm.fkmusica and msc.fkalbum = phm.fkalbum
+where pl.fkUsuario = 2
+group by playlist_id, playlist, musica_id, album_id, musica;
+
+truncate playlist_has_musica;
+
+select * from playlist;
+select * from playlist_has_musica;
+
+truncate playlist;
+
+drop table playlist;

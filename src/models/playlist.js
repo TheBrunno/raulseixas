@@ -2,16 +2,30 @@ const database = require('../database/config');
 
 const getPlaylistsByUserId = (id) => {
     const sqlStatment = `
-        select pl.nome playlist, count(fkmusica) qtd_musica from playlist pl
-            left join playlist_has_musica phm 
-                on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
-            where pl.fkUsuario = ${id}
-            group by pl.id, pl.nome;
+        select 
+            pl.id playlist_id, pl.nome playlist, msc.id musica_id, msc.fkalbum album_id, msc.nome musica, (select count(*) from playlist_has_musica where fkplaylist = playlist_id) qtd_musica
+        from playlist pl
+        left join playlist_has_musica phm 
+            on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
+        left join musica msc
+            on msc.id = phm.fkmusica and msc.fkalbum = phm.fkalbum
+        where pl.fkUsuario = ${id}
+        group by playlist_id, playlist, musica_id, album_id, musica;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
+const putSongIntoPlaylist = (idPlaylist, idMusica, idUsuario, idAlbum) => {
+    const sqlStatment = `
+        insert into playlist_has_musica(fkplaylist, fkusuario, fkmusica, fkalbum)
+        values (${idPlaylist}, ${idUsuario}, ${idMusica}, ${idAlbum})
     `;
 
     return database.execute(sqlStatment);
 }
 
 module.exports = {
-    getPlaylistsByUserId
+    getPlaylistsByUserId,
+    putSongIntoPlaylist
 }
