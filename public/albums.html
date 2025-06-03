@@ -20,6 +20,8 @@
     <script src="js/album.js"></script>
     <script src="js/isLogged.js"></script>
     <script src="js/nav.js"></script>
+
+    <script src="js/playlist.js"></script>
 </head>
 
 <body onload="obterAlbumInfo(); showLinkProfilePhoto(); blockCommentsIfNotLogged(); verificarAvaliacao(this)">
@@ -136,6 +138,21 @@
                 recebido!</p>
         </div>
     </section>
+    <div class="playlist_wrapper hidden" onclick="closePlaylistModal()">
+        <div class="playlist_modal">
+            <h2>Playlists</h2>
+            <div class="playlist_container">
+                <div class="playlist">
+                    <p>Raul - Tristes</p>
+                    <p>3 músicas</p>
+                </div>
+                <div class="playlist">
+                    <p>Raul - Felizes</p>
+                    <p>5 músicas</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

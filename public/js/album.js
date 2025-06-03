@@ -74,6 +74,9 @@ function obterAlbumInfo() {
                                 <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
                                     skip_next
                                 </span>
+                                <span class="material-symbols-outlined" onclick="openPlaylistModal()">
+                                    library_add
+                                </span>
                             </div>
                         </div>
                     </div>
