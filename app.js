@@ -21,6 +21,7 @@ const albumRouter = require("./src/routes/album");
 const commentRouter = require("./src/routes/comments");
 const dashboardRouter = require("./src/routes/dashboard");
 const avaliacaoRouter = require("./src/routes/avaliacao");
+const playlistRouter = require("./src/routes/playlist");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,6 +38,7 @@ app.use("/album", albumRouter);
 app.use("/comment", commentRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/avaliacao", avaliacaoRouter);
+app.use("/playlist", playlistRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

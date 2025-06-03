@@ -720,3 +720,7 @@ span.destaque_text{
 .playlist_wrapper.hidden{
     display: none;
 }
+
+.playlist_wrapper a{
+    color: white;
+}
