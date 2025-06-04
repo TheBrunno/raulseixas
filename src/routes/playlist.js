@@ -15,4 +15,8 @@ router.get('/getPlaylistsByUserIdForPage/:fkUsuario', function (req, res) {
     playlistController.getPlaylistsByUserIdForPage(req, res);
 })
 
+router.get('/getSongsOfAPlaylistUsingId/:idPlaylist', function (req, res){
+    playlistController.getSongsOfAPlaylistUsingId(req, res);
+})
+
 module.exports = router;

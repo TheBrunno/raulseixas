@@ -59,3 +59,39 @@ h1{
     width: 100%;
     color: #f5f5f5;
 }
+
+/*
+pagina de playlist especifica
+*/
+
+.playlist_header{
+    margin: 0 auto;
+    width: 60%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1.5fr;
+    column-gap: 40px;
+}
+.playlist_header img{
+    width: 100%;
+}
+.playlist_header .right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.playlist_header .right h2{
+    font-size: 40px;
+}
+
+.playlist_header .right .infos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+.playlist_header .right .infos .bar{
+    height: 40px;
+    background-color: #F9B631;
+    width: 3px;
+}

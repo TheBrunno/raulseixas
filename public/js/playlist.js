@@ -100,8 +100,8 @@ function getPlaylistsForPage() {
             const local = document.getElementsByClassName('row')[0];
 
             for (let i = 0; i < data.length; i++) {
-                if(!data[i].capa) data[i].capa = './assets/imgs/img.svg';
-                else data[i].capa = '../../'+data[i].capa;
+                if (!data[i].capa) data[i].capa = './assets/imgs/img.svg';
+                else data[i].capa = '../../' + data[i].capa;
                 local.innerHTML += `
                     <a class="playlist" href="./playlist_page.html?idPlaylist=${data[i].idPlaylist}">
                         <img src="${data[i].capa}">
@@ -109,7 +109,51 @@ function getPlaylistsForPage() {
                     </a>
                 `;
             }
-
-            local.innerHTML = html;
         });
+}
+
+function getPlaylistSongsById() {
+    fetch('/playlist/getSongsOfAPlaylistUsingId/' + new URLSearchParams(window.location.search).get('idPlaylist'), {
+        method: 'GET'
+    }).then((result) => {
+        result.json().then((res) => {
+            const containerMusicas = document.getElementById('song_container');
+            for (let i = 0; i < res.length; i++) {
+                if (res[i].musica) {
+                    try {
+                        containerMusicas.innerHTML += `
+                        <div class="song">
+                            <div class="song_photo">
+                                <img src="../../${res[i].srcCapa}">
+                            </div>
+                            <div class="name_controlers">
+                                <span class="name_song">${res[i].musica}</span>
+                                <audio id="audio"
+                                    src="../../${res[i].srcMusica}" lrc="${res[i].srcLRC}" idBD="${res[i].idMusica}" fkAlbum=${res[i].idAlbum}></audio>
+                                <input type="range" id="progress" value="0">
+                                <div class="times">
+                                    <span id="current_time">00:00</span>
+                                    <span id="duration">${res[i].duracao.replace("00:", "")}</span>
+                                </div>
+                                <div class="controls">
+                                    <span class="material-symbols-outlined" onclick="skipPrevious(${i}, ${res.length})">
+                                        skip_previous
+                                    </span>
+                                    <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
+                                        resume
+                                    </span>
+                                    <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
+                                        skip_next
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    } catch (err) {
+                        console.log(err)
+                    }
+                }
+            }
+        })
+    })
 }

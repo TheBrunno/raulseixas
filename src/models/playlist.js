@@ -36,8 +36,22 @@ const getPlaylistsByUserIdForPage = (id) => {
     return database.execute(sqlStatment);
 }
 
+const getSongsOfAPlaylistUsingId = (id) => {
+    const sqlStatment = `
+        select msc.nome musica, msc.id idMusica, alb.id idAlbum, msc.duracao duracao, srcMusica, srcLRC, alb.nome album, srcCapa from playlist pl
+        inner join playlist_has_musica phm on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
+        inner join musica msc on phm.fkMusica = msc.id and phm.fkAlbum = msc.fkAlbum
+        inner join album alb on alb.id = msc.fkalbum
+        where pl.id = ${id}
+        order by adicionada_em asc;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     getPlaylistsByUserId,
     putSongIntoPlaylist,
-    getPlaylistsByUserIdForPage
+    getPlaylistsByUserIdForPage,
+    getSongsOfAPlaylistUsingId
 }
