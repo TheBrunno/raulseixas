@@ -22,7 +22,19 @@ const putSongIntoPlaylist = (req, res) => {
     })
 }
 
+const getPlaylistsByUserIdForPage = (req, res) => {
+    const { fkUsuario } = req.params;
+
+    playlistModel.getPlaylistsByUserIdForPage(fkUsuario)
+    .then((result) => {
+        res.status(200).json(result);
+    }).catch(err => {
+        res.status(401).json(err);
+    })
+}
+
 module.exports = {
     getPlaylistsByUserId,
-    putSongIntoPlaylist
+    putSongIntoPlaylist,
+    getPlaylistsByUserIdForPage
 }

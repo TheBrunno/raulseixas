@@ -28,7 +28,8 @@ h1{
     gap: 40px;
 }
 .playlists_container .row{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     box-sizing: border-box;
     padding: 0 250px;
     gap: 40px;

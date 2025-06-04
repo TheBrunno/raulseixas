@@ -18,9 +18,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="js/isLogged.js"></script>
     <script src="js/nav.js"></script>
+    <script src="js/playlist.js"></script>
 </head>
 
-<body onload="showLinkProfilePhoto()">
+<body onload="showLinkProfilePhoto(); getPlaylistsForPage()">
     <div class="background_gradient"></div>
     <nav class="nav">
         <div class="logo">
@@ -48,34 +49,7 @@
 
     <h1>Playlists</h1>
     <div class="playlists_container">
-        <div class="row">
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-        </div>
-                <div class="row">
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-            <div class="playlist">
-                <img src="./assets/imgs/main_cover.png">
-                <p>Playlist 1</p>
-            </div>
-        </div>
+        <div class="row"></div>
     </div>
 </body>
 </html>

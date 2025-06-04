@@ -25,7 +25,19 @@ const putSongIntoPlaylist = (idPlaylist, idMusica, idUsuario, idAlbum) => {
     return database.execute(sqlStatment);
 }
 
+const getPlaylistsByUserIdForPage = (id) => {
+    const sqlStatment = `
+        select distinct pl.nome playlist, pl.id idPlaylist, srcCapa capa from playlist pl
+        left join playlist_has_musica phm on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
+        left join album alb on alb.id = phm.fkalbum
+        where pl.fkusuario = ${id};
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     getPlaylistsByUserId,
-    putSongIntoPlaylist
+    putSongIntoPlaylist,
+    getPlaylistsByUserIdForPage
 }
