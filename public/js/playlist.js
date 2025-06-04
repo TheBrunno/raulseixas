@@ -141,11 +141,13 @@ function getPlaylistSongsById() {
             const duracoes = [];
             let firstCover = '';
             document.getElementById('playlist_name').innerHTML = res[0].playlist;
+            let tempoSomSegundos = 0;
 
             for (let i = 0; i < res.length; i++) {
                 if (res[i].musica) {
                     try {
                         if (i == 0) firstCover = res[i].srcCapa;
+                        tempoSomSegundos += Number(res[i].duracao.split(':')[0]*3600)+Number(res[i].duracao.split(':')[1]*60)+Number(res[i].duracao.split(':')[2]);
                         containerMusicas.innerHTML += `
                         <div class="song">
                             <div class="song_photo">
@@ -184,6 +186,15 @@ function getPlaylistSongsById() {
                     }
                 }
             }
+
+            const localTimes = document.getElementsByClassName('timesSongs')[0];
+
+            const horas = Math.floor(tempoSomSegundos / 3600);
+            const minutos = Math.floor((tempoSomSegundos % 3600) / 60);
+            const segundos = tempoSomSegundos % 60;
+
+
+            localTimes.innerHTML = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}h de música`;
         })
     })
 }
