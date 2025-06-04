@@ -28,47 +28,50 @@ function getPlaylistsByUser(idMusica, idAlbum) {
             } else {
                 const idUsuario = sessionStorage.getItem('id');
                 const playlists = [];
-                let lastPlaylistId;
+                const separadasPlaylists = {};
 
-                console.log(data)
-
-                for (let i = 0; i < data.length; i++) {
-                    let permitido = true;
-                    for (let j = 0; j < data[i].qtd_musica; j++) {
-                        if (data[j].musica_id == idMusica) {
-                            permitido = false;
-                        }
-                    }
-
-                    if (lastPlaylistId != data[i].playlist_id) {
-                        playlists.push({
-                            permitido: permitido,
+                for (let i=0; i<data.length; i++) {
+                    if (!separadasPlaylists[data[i].playlist_id]) {
+                        separadasPlaylists[data[i].playlist_id] = {
                             playlist: data[i].playlist,
+                            playlist_id: data[i].playlist_id,
                             qtd_musica: data[i].qtd_musica,
-                            playlist_id: data[i].playlist_id
-                        })
+                            musicas: [],
+                        };
                     }
-                    lastPlaylistId = data[i].playlist_id;
-
+                    separadasPlaylists[data[i].playlist_id].musicas.push(data[i].musica_id);
                 }
 
-                for (let i = 0; i < playlists.length; i++) {
+                for (let id in separadasPlaylists) {
+                    const playlist = separadasPlaylists[id];
+                    const permitido = !playlist.musicas.includes(idMusica);
+
+                    playlists.push({
+                        permitido,
+                        playlist: playlist.playlist,
+                        qtd_musica: playlist.qtd_musica,
+                        playlist_id: playlist.playlist_id,
+                    });
+                }
+
+                for (let i=0; i<playlists.length; i++) {
                     if (playlists[i].permitido) {
                         playlist_container.innerHTML += `
-                        <div class="playlist" onclick="putSongIntoPlaylist(${playlists[i].playlist_id}, ${idMusica}, ${idUsuario}, ${idAlbum})">
-                            <p>${playlists[i].playlist}</p>
-                            <p>${playlists[i].qtd_musica} músicas</p>
-                        </div>
-                    `;
+                            <div class="playlist" onclick="putSongIntoPlaylist(${playlists[i].playlist_id}, ${idMusica}, ${idUsuario}, ${idAlbum})">
+                                <p>${playlists[i].playlist}</p>
+                                <p>${playlists[i].qtd_musica} músicas</p>
+                            </div>
+                        `;
                     } else {
                         playlist_container.innerHTML += `
-                        <div class="playlist blocked_playlist">
-                            <p>${playlists[i].playlist}</p>
-                            <p>${playlists[i].qtd_musica} músicas</p>
-                        </div>
-                    `;
+                            <div class="playlist blocked_playlist">
+                                <p>${playlists[i].playlist}</p>
+                                <p>${playlists[i].qtd_musica} músicas</p>
+                            </div>
+                        `;
                     }
                 }
+
             }
 
         })
@@ -102,13 +105,13 @@ function getPlaylistsForPage() {
 
             for (let i = 0; i < data.length; i++) {
                 let repetido = false;
-                for(let j=0; j < playlistsIDs.length; j++){
-                    if(playlistsIDs[j] == data[i].idPlaylist){
+                for (let j = 0; j < playlistsIDs.length; j++) {
+                    if (playlistsIDs[j] == data[i].idPlaylist) {
                         repetido = true;
                         break
                     }
                 }
-                if(!repetido){
+                if (!repetido) {
                     if (!data[i].capa) data[i].capa = './assets/imgs/img.svg';
                     else data[i].capa = '../../' + data[i].capa;
                     local.innerHTML += `
@@ -142,7 +145,7 @@ function getPlaylistSongsById() {
             for (let i = 0; i < res.length; i++) {
                 if (res[i].musica) {
                     try {
-                        if(i == 0) firstCover = res[i].srcCapa;
+                        if (i == 0) firstCover = res[i].srcCapa;
                         containerMusicas.innerHTML += `
                         <div class="song">
                             <div class="song_photo">
@@ -173,9 +176,9 @@ function getPlaylistSongsById() {
                         `
 
                         duracoes.push(res[i].duracao.replace("00:", ""));
-                        qtsSongsLocal.innerHTML = qtdMusicas+' Músicas';
+                        qtsSongsLocal.innerHTML = qtdMusicas + ' Músicas';
                         nameLocal.innerHTML = sessionStorage.getItem('nome');
-                        imgPlaylistLocal.src = '../../'+firstCover;
+                        imgPlaylistLocal.src = '../../' + firstCover;
                     } catch (err) {
                         console.log(err)
                     }
