@@ -50,37 +50,41 @@ function obterAlbumInfo() {
             containerMusicas.innerHTML = '';
             for (let i = 0; i < res.length; i++) {
                 if(res[i].musica){
-                    containerMusicas.innerHTML += `
-                    <div class="song">
-                        <div class="song_photo">
-                            <img src="../../${res[0].capa}">
-                        </div>
-                        <div class="name_controlers">
-                            <span class="name_song">${res[i].musica}</span>
-                            <audio id="audio"
-                                src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}" idBD="${res[i].id_musica}" fkAlbum=${res[i].id_album}></audio>
-                            <input type="range" id="progress" value="0">
-                            <div class="times">
-                                <span id="current_time">00:00</span>
-                                <span id="duration">${res[i].duracao.replace("00:", "")}</span>
+                    try{
+                        containerMusicas.innerHTML += `
+                        <div class="song">
+                            <div class="song_photo">
+                                <img src="../../${res[0].capa}">
                             </div>
-                            <div class="controls">
-                                <span class="material-symbols-outlined" onclick="skipPrevious(${i}, ${res.length})">
-                                    skip_previous
-                                </span>
-                                <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
-                                    resume
-                                </span>
-                                <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
-                                    skip_next
-                                </span>
-                                <span class="material-symbols-outlined" onclick="openPlaylistModal(${res[i].id_musica}, ${res[i].id_album})">
-                                    library_add
-                                </span>
+                            <div class="name_controlers">
+                                <span class="name_song">${res[i].musica}</span>
+                                <audio id="audio"
+                                    src="../../${res[i].src_musica}" lrc="${res[i].src_lrc}" idBD="${res[i].id_musica}" fkAlbum=${res[i].id_album}></audio>
+                                <input type="range" id="progress" value="0">
+                                <div class="times">
+                                    <span id="current_time">00:00</span>
+                                    <span id="duration">${res[i].duracao.replace("00:", "")}</span>
+                                </div>
+                                <div class="controls">
+                                    <span class="material-symbols-outlined" onclick="skipPrevious(${i}, ${res.length})">
+                                        skip_previous
+                                    </span>
+                                    <span class="material-symbols-outlined pauseorresume" onclick="play(this)">
+                                        resume
+                                    </span>
+                                    <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
+                                        skip_next
+                                    </span>
+                                    <span class="material-symbols-outlined" onclick="openPlaylistModal(${res[i].id_musica}, ${res[i].id_album})">
+                                        library_add
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    `
+                        `
+                    }catch(err){
+                        console.log(err)
+                    }
                 }
             }
         });
