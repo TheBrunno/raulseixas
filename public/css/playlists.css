@@ -74,6 +74,7 @@ pagina de playlist especifica
 }
 .playlist_header img{
     width: 100%;
+    border-radius: 10px;
 }
 .playlist_header .right{
     display: flex;

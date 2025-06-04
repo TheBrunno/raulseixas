@@ -98,17 +98,30 @@ function getPlaylistsForPage() {
         .then((result) => result.json())
         .then((data) => {
             const local = document.getElementsByClassName('row')[0];
+            const playlistsIDs = [];
 
             for (let i = 0; i < data.length; i++) {
-                if (!data[i].capa) data[i].capa = './assets/imgs/img.svg';
-                else data[i].capa = '../../' + data[i].capa;
-                local.innerHTML += `
-                    <a class="playlist" href="./playlist_page.html?idPlaylist=${data[i].idPlaylist}">
-                        <img src="${data[i].capa}">
-                        <p>${data[i].playlist}</p>
-                    </a>
-                `;
+                let repetido = false;
+                for(let j=0; j < playlistsIDs.length; j++){
+                    if(playlistsIDs[j] == data[i].idPlaylist){
+                        repetido = true;
+                        break
+                    }
+                }
+                if(!repetido){
+                    if (!data[i].capa) data[i].capa = './assets/imgs/img.svg';
+                    else data[i].capa = '../../' + data[i].capa;
+                    local.innerHTML += `
+                        <a class="playlist" href="./playlist_page.html?idPlaylist=${data[i].idPlaylist}">
+                            <img src="${data[i].capa}">
+                            <p>${data[i].playlist}</p>
+                        </a>
+                    `;
+                    playlistsIDs.push(data[i].idPlaylist)
+                }
             }
+
+            console.log(data)
         });
 }
 
@@ -118,9 +131,18 @@ function getPlaylistSongsById() {
     }).then((result) => {
         result.json().then((res) => {
             const containerMusicas = document.getElementById('song_container');
+            const qtsSongsLocal = document.getElementsByClassName('qtsSongs')[0];
+            const nameLocal = document.getElementsByClassName('name')[0];
+            const imgPlaylistLocal = document.getElementById('img_playlist');
+            const qtdMusicas = res.length;
+            const duracoes = [];
+            let firstCover = '';
+            document.getElementById('playlist_name').innerHTML = res[0].playlist;
+
             for (let i = 0; i < res.length; i++) {
                 if (res[i].musica) {
                     try {
+                        if(i == 0) firstCover = res[i].srcCapa;
                         containerMusicas.innerHTML += `
                         <div class="song">
                             <div class="song_photo">
@@ -149,6 +171,11 @@ function getPlaylistSongsById() {
                             </div>
                         </div>
                         `
+
+                        duracoes.push(res[i].duracao.replace("00:", ""));
+                        qtsSongsLocal.innerHTML = qtdMusicas+' Músicas';
+                        nameLocal.innerHTML = sessionStorage.getItem('nome');
+                        imgPlaylistLocal.src = '../../'+firstCover;
                     } catch (err) {
                         console.log(err)
                     }

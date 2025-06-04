@@ -27,10 +27,11 @@ const putSongIntoPlaylist = (idPlaylist, idMusica, idUsuario, idAlbum) => {
 
 const getPlaylistsByUserIdForPage = (id) => {
     const sqlStatment = `
-        select distinct pl.nome playlist, pl.id idPlaylist, srcCapa capa from playlist pl
+        select pl.nome playlist, pl.id idPlaylist, srcCapa capa from playlist pl
         left join playlist_has_musica phm on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
         left join album alb on alb.id = phm.fkalbum
-        where pl.fkusuario = ${id};
+        where pl.fkusuario = ${id}
+        order by adicionada_em;
     `;
 
     return database.execute(sqlStatment);
@@ -38,7 +39,7 @@ const getPlaylistsByUserIdForPage = (id) => {
 
 const getSongsOfAPlaylistUsingId = (id) => {
     const sqlStatment = `
-        select msc.nome musica, msc.id idMusica, alb.id idAlbum, msc.duracao duracao, srcMusica, srcLRC, alb.nome album, srcCapa from playlist pl
+        select pl.nome playlist, msc.nome musica, msc.id idMusica, alb.id idAlbum, msc.duracao duracao, srcMusica, srcLRC, alb.nome album, srcCapa from playlist pl
         inner join playlist_has_musica phm on phm.fkPlaylist = pl.id and phm.fkUsuario = pl.fkUsuario
         inner join musica msc on phm.fkMusica = msc.id and phm.fkAlbum = msc.fkAlbum
         inner join album alb on alb.id = msc.fkalbum
