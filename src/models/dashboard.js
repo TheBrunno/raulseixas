@@ -24,7 +24,7 @@ const getMostOrLessListenedSongsByAlbum = (id, mode) => {
 const getViewsPerAlbum = () => {
     const sqlStatment = `
         select alb.id, alb.nome, sum(views) views_album from album alb
-        inner join musica msc on msc.fkalbum = alb.id
+        left join musica msc on msc.fkalbum = alb.id
         group by alb.id, alb.nome
         order by views_album desc;
     `;
