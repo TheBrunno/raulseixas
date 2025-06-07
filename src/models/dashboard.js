@@ -60,11 +60,36 @@ const getAllAlbums = () => {
     return database.execute(sqlStatment);
 }
 
+const getPlaylistNumberSongsPerAlbum = () => {
+    const sqlStatment = `
+        select album.nome, count(*) qtd_playlists from playlist_has_musica phm
+        inner join album on album.id = phm.fkalbum
+        group by album.nome
+        order by qtd_playlists desc;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
+const getSongsMostAddedInPlaylists = () => {
+    const sqlStatment = `
+        select msc.nome, count(*) qtd_playlists from playlist_has_musica phm
+        inner join musica msc on msc.id = phm.fkmusica
+        group by msc.nome
+        order by qtd_playlists desc
+        limit 9;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     getMostOrLessListenedSongs,
     getMostOrLessListenedSongsByAlbum,
     getViewsPerAlbum,
     getRatingPerAlbum,
     getAllUsers,
-    getAllAlbums
+    getAllAlbums,
+    getPlaylistNumberSongsPerAlbum,
+    getSongsMostAddedInPlaylists
 }

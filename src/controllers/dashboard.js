@@ -70,11 +70,33 @@ const getAllAlbums = (req, res) => {
         })
 }
 
+const getSongsMostAddedInPlaylists = (req, res) => {
+    dashboardModel.getSongsMostAddedInPlaylists()
+        .then(result => {
+            return res.status(200).json(result);
+        })
+        .catch(err => {
+            return res.status(400).json(err);
+        })
+}
+
+const getPlaylistNumberSongsPerAlbum = (req, res) => {
+    dashboardModel.getPlaylistNumberSongsPerAlbum()
+        .then(result => {
+            return res.status(200).json(result);
+        })
+        .catch(err => {
+            return res.status(400).json(err);
+        })
+}
+
 module.exports = {
     getMostListenedSongs,
     getLessListenedSongs,
     getViewsPerAlbum,
     getRatingPerAlbum,
     getAllUsers,
-    getAllAlbums
+    getAllAlbums,
+    getSongsMostAddedInPlaylists,
+    getPlaylistNumberSongsPerAlbum
 }

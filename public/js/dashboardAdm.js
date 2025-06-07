@@ -1,3 +1,116 @@
+function playlistCharts(){
+    fetch('/dashboard/getPlaylistNumberSongsPerAlbum', { method: 'GET' }).then(response => response.json())
+    .then(json => {
+        const labels = [];
+        const data = [];
+
+        for(let i=0; i<json.length; i++){
+            labels.push(json[i].nome);
+            data.push(json[i].qtd_playlists);
+        }
+
+        const mostAddedAlbum = document.getElementById('most_added_album');
+
+        mostAddedAlbum.innerHTML = labels[0];
+
+        const numberSongsPerAlbum = document.getElementById('numberSongsPerAlbum').getContext('2d');
+        new Chart(numberSongsPerAlbum, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        data: data,
+                        borderColor: '#F9B631',
+                        backgroundColor: '#F9B631',
+                        fill: true,
+                        borderRadius: 5,
+                        color: '#fff',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            stepSize: 50,
+                            padding: 10
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        fetch('/dashboard/getSongsMostAddedInPlaylists', { method: 'GET' }).then(response => response.json())
+        .then(json => {
+            const labels = [];
+            const data = [];
+
+            for(let i=0; i<json.length; i++){
+                labels.push(json[i].nome);
+                data.push(json[i].qtd_playlists);
+            }
+
+            const mostAddedSong = document.getElementById('most_added_song');
+            mostAddedSong.innerHTML = labels[0];
+
+            const numberSongs = document.getElementById('numberSongs').getContext('2d');
+            new Chart(numberSongs, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: data,
+                            borderColor: '#F9B631',
+                            backgroundColor: '#F9B631',
+                            fill: true,
+                            borderRadius: 5,
+                            color: '#fff',
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 50,
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+}
+
 function songCharts(mode) {
     // buscar no banco a partir do nome do album (mode)
 
@@ -13,7 +126,8 @@ function songCharts(mode) {
                 data.push(json[i].views);
             }
 
-            document.getElementById('less_listened_song').innerHTML = labels[0];
+            if(labels[0]) document.getElementById('less_listened_song').innerHTML = labels[0];
+            else document.getElementById('less_listened_song').innerHTML = 'Nenhuma música encontrada';
 
             const leastListened = document.getElementById('leastListened').getContext('2d');
             new Chart(leastListened, {
@@ -68,7 +182,8 @@ function songCharts(mode) {
                 data.push(json[i].views);
             }
 
-            document.getElementById('most_listened_song').innerHTML = labels[0];
+            if(labels[0]) document.getElementById('most_listened_song').innerHTML = labels[0];
+            else document.getElementById('most_listened_song').innerHTML = 'Nenhuma música encontrada';
 
             const mostListened = document.getElementById('mostListened').getContext('2d');
             new Chart(mostListened, {
@@ -262,6 +377,7 @@ function changeMode() {
                 <select id="slc_mode" onchange="changeMode()">
                     <option value="album">Álbum</option>
                     <option value="musica">Música</option>
+                    <option value="playlist">Playlist</option>
                 </select>
             </div>
         `;
@@ -307,6 +423,7 @@ function changeMode() {
                         <select id="slc_mode" onchange="changeMode()">
                             <option value="album">Álbum</option>
                             <option value="musica" selected>Música</option>
+                            <option value="playlist">Playlist</option>
                         </select>
 
                         <h3>Álbum</h3>
@@ -320,6 +437,40 @@ function changeMode() {
                 songCharts('geral');
 
             })
+    }else if(mode == 'playlist'){
+        graphContainer.innerHTML = `
+            <div class="column">
+                <div class="graph1">
+                    <h2>🎼 Quantidade em playlists, por álbuns 🎵</h2>
+                    <canvas id="numberSongsPerAlbum" width="600" height="350"></canvas>
+                </div>
+                <div class="most_graph1">
+                    <h2>Álbum com mais músicas salvas:</h2>
+                    <span id="most_added_album"></span>
+                </div>
+            </div>
+            <div class="column">
+                <div class="graph1">
+                    <h2>🎼 Músicas mais adicionadas a playlists 🎵</h2>
+                    <canvas id="numberSongs" width="600" height="350"></canvas>
+                </div>
+                <div class="most_graph1">
+                    <h2>Músicas mais adicionada:</h2>
+                    <span id="most_added_song">
+                    </span>
+                </div>
+            </div>
+            <div class="column column_options" id="options">
+                <h3>Modo de exibição</h3>
+                <select id="slc_mode" onchange="changeMode()">
+                    <option value="album">Álbum</option>
+                    <option value="musica">Música</option>
+                    <option value="playlist" selected>Playlist</option>
+                </select>
+            </div>
+        `;
+
+        playlistCharts();
     }
 }
 

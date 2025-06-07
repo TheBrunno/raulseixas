@@ -25,6 +25,14 @@ router.get("/getAllUsers", function (req, res){
 
 router.get("/getAllAlbums", function (req, res){
     dashboardController.getAllAlbums(req, res);
+});
+
+router.get("/getPlaylistNumberSongsPerAlbum", function (req, res){
+    dashboardController.getPlaylistNumberSongsPerAlbum(req, res);
+});
+
+router.get("/getSongsMostAddedInPlaylists", function (req, res){
+    dashboardController.getSongsMostAddedInPlaylists(req, res);
 })
 
 module.exports = router;
