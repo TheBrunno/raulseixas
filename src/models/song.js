@@ -55,6 +55,16 @@ const addView = (id, fkAlbum, lastView) => {
     return database.execute(sqlStatment);
 }
 
+const searchSongs = (word) => {
+    const sqlStatment = `
+        select msc.nome musica, duracao, alb.nome album, srcCapa capa, fkalbum idAlbum from musica msc
+        inner join album alb on alb.id = msc.fkalbum
+        where msc.nome like '%${word}%';
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     songExists,
     assingSong,
@@ -62,5 +72,6 @@ module.exports = {
     create,
     assingLRC,
     countView,
-    addView
+    addView,
+    searchSongs
 }

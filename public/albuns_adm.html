@@ -17,10 +17,10 @@
 
     <script src="js/isLogged.js"></script>
     <script src="js/usersAdm.js"></script>
-    <script src="js/nav.js"></script>
 
     <script src="js/getAllAlbums.js"></script>
 </head>
+
 <body onload="showLinkProfilePhoto(); getAllAlbums()">
     <nav class="nav">
         <div class="logo">
@@ -28,10 +28,19 @@
                 <img src="assets/imgs/logo.png">
             </a>
         </div>
+        <div class="search">
+            <div class="bar">
+                <input type="text" id="ipt_search" placeholder="O que você quer ouvir?" oninput="search()">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+            </div>
+            <div class="result" id="search_result"></div>
+        </div>
         <div class="links">
             <ul>
                 <li>
-                    <a href="albums.html">Álbuns</a>
+                    <a href="#">Álbuns</a>
                 </li>
                 <li>
                     <a href="#">Biografia</a>
@@ -78,5 +87,5 @@
         </ul>
     </nav>
 </body>
-
+<script src="js/nav.js"></script>
 </html>

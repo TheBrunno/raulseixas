@@ -51,7 +51,7 @@ body {
     padding-left: 30px;
     margin-bottom: 10px;
 }
-.bar{
+.info_container .bar{
     width: 100%;
     height: 4px;
     background-color: #F9B631;

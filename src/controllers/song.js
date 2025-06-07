@@ -104,12 +104,23 @@ const countView = (req, res) => {
         }
     ).catch((err) => {
         res.status(400).json("Houve um erro na contagem de views");
-    })
+    });
+}
+
+const searchSongs = (req, res) => {
+    const { search } = req.body;
+
+    songModel.searchSongs(search).then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        res.status(400).json("Houve um erro na pesquisa de músicas");
+    });
 }
 
 module.exports = {
     assingSong,
     create,
     assingLRC,
-    countView
+    countView,
+    searchSongs
 }

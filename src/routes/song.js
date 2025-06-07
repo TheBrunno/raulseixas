@@ -11,4 +11,8 @@ router.get("/view/:id/:fkAlbum", function (req, res){
     songController.countView(req, res);
 })
 
+router.post('/search', function (req, res){
+    songController.searchSongs(req, res);
+})
+
 module.exports = router;
