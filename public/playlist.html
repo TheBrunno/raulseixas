@@ -51,5 +51,17 @@
     <div class="playlists_container">
         <div class="row"></div>
     </div>
+    <button class="create_playlist" onclick="showModalPlaylist()">
+        <span class="material-symbols-outlined">
+            add
+        </span>
+    </button>
+    <div class="create_playlist_modal_out hidden" onclick="closeCreatePlaylistModal(this)" id="out_modal_playlist">
+        <div class="create_playlist_modal">
+            <h2>Nome da nova playlist</h2>
+            <input type="text" id="ipt_new_playlist">
+            <button onclick="">Criar playlist</button>
+        </div>
+    </div>
 </body>
 </html>

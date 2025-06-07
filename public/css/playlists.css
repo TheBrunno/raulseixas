@@ -60,6 +60,68 @@ h1{
     color: #f5f5f5;
 }
 
+.create_playlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9B631;
+    position: fixed;
+    z-index: 10;
+    padding: 20px;
+    border-radius: 10px;
+    color: #292929;
+    right: 100px;
+    bottom: 80px;
+    cursor: pointer;
+}
+
+.create_playlist_modal{
+    position: fixed;
+    z-index: 300;
+    background-color: #464646;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.create_playlist_modal_out{
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a7a;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create_playlist_modal_out.hidden{
+    display: none;
+}
+
+.create_playlist_modal input{
+    border: none;
+    font-size: 16px;
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+.create_playlist_modal button{
+    background-color: #F9B631;
+    font-size: 16px;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+
 /*
 pagina de playlist especifica
 */

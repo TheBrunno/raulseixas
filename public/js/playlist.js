@@ -22,7 +22,7 @@ function getPlaylistsByUser(idMusica, idAlbum) {
             if (data.length == 0) {
                 playlist_container.innerHTML += `
                 <div>
-                    <p>Nenhuma playlist encontrada, crie uma na <a href="profile.html">página de perfil</a>.</p>
+                    <p>Nenhuma playlist encontrada, crie uma na <a href="playlist.html">página de playlist</a>.</p>
                 </div>
             `;
             } else {
@@ -197,4 +197,13 @@ function getPlaylistSongsById() {
             localTimes.innerHTML = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}h de música`;
         })
     })
+}
+
+function closeCreatePlaylistModal(element){
+    element.classList.add('hidden');
+}
+
+function showModalPlaylist(){
+    const modal = document.getElementById('out_modal_playlist');
+    modal.classList.remove('hidden');
 }
