@@ -140,8 +140,16 @@ function getPlaylistSongsById() {
             const qtdMusicas = res.length;
             const duracoes = [];
             let firstCover = '';
-            document.getElementById('playlist_name').innerHTML = res[0].playlist;
             let tempoSomSegundos = 0;
+            
+            if(res.length == 0){
+                console.log(res)
+                const geral_wrapper = document.getElementById('geral_wrapper');
+                
+                geral_wrapper.innerHTML = "<h1>Insira músicas à essa playlist na página de cada álbum</h1>";
+            }else{
+                document.getElementById('playlist_name').innerHTML = res[0].playlist;
+            }
 
             for (let i = 0; i < res.length; i++) {
                 if (res[i].musica) {

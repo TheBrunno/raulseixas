@@ -50,42 +50,44 @@
             </ul>
         </div>
     </nav>
-
-    <div class="playlist_header">
-        <div class="left">
-            <img src="" id="img_playlist">
-        </div>
-        <div class="right">
-            <h2 id="playlist_name"></h2>
-            <div class="infos">
-                <div class="name"></div>
-                <div class="bar"></div>
-                <div class="qtsSongs"></div>
-                <div class="bar"></div>
-                <div class="timesSongs"></div>
+    <div class="wrapper" id="geral_wrapper">
+        <div class="playlist_header">
+            <div class="left">
+                <img src="" id="img_playlist">
+            </div>
+            <div class="right">
+                <h2 id="playlist_name"></h2>
+                <div class="infos">
+                    <div class="name"></div>
+                    <div class="bar"></div>
+                    <div class="qtsSongs"></div>
+                    <div class="bar"></div>
+                    <div class="timesSongs"></div>
+                </div>
             </div>
         </div>
+    
+        <section class="second_section">
+            <div class="lyrics">
+                <h2 id="song_title">Reproduza uma música...</h2>
+                <h3>Letra</h3>
+                <div class="lyrics_container">
+                    <span class="one" id="previous1"></span>
+                    <span class="two" id="previous"></span>
+                    <span class="main three" id="main_actual">A letra irá aparecer aqui!</span>
+                    <span class="four" id="next"></span>
+                    <span class="five" id="next1"></span>
+                    <span class="six" id="next2"></span>
+                    <span class="seven" id="next3"></span>
+                    <span class="eight" id="next4"></span>
+                </div>
+            </div>
+            <div class="main_songs">
+                <h2>Músicas da playlist</h2>
+                <div class="songs_container" id="song_container"></div>
+            </div>
+        </section>
     </div>
 
-    <section class="second_section">
-        <div class="lyrics">
-            <h2 id="song_title">Reproduza uma música...</h2>
-            <h3>Letra</h3>
-            <div class="lyrics_container">
-                <span class="one" id="previous1"></span>
-                <span class="two" id="previous"></span>
-                <span class="main three" id="main_actual">A letra irá aparecer aqui!</span>
-                <span class="four" id="next"></span>
-                <span class="five" id="next1"></span>
-                <span class="six" id="next2"></span>
-                <span class="seven" id="next3"></span>
-                <span class="eight" id="next4"></span>
-            </div>
-        </div>
-        <div class="main_songs">
-            <h2>Músicas da playlist</h2>
-            <div class="songs_container" id="song_container"></div>
-        </div>
-    </section>
 </body>
 </html>
