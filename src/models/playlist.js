@@ -50,9 +50,19 @@ const getSongsOfAPlaylistUsingId = (id) => {
     return database.execute(sqlStatment);
 }
 
+const createPlaylist = (userID, nome) => {
+    const sqlStatment = `
+        insert into playlist (fkusuario, nome)
+        values (${userID}, '${nome}')
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
     getPlaylistsByUserId,
     putSongIntoPlaylist,
     getPlaylistsByUserIdForPage,
-    getSongsOfAPlaylistUsingId
+    getSongsOfAPlaylistUsingId,
+    createPlaylist
 }

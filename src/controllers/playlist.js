@@ -44,9 +44,20 @@ const getSongsOfAPlaylistUsingId = (req, res) => {
     })
 }
 
+const createPlaylist = (req, res) => {
+    const { idUser, nome } = req.body;
+
+    playlistModel.createPlaylist(idUser, nome).then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        res.status(401).json(err);
+    })
+}
+
 module.exports = {
     getPlaylistsByUserId,
     putSongIntoPlaylist,
     getPlaylistsByUserIdForPage,
-    getSongsOfAPlaylistUsingId
+    getSongsOfAPlaylistUsingId,
+    createPlaylist
 }

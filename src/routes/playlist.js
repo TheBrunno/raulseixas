@@ -19,4 +19,8 @@ router.get('/getSongsOfAPlaylistUsingId/:idPlaylist', function (req, res){
     playlistController.getSongsOfAPlaylistUsingId(req, res);
 })
 
+router.post('/createPlaylist/', function (req, res){
+    playlistController.createPlaylist(req, res);
+})
+
 module.exports = router;

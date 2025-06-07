@@ -214,3 +214,21 @@ function showModalPlaylist(){
     modal.classList.remove('hidden');
     modal_out.classList.remove('hidden');
 }
+
+function createPlaylist(){
+    const nome = document.getElementById('ipt_new_playlist').value;
+    const userID = sessionStorage.getItem('id');
+
+    fetch('/playlist/createPlaylist', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nome: nome,
+            idUser: userID
+        })
+    }).then(result => {
+        location.reload();
+    })
+}
