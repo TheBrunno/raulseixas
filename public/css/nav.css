@@ -76,6 +76,9 @@ nav ul a{
     position: relative;
     width: 30vw;
 }
+.search *{
+    text-decoration: none;
+}
 .search input{
     width: 100%;
     outline: none;
