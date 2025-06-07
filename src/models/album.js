@@ -65,7 +65,7 @@ const getAlbumByIdWithSongs = (id) => {
                                 
                                 from album alb
                         left join musica msc on alb.id = msc.fkAlbum
-                        where alb.id = ${id}
+                        where alb.id = ${id} and msc.duracao is not null and msc.srcMusica is not null
                         order by views desc`;
 
     return database.execute(sqlStatment);
