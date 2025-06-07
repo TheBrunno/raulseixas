@@ -199,11 +199,18 @@ function getPlaylistSongsById() {
     })
 }
 
-function closeCreatePlaylistModal(element){
-    element.classList.add('hidden');
+function closeCreatePlaylistModal(){
+    const modal_out = document.getElementById('out_modal_playlist');
+    const modal = document.getElementById('modal_playlist');
+
+    modal.classList.add('hidden');
+    modal_out.classList.add('hidden');
 }
 
 function showModalPlaylist(){
-    const modal = document.getElementById('out_modal_playlist');
+    const modal_out = document.getElementById('out_modal_playlist');
+    const modal = document.getElementById('modal_playlist');
+
     modal.classList.remove('hidden');
+    modal_out.classList.remove('hidden');
 }

@@ -81,6 +81,10 @@ h1{
     background-color: #464646;
     padding: 30px;
     border-radius: 10px;
+    z-index: 10001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .create_playlist_modal_out{
@@ -96,7 +100,7 @@ h1{
     align-items: center;
 }
 
-.create_playlist_modal_out.hidden{
+.hidden{
     display: none;
 }
 
@@ -119,6 +123,7 @@ h1{
     font-weight: 600;
     margin: 0 auto;
     border-radius: 5px;
+    z-index: 10001;
 }
 
 

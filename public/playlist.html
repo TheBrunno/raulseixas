@@ -56,12 +56,12 @@
             add
         </span>
     </button>
-    <div class="create_playlist_modal_out hidden" onclick="closeCreatePlaylistModal(this)" id="out_modal_playlist">
-        <div class="create_playlist_modal">
-            <h2>Nome da nova playlist</h2>
-            <input type="text" id="ipt_new_playlist">
-            <button onclick="">Criar playlist</button>
-        </div>
+    <div class="create_playlist_modal hidden" id="modal_playlist">
+        <h2>Nome da nova playlist</h2>
+        <input type="text" id="ipt_new_playlist">
+        <button onclick="">Criar playlist</button>
+    </div>
+    <div class="create_playlist_modal_out hidden" onclick="closeCreatePlaylistModal()" id="out_modal_playlist">
     </div>
 </body>
 </html>
