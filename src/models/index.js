@@ -12,6 +12,18 @@ const getAllAlbums = () => {
     return database.execute(sqlStatment);
 }
 
+const getPopularSongs = () => {
+    const sqlStatment = `
+        select msc.nome musica, alb.nome album, alb.srcCapa, alb.id idAlbum from musica msc
+        inner join album alb on alb.id = msc.fkalbum
+        order by msc.views desc
+        limit 5;
+    `;
+
+    return database.execute(sqlStatment);
+}
+
 module.exports = {
-    getAllAlbums
+    getAllAlbums,
+    getPopularSongs
 }

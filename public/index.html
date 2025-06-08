@@ -19,7 +19,7 @@
     <script src="js/isLogged.js"></script>
     <script src="js/index.js"></script>
 </head>
-<body onload="getAlbuns(); showLinkProfilePhoto();">
+<body onload="getAlbuns(); getPopularSongs(); showLinkProfilePhoto();">
     <nav class="nav">
         <div class="logo">
             <a href="index.html">
@@ -80,63 +80,7 @@
         <div class="songs_container">
             <div class="populares">
                 <h2>Populares</h2>
-                <div class="songs_container_populares">
-                    <a href="">
-                        <img src="assets/imgs/main_cover.png">
-                        <div class="songs_infos">
-                            <span>
-                                Gita
-                            </span>
-                            <span>
-                                Raul Seixas
-                            </span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <img src="assets/imgs/main_cover.png">
-                        <div class="songs_infos">
-                            <span>
-                                Gita
-                            </span>
-                            <span>
-                                Raul Seixas
-                            </span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <img src="assets/imgs/main_cover.png">
-                        <div class="songs_infos">
-                            <span>
-                                Gita
-                            </span>
-                            <span>
-                                Raul Seixas
-                            </span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <img src="assets/imgs/main_cover.png">
-                        <div class="songs_infos">
-                            <span>
-                                Gita
-                            </span>
-                            <span>
-                                Raul Seixas
-                            </span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <img src="assets/imgs/main_cover.png">
-                        <div class="songs_infos">
-                            <span>
-                                Gita
-                            </span>
-                            <span>
-                                Raul Seixas
-                            </span>
-                        </div>
-                    </a>
-                </div>
+                <div class="songs_container_populares" id="popular_songs"></div>
             </div>
             <div class="notes">
                 <div class="note">

@@ -12,4 +12,8 @@ router.get('/getAlbuns', function (req, res){
     indexController.getAlbuns(req, res);
 })
 
+router.get('/getPopularSongs', function (req, res){
+    indexController.getPopularSongs(req, res);
+})
+
 module.exports = router;

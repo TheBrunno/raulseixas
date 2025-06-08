@@ -18,3 +18,28 @@ function getAlbuns(){
         }
     })
 }
+
+function getPopularSongs() {
+    fetch('/getPopularSongs', { method: 'GET' }).then(result => result.json())
+    .then(json => {
+        const songPopularContainer = document.getElementById('popular_songs');
+
+        songPopularContainer.innerHTML = '';
+
+        for(let i=0; i<json.length; i++){
+            songPopularContainer.innerHTML += `
+                    <a href="albums.html?id=${json[i].idAlbum}">
+                        <img src="../../${json[i].srcCapa}">
+                        <div class="songs_infos">
+                            <span>
+                                ${json[i].musica}
+                            </span>
+                            <span>
+                                ${json[i].album} 
+                            </span>
+                        </div>
+                    </a>
+            `;
+        }
+    })
+}

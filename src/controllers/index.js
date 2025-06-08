@@ -8,6 +8,15 @@ const getAlbuns = (req, res) => {
     })
 }
 
+const getPopularSongs = (req, res) => {
+    indexModel.getPopularSongs().then(result => {
+        res.status(200).json(result);
+    }).catch(err => {
+        res.status(400).json(err);
+    })
+}
+
 module.exports = {
-    getAlbuns
+    getAlbuns,
+    getPopularSongs
 }
