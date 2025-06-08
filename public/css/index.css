@@ -157,6 +157,8 @@ h3{
 }
 .songs_infos_section .songs_container .populares .songs_container_populares a .songs_infos span:nth-child(2){
     font-size: 10px;
+    font-weight: 300;
+    color: #ffffffb7;
 }
 .songs_infos_section .songs_container .notes{
     display: flex;
@@ -248,4 +250,16 @@ h3{
 }
 .biografia_section .biografia_container .row .right{
     text-align: right;
+}
+
+footer{
+    height: 50vh;
+    background-color: #4B4B4B;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+footer img{
+    height: 80%;
 }

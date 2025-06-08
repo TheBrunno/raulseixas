@@ -728,3 +728,15 @@ span.destaque_text{
 .blocked_playlist{
     background-color: #6d6d6d;
 }
+
+footer{
+    height: 50vh;
+    background-color: #4B4B4B;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+footer img{
+    height: 80%;
+}
