@@ -3,9 +3,11 @@ let posAnterior = 0;
 const searchBar = document.getElementById('ipt_search');
 
 searchBar.addEventListener('blur', () => {
-    const result_local = document.getElementById('search_result');
-    result_local.innerHTML = '';
-    searchBar.value = '';
+    setTimeout(() => {
+        const result_local = document.getElementById('search_result');
+        result_local.innerHTML = '';
+        searchBar.value = '';
+    }, 50)
 })
 
 window.addEventListener('scroll', () => {
