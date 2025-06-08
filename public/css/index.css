@@ -66,6 +66,10 @@ body {
     height: 300px;
     background-image: linear-gradient(to bottom, rgba(115, 115, 115, 0.4), #fff0);
 }
+.gradiend_fade_top{
+    height: 300px;
+    background-image: linear-gradient(to top, rgba(115, 115, 115, 0.4), #fff0);
+}
 section{
     padding: 0 100px;
     box-sizing: border-box;
@@ -119,6 +123,7 @@ h3{
 }
 .songs_infos_section .songs_container div{
     flex: 1;
+    z-index: 5;
 }
 .songs_infos_section .songs_container .populares{
     background-color: #4B4B4B;
@@ -170,4 +175,51 @@ h3{
 }
 .songs_infos_section .songs_container .notes .note img{
     height: 50%;
+}
+
+.top_image_section{
+    margin-top: -200px;
+}
+
+.image_section{
+    background-image: url('../assets/imgs/background_section.png');
+    background-size: 100vw;
+    background-position: 0 -10vh;
+    height: 100vh;
+    border-top: #F9BA2F 3px solid;
+    border-bottom: #F9BA2F 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image_section .message{
+    background-color: #4B4B4B;
+    border-radius: 15px;
+    border: 2px solid #F9BA2F;
+    position: relative;
+    box-sizing: border-box;
+    padding: 50px;
+    margin: 100px 200px 0 200px;
+}
+.image_section .message img{
+    position: absolute;
+    bottom: -2px;
+    right: 20px;
+    height: 170%;
+}
+.image_section .message .image_left{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.image_section .message .image_left p{
+    width: 70%;
+}
+.image_section .message .image_left p:nth-child(2){
+    font-style: italic;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+.bold{
+    font-weight: 600;
 }
