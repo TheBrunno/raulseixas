@@ -14,7 +14,7 @@ function obterAlbumInfo() {
     if (!Number(albumId)) albumId = 1;
 
 
-    fetch('/album/getAlbumWithSongs/' + albumId, {
+    fetch('/album/getAlbumWithSongs/' + albumId + '/0', {
         method: "GET"
     }).then((result) => {
         result.json().then(async (res) => {

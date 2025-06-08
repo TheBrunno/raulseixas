@@ -70,8 +70,15 @@ const getAllAlbuns = async (req, res) => {
 
 const getAlbumByIdWithSongs = async (req, res) => {
     const id = req.params.id;
+    let adm = req.params.isadm
 
-    const result = await albumModel.getAlbumByIdWithSongs(id);
+    try{
+        adm = Number(adm);
+    }catch(_){
+        adm = 0
+    }
+
+    const result = await albumModel.getAlbumByIdWithSongs(id, adm);
     return res.status(200).json(result);
 }
 

@@ -12,7 +12,7 @@ function getOneAlbum(fkalbum){
         }
     })
 
-    fetch('/album/getAlbumWithSongs/' + fkalbum)
+    fetch('/album/getAlbumWithSongs/' + fkalbum + '/1')
     .then(result => result.json())
     .then(json => {
         const title = document.getElementById('ipt_titulo');

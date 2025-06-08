@@ -48,7 +48,8 @@ const getAllAlbuns = () => {
     return database.execute(sqlStatment);
 }
 
-const getAlbumByIdWithSongs = (id) => {
+const getAlbumByIdWithSongs = (id, adm) => {
+    const admPage = adm ? '' : ' and msc.duracao is not null and msc.srcMusica is not null'; 
     const sqlStatment = `select alb.id id_album,
                                 alb.nome album, 
                                 alb.srcCapa capa,
@@ -65,7 +66,7 @@ const getAlbumByIdWithSongs = (id) => {
                                 
                                 from album alb
                         left join musica msc on alb.id = msc.fkAlbum
-                        where alb.id = ${id} and msc.duracao is not null and msc.srcMusica is not null
+                        where alb.id = ${id}${admPage}
                         order by views desc`;
 
     return database.execute(sqlStatment);
