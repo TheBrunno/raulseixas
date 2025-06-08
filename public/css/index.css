@@ -223,3 +223,29 @@ h3{
 .bold{
     font-weight: 600;
 }
+.biografia_section{
+    margin-top: -200px;
+    margin-bottom: 100px;
+}
+
+.biografia_section .biografia_container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.biografia_section .biografia_container .row{
+    display: flex;
+    gap: 20px;
+}
+.biografia_section .biografia_container .row .text{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+.biografia_section .biografia_container .row h4{
+    color: #F9BA2F;
+    font-size: 40px;
+}
+.biografia_section .biografia_container .row .right{
+    text-align: right;
+}
