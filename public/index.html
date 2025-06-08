@@ -17,8 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <script src="js/isLogged.js"></script>
+    <script src="js/index.js"></script>
 </head>
-<body>
+<body onload="getAlbuns(); showLinkProfilePhoto();">
     <nav class="nav">
         <div class="logo">
             <a href="index.html">
@@ -72,29 +73,7 @@
     <section class="albums_section">
         <h2>Álbuns</h2>
         <h3>Os maiores sucessos de sua carreira</h3>
-        <div class="albuns_container">
-            <a href="albums.html?id=1">
-                <img src="assets/imgs/main_cover.png">
-                <div class="infos">
-                    <span>Novo Aeon</span>
-                    <span>Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.</span>
-                </div>
-            </a>
-            <a href="albums.html?id=1">
-                <img src="assets/imgs/main_cover.png">
-                <div class="infos">
-                    <span>Novo Aeon</span>
-                    <span>Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.</span>
-                </div>
-            </a>
-            <a href="albums.html?id=1">
-                <img src="assets/imgs/main_cover.png">
-                <div class="infos">
-                    <span>Novo Aeon</span>
-                    <span>Um dos principais álbuns do artista, trazendo diversas músicas que o tornaram conhecido por todo o país.</span>
-                </div>
-            </a>
-        </div>
+        <div class="albuns_container" id="albuns_container"></div>
     </section>
     <section class="songs_infos_section">
         <h2>Músicas mais ouvidas</h2>

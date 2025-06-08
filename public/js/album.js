@@ -19,7 +19,7 @@ function obterAlbumInfo() {
     }).then((result) => {
         result.json().then(async (res) => {
             console.log(res);
-            // if (res.length == 0) window.location = '/'
+            if (res.length == 0) window.location = '/'
 
             album.innerHTML = res[0].album;
             subtituloAlbum.innerHTML = res[0].subtitulo;
