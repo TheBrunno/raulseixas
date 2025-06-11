@@ -15,8 +15,7 @@ function getUsers() {
                             <p class="email">${json[i].email}</p>
                         </div>
                         <div class="right">
-                            <img src="assets/imgs/prestige.svg">
-                            <p>${json[i].prestigio} de prestígio</p>
+                            <p>${json[i].qtdLogins} logins</p>
                         </div>
                     </a>
                 `;

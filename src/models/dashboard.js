@@ -43,7 +43,7 @@ const getRatingPerAlbum = () => {
 
 const getAllUsers = () => {
     const sqlStatment = `
-        select nome, email, isADM, foto, prestigio, contadorLogins from usuario;
+        select nome, email, isADM, foto, contadorLogins as qtdLogins from usuario;
     `;
 
     return database.execute(sqlStatment);

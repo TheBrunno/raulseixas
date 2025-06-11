@@ -740,3 +740,7 @@ footer{
 footer img{
     height: 80%;
 }
+
+.add_playlist_icon{
+    cursor: pointer;
+}

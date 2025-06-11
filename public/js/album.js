@@ -72,7 +72,7 @@ function obterAlbumInfo() {
                                 <span class="material-symbols-outlined" onclick="skipNext(${i}, ${res.length})">
                                     skip_next
                                 </span>
-                                <span class="material-symbols-outlined" onclick="openPlaylistModal(${res[i].id_musica}, ${res[i].id_album})">
+                                <span class="material-symbols-outlined add_playlist_icon" onclick="openPlaylistModal(${res[i].id_musica}, ${res[i].id_album})">
                                     library_add
                                 </span>
                             </div>
@@ -117,12 +117,6 @@ function obterAlbumInfo() {
                                             </div>
                                         </div>
                                         <div class="comment_buttons">
-                                            <span class="material-symbols-outlined">
-                                                arrow_upward
-                                            </span>
-                                            <span class="material-symbols-outlined">
-                                                arrow_downward
-                                            </span>
                                         </div>
                                     </div>
                                 `;
@@ -138,9 +132,9 @@ function obterAlbumInfo() {
 function sendComment() {
     const comment = document.getElementById('ipt_comment').value;
     const comentariosContainer = document.getElementById('comentario_container');
-    const albumId = 1;
+    const params = new URLSearchParams(window.location.search);
+    const albumId = params.get('id');
     const userId = sessionStorage.getItem('id');
-    console.log(userId)
 
     fetch("/comment/create", {
         method: 'POST',
@@ -173,12 +167,6 @@ function sendComment() {
                             </div>
                         </div>
                         <div class="comment_buttons">
-                            <span class="material-symbols-outlined">
-                                arrow_upward
-                            </span>
-                            <span class="material-symbols-outlined">
-                                arrow_downward
-                            </span>
                         </div>
                     </div>
                 `;

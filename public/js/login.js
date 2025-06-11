@@ -51,11 +51,7 @@ function login(){
                     sessionStorage.setItem("contadorLogins", data.contadorLogins);
                     sessionStorage.setItem("isADM", data.isADM);
 
-                    if(data.isADM){
-                        window.location.href = "dashboard.html";
-                    }else{
-                        window.location.href = "profile.html";
-                    }
+                    window.location.href = "profile.html";
                 })
             }
                 

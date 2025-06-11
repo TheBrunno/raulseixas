@@ -21,7 +21,6 @@ function carregarInfoPerfil(){
 
     emailLocal.innerHTML = email;
     usernameLocal.innerHTML = name;
-    prestigeLocal.innerHTML = prestige+' de prestígio';
 }
 
 function sair(){
