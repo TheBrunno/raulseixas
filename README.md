@@ -5,7 +5,7 @@
 </p>
 
 
-> **“Eu prefiro ser essa metamorfose ambulante…”** ― Raul Seixas
+> **“Basta ser sincero e desejar profundo, você será capaz de sacudir o mundo.”** ― Raul Seixas
 
 [![GitHub issues](https://img.shields.io/github/issues/theBrunno/raulseixas?style=flat-square)](https://github.com/SEU_USUARIO/raul-seixas-tribute/issues) [![GitHub stars](https://img.shields.io/github/stars/theBrunno/raulseixas?style=flat-square)](https://github.com/SEU_USUARIO/raul-seixas-tribute/stargazers) [![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](#licenca)
 
